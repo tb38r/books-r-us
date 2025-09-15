@@ -18,7 +18,7 @@ import jakarta.persistence.*;
 
         @OneToMany(
                 mappedBy = "author",
-                cascade = CascadeType.ALL, // removes associated records in Books table
+                cascade = CascadeType.ALL,
                 orphanRemoval = true
         )
         private List<Book> books = new ArrayList<>();

@@ -4,7 +4,9 @@ import com.sparta.library.entities.Author;
 import com.sparta.library.entities.Book;
 import com.sparta.library.repositories.AuthorRepository;
 import com.sparta.library.repositories.BookRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,6 +14,9 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "com.sparta.library.repositories") // scans this package for repositories
 public class DataLoader {
 
+
+    @Bean
+    @Transactional
     public CommandLineRunner loadData(AuthorRepository authorRepository, BookRepository bookRepository) { // special type of interface that executes code after the app context (incl. beans) has been fully loaded
     return args -> {
         if(authorRepository.count()==0 && bookRepository.count()==0) {
