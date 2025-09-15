@@ -10,35 +10,40 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "books")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+@Entity
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "title", nullable = false)
-    private String title;
+    @Column(name = "firstName", nullable = false)
+    private String firstName;
 
-    @ManyToOne(fetch = FetchType.EAGER) // determines when related entities are loaded from the database
-    private Author author;
+    @Column(name = "lastName", nullable = false)
+    private String lastName;
 
-    private double price;
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "password", nullable = false)
+    private String password;
 
 
     @OneToMany(
-            mappedBy = "book",
+            mappedBy = "user",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     private List<Orders> orders = new ArrayList<>();
 
 
-}
 
+
+}
