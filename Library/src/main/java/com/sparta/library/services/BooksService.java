@@ -1,11 +1,8 @@
 package com.sparta.library.services;
 
-import com.sparta.library.dto.AuthorDTO;
-import com.sparta.library.dto.AuthorMapper;
 import com.sparta.library.dto.BookDTO;
 import com.sparta.library.dto.BookMapper;
-import com.sparta.library.entities.Author;
-import com.sparta.library.entities.Book;
+import com.sparta.library.model.Book;
 import com.sparta.library.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 
