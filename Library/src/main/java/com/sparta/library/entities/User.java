@@ -2,10 +2,7 @@ package com.sparta.library.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +11,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "users")
 public class User {
@@ -41,9 +39,16 @@ public class User {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @Builder.Default
     private List<Orders> orders = new ArrayList<>();
-
-
+    public void addOrder(Orders order) {
+        orders.add(order);
+        order.setUser(this);
+    }
+    public void removeOrder(Orders order) {
+        orders.remove(order);
+        order.setUser(null);
+    }
 
 
 }

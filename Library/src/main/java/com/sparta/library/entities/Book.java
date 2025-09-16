@@ -2,10 +2,7 @@ package com.sparta.library.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Book {
 
     @Id
@@ -27,18 +25,31 @@ public class Book {
     private String title;
 
     @ManyToOne(fetch = FetchType.EAGER) // determines when related entities are loaded from the database
+    @JoinColumn(name = "authorId")
     private Author author;
 
+    @Column(name = "price", nullable = false)
     private double price;
 
+    @Column(name = "genre", nullable = false)
+    private String genre;
 
+    @Column(name = "price", nullable = false)
+    private int quantity;
     @OneToMany(
             mappedBy = "book",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @Builder.Default
     private List<Orders> orders = new ArrayList<>();
-
-
+    public void addOrder(Orders order) {
+        orders.add(order);
+        order.setBook(this);
+    }
+    public void removeOrder(Orders order) {
+        orders.remove(order);
+        order.setBook(null);
+    }
 }
 

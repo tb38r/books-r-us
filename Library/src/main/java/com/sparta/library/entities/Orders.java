@@ -1,10 +1,7 @@
 package com.sparta.library.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "orders")
 public class Orders {
 
@@ -37,5 +35,13 @@ public class Orders {
     @Column(name="order-date", nullable = false, updatable = false)
     private LocalDateTime timeOfPurchase;
 
+    private double totalPrice;
+
+    /*
+    Logic for order
+    create operation will accept parameter of type userId and BookId and quantity
+    Order created which will get total price by book price * quantity
+    Book then needs to have quantity updated.
+     */
 
 }
