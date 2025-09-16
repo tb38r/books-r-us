@@ -1,0 +1,35 @@
+.shelf-container{
+    margin-top: 16px;
+}
+
+.title-button-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+h1{
+    margin-bottom: 36px;
+}
+
+
+.book-cover{
+    width: 150px;
+}
+
+.all-books-container{
+    display: flex;
+    flex-direction: row;    
+    justify-content: center;
+}
+
+.single-book-container{
+    margin-left: 36px;
+    text-align: center;
+}
+
+.title{
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+

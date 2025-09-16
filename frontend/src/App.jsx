@@ -1,9 +1,9 @@
 import React from "react";
-import Nav from "./components/nav";
+import Nav from "./components/Nav";
 //import Homepage from "./Homepage";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import Genre from "./pages/Genre";
 import SignIn from "./pages/SignIn";
 import Cart from "./pages/Cart";
