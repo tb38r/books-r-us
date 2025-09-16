@@ -2,7 +2,7 @@ package com.sparta.library.dto;
 
 import com.sparta.library.model.Author;
 
-public class AuthorDTO(Author author) {
+public record AuthorDT(Author author) {
     private Integer id;
     private String fullName;
 
