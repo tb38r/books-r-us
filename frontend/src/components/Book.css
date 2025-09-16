@@ -1,6 +1,7 @@
 .single-book-container {
     margin-left: 36px;
     text-align: center;
+    flex-direction: column;
 }
 
 .title {
@@ -11,4 +12,5 @@
 
 .book-cover {
     width: 150px;
+    height: 220px;    
 }
