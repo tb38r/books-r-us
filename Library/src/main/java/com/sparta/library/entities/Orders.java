@@ -38,6 +38,4 @@ public class Orders {
     private LocalDateTime timeOfPurchase;
 
 
-
-
 }
