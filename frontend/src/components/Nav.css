@@ -1,0 +1,113 @@
+/* Overall Header Container */
+.nav-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/*Top Bar*/
+.nav-top {
+  position: relative; /* allows absolute centering of title */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  min-height: 56px;
+  gap: 1rem;
+}
+
+/* Left section: Search */
+.nav-left {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 260px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Center section: Title */
+.nav-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  pointer-events: none; /* prevents blocking clicks on left/right */
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #222;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  pointer-events: auto; /* title itself can still be clicked */
+}
+
+/* Right section: Sign In + Cart */
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex: 1 1 auto;
+}
+
+/* Normalize MUI buttons so heights match */
+.nav-right .MuiButton-root.sign-in-button,
+.nav-right .MuiButton-root.cart-button {
+  height: 32px;
+  line-height: 32px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border-color: rgb(234, 88, 12);
+  color: rgb(234, 88, 12);
+  text-transform: none;
+  font-weight: 500;
+}
+
+/* Cart button content */
+.nav-right .cart-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: auto;
+}
+
+/* Bottom Bar: Genre Links  */
+.nav-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.4rem 1rem 0.6rem;
+  border-top: 1px solid #f2f2f2;
+  flex-wrap: wrap;
+}
+
+.nav-bottom a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-bottom a:hover {
+  color: rgb(234, 88, 12);
+}
+
