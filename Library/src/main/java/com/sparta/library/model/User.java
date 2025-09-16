@@ -45,7 +45,6 @@ public class User {
         this.orders = orders;
     }
 
-    // Convenience constructor (omit id and orders)
     public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
