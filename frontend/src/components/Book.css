@@ -1,0 +1,14 @@
+.single-book-container {
+    margin-left: 36px;
+    text-align: center;
+}
+
+.title {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.book-cover {
+    width: 150px;
+}

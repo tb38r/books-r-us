@@ -1,20 +1,13 @@
 import { useEffect } from "react";
 import "./Shelf.css";
 import Button from "@mui/material/Button";
+import Book from "./Book";
 
-export default function Shelf() {
-    const [books, setBooks] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:4000/books")
-            .then((res) => res.json())
-            .then((data) => setBooks(data));
-    }, []);
-
+export default function Shelf({ genre, books }) {
     return (
         <div className="shelf-container">
             <div className="title-button-container">
-                <h1>Genre Title</h1>
+                <h1>{genre}</h1>
                 <Button
                     // component={Link}
                     // to="/signin"
@@ -39,60 +32,16 @@ export default function Shelf() {
             </div>
 
             <div className="all-books-container">
-                <div className="single-book-container">
-                    <img
-                        src="https://i.ebayimg.com/images/g/JRAAAOSwGihfalVv/s-l1200.jpg"
-                        alt="A Book Cover"
-                        className="book-cover"
-                    />
-                    <p className="title">Title</p>
-                    <p className="author">Author</p>
-                </div>
-                <div className="single-book-container">
-                    <img
-                        src="https://i.ebayimg.com/images/g/JRAAAOSwGihfalVv/s-l1200.jpg"
-                        alt="A Book Cover"
-                        className="book-cover"
-                    />
-                    <p className="title">Title</p>
-                    <p className="author">Author</p>
-                </div>
-                <div className="single-book-container">
-                    <img
-                        src="https://i.ebayimg.com/images/g/JRAAAOSwGihfalVv/s-l1200.jpg"
-                        alt="A Book Cover"
-                        className="book-cover"
-                    />
-                    <p className="title">Title</p>
-                    <p className="author">Author</p>
-                </div>
-                <div className="single-book-container">
-                    <img
-                        src="https://i.ebayimg.com/images/g/JRAAAOSwGihfalVv/s-l1200.jpg"
-                        alt="A Book Cover"
-                        className="book-cover"
-                    />
-                    <p className="title">Title</p>
-                    <p className="author">Author</p>
-                </div>
-                <div className="single-book-container">
-                    <img
-                        src="https://i.ebayimg.com/images/g/JRAAAOSwGihfalVv/s-l1200.jpg"
-                        alt="A Book Cover"
-                        className="book-cover"
-                    />
-                    <p className="title">Title</p>
-                    <p className="author">Author</p>
-                </div>
-                <div className="single-book-container">
-                    <img
-                        src="https://i.ebayimg.com/images/g/JRAAAOSwGihfalVv/s-l1200.jpg"
-                        alt="A Book Cover"
-                        className="book-cover"
-                    />
-                    <p className="title">Title</p>
-                    <p className="author">Author</p>
-                </div>
+                {books.map((book) => {
+                    return (
+                        <Book
+                            key={book.id}
+                            cover={book.cover}
+                            title={book.title}
+                            author={book.author}
+                        />
+                    );
+                })}
             </div>
         </div>
     );
