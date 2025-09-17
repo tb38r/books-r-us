@@ -1,8 +1,6 @@
 package com.sparta.library.dto;
-import com.sparta.library.entities.Author;
+import com.sparta.library.model.Author;
 import org.mapstruct.Mapper;
-
-import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface AuthorMapper {
