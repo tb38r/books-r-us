@@ -23,7 +23,7 @@ export default function Nav() {
         <div className="nav-right">
           <Button
             component={Link}
-            to="/signin"
+            to="/signinsignup"
             variant="outlined"
             className="sign-in-button"
             sx={{
