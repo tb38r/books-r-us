@@ -1,0 +1,56 @@
+{
+  "books": [
+    {
+      "bookid": "1",
+      "title": "Harry Potter and The Sorcerer's Stone",
+      "author": "J.K. Rowling",
+      "releaseDate": "September 1997",
+      "rating": 4,
+      "coverImageUrl": "https://covers.openlibrary.org/b/id/7984916-L.jpg",
+      "price": "£9.99",
+      "description": "Harry Potter's life is miserable. His parents are dead and he's stuck with his heartless relatives. But everything changes when a mysterious letter arrives, inviting him to a school of magic...",
+      "genre": "Fantasy",
+      "series": "Harry Potter",
+      "isbn": "9780747532699"
+    },
+    {
+          "id": "2",
+          "title": "Harry Potter and The Chamber of Secrets",
+          "author": "J.K. Rowling",
+          "coverImageUrl": "https://covers.openlibrary.org/b/id/8231856-L.jpg"
+        },
+        {
+          "id": "3",
+          "title": "Percy Jackson and The Lightning Thief",
+          "author": "Rick Riordan",
+          "coverImageUrl": "https://covers.openlibrary.org/b/id/6979861-L.jpg"
+        },
+    {
+      "id": "4",
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "releaseDate": "August 1965",
+      "rating": 5,
+      "coverImageUrl": "https://covers.openlibrary.org/b/id/8101351-L.jpg",
+      "price": "£12.50",
+      "description": "Set in the distant future amidst a feudal interstellar society, Dune tells the story of Paul Atreides and the desert planet Arrakis, the only source of the most valuable substance in the universe.",
+      "genre": "Science Fiction",
+      "series": "Dune",
+      "isbn": "9780441013593",
+      "similar": [
+        {
+          "id": "5",
+          "title": "Foundation",
+          "author": "Isaac Asimov",
+          "coverImageUrl": "https://covers.openlibrary.org/b/id/7222246-L.jpg"
+        },
+        {
+          "id": "6",
+          "title": "Ender's Game",
+          "author": "Orson Scott Card",
+          "coverImageUrl": "https://covers.openlibrary.org/b/id/8228691-L.jpg"
+        }
+      ]
+    }
+  ]
+}
