@@ -24,7 +24,7 @@ public class Author {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<Book> books ;
+    private List<Book> books;
 
     public Author() {}
 

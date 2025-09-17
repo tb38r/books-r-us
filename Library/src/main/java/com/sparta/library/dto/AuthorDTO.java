@@ -1,9 +1,17 @@
 package com.sparta.library.dto;
 
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
 public class AuthorDTO {
     private int id;
-    private String fullName;
-
+    private String firstName;
+    private String lastName;
+    private List<BookDTO> authorBooks = new ArrayList<>();
+    /*
     public int getId() {
         return id;
     }
@@ -19,4 +27,6 @@ public class AuthorDTO {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+    */
+
 }

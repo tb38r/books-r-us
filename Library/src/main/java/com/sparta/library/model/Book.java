@@ -18,9 +18,12 @@ public class Book {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Author author;
-
+    @Column(name = "price", nullable = false)
     private double price;
-
+    @Column(name = "quantity", nullable = false)
+    private int quantity;
+    @Column(name = "genre", nullable = false)
+    private String genre;
     @OneToMany(
             mappedBy = "book",
             cascade = CascadeType.ALL,
@@ -39,11 +42,13 @@ public class Book {
         this.orders = orders;
     }
 
-    public Book(String title, Author author, double price) {
+    public Book(String title, Author author, double price, int quantity, String genre) {
         this.title = title;
         this.author = author;
         this.price = price;
         this.orders = new ArrayList<>();
+        this.quantity = quantity;
+        this.genre = genre;
     }
 
 
