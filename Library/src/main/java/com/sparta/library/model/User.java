@@ -1,6 +1,8 @@
 package com.sparta.library.model;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "createdAt", nullable = false)
+    private LocalDateTime createdTime;
     @OneToMany(
             mappedBy = "user",
             cascade = CascadeType.ALL,

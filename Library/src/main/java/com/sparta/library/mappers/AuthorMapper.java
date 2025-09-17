@@ -1,11 +1,11 @@
-package com.sparta.library.dto;
+package com.sparta.library.mappers;
+import com.sparta.library.dto.AddAuthorDto;
+import com.sparta.library.dto.AuthorDTO;
 import com.sparta.library.model.Author;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface AuthorMapper {
-    @Mapping(target = "authorBooks", source = "books")
     AuthorDTO authorDTO(Author author);
-    Author toAuthor(AuthorDTO authorDTO);
+    Author toAuthor(AddAuthorDto addAuthorDTO);
 }

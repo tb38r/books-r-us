@@ -3,6 +3,8 @@ package com.sparta.library.dto;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class RegisterUserDto {
     @NotBlank(message = "Name required")
@@ -13,4 +15,5 @@ public class RegisterUserDto {
     private String email;
     @NotBlank(message = "Password required")
     private String password;
+    private LocalDateTime createdDate;
 }
