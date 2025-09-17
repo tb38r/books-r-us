@@ -1,0 +1,22 @@
+.shelf-container{
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.title-button-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+h1{
+    margin-bottom: 36px;
+}
+
+
+
+
+.all-books-container{
+    display: flex;
+    flex-direction: row;    
+    justify-content: center;
+}

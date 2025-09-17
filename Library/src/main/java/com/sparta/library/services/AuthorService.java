@@ -2,7 +2,7 @@ package com.sparta.library.services;
 
 import com.sparta.library.dto.AuthorDTO;
 import com.sparta.library.dto.AuthorMapper;
-import com.sparta.library.entities.Author;
+import com.sparta.library.model.Author;
 import com.sparta.library.repositories.AuthorRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.sparta.library.dto;
 
 
-import com.sparta.library.entities.Book;
+import com.sparta.library.model.Book;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

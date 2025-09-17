@@ -1,0 +1,89 @@
+package com.sparta.library.model;
+
+import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "books")
+public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+
+    @Column(name = "title", nullable = false)
+    private String title;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Author author;
+
+    private double price;
+
+    @OneToMany(
+            mappedBy = "book",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Orders> orders = new ArrayList<>();
+
+    public Book() {}
+
+
+    public Book(Integer id, String title, Author author, double price, List<Orders> orders) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        this.orders = orders;
+    }
+
+    public Book(String title, Author author, double price) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        this.orders = new ArrayList<>();
+    }
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
+    }
+}
