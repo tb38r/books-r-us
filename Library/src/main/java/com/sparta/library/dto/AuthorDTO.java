@@ -10,7 +10,7 @@ public class AuthorDTO {
     private int id;
     private String firstName;
     private String lastName;
-    private List<BookDTO> books = new ArrayList<>();
+    //private List<BookDTO> books = new ArrayList<>();
     /*
     public int getId() {
         return id;
