@@ -17,7 +17,9 @@ export default function Nav() {
         </div>
 
         <div className="nav-center">
-          <h1 className="site-title">Books‑R‑Us</h1>
+          <h1 className="site-title">
+          <Link to="/">Books‑R‑Us</Link>
+          </h1>
         </div>
 
         <div className="nav-right">
@@ -42,7 +44,6 @@ export default function Nav() {
           >
             Sign in
           </Button>
-
           
         <Button
             component={Link}
@@ -71,13 +72,13 @@ export default function Nav() {
       </div>
 
       <nav className="nav-bottom">
-        <Link to="/scifi">Science Fiction</Link>
-        <Link to="/fantasy">Fantasy</Link>
-        <Link to="/romance">Romance</Link>
-        <Link to="/mystery">Mystery</Link>
-        <Link to="/thriller">Thriller</Link>
-        <Link to="/horror">Horror</Link>
-        <Link to="/historical">Historical</Link>
+        <Link to="/genre/scifi">Science Fiction</Link>
+        <Link to="/genre/fantasy">Fantasy</Link>
+        <Link to="/genre/romance">Romance</Link>
+        <Link to="/genre/mystery">Mystery</Link>
+        <Link to="/genre/thriller">Thriller</Link>
+        <Link to="/genre/horror">Horror</Link>
+        <Link to="/genre/historical">Historical</Link>
       </nav>
     </header>
   );

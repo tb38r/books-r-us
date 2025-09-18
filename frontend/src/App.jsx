@@ -2,7 +2,7 @@ import React from "react";
 import Nav from "./components/Nav";
 //import Homepage from "./Homepage";
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Genre from "./pages/Genre";
@@ -35,7 +35,7 @@ export default function App() {
 
                 {/* Genre pages */}
                 <Route path="/genre/:genre" element={<Genre />} />
-                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signinsignup" element={<SignInSignUp />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/book/:bookID" element={<Book />} />
                           <Route
