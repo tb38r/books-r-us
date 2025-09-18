@@ -8,6 +8,5 @@ import java.time.LocalDateTime;
 public class CreateOrderDto {
     private LocalDateTime timeOfPurchase;
     private int UserId;
-    private int BookId;
-    private int quantity;
+    private List<BookDTO> books = new ArrayList<BookDTO>();
 }
