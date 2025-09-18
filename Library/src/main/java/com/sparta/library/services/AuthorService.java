@@ -1,6 +1,5 @@
 package com.sparta.library.services;
 
-import com.sparta.library.dto.AuthorDTO;
 import com.sparta.library.mappers.AuthorMapper;
 import com.sparta.library.model.Author;
 import com.sparta.library.repositories.AuthorRepository;
@@ -22,7 +21,7 @@ public class AuthorService {
         this.authorMapper = authorMapper;
     }
 
-    public List<AuthorDTO> getAllAuthors() {
+    public List<AuthorDTO> () {
         List<Author> authors = authorRepository.findAll();
         List<AuthorDTO> authorDTOs = new ArrayList<>();
         for (Author author : authors) {

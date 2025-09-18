@@ -1,6 +1,5 @@
 package com.sparta.library.controllers;
 
-import com.sparta.library.dto.AuthorDTO;
 import com.sparta.library.services.AuthorService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;

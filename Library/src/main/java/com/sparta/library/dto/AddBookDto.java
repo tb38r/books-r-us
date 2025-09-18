@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class AddBookDto {
-    private String bookName;
+    private String title;
     private int quantity;
     private String genre;
     private double price;
