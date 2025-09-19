@@ -19,7 +19,17 @@ public class UserService {
     }
 
     public UserResponseDTO registerUser(UserRegistrationDTO dto) {
+        System.out.println("DTO: firstName=" + dto.getFirstName() +
+                ", lastName=" + dto.getLastName() +
+                ", email=" + dto.getEmail() +
+                ", password=" + dto.getPassword());
+
         User user = userMapper.toEntity(dto);
+        System.out.println("Entity: firstName=" + user.getFirstName() +
+                ", lastName=" + user.getLastName() +
+                ", email=" + user.getEmail() +
+                ", password=" + user.getPassword());
+
         user.setCreatedTime();
         User saved = userRepository.save(user);
         return userMapper.toUserDto(saved);

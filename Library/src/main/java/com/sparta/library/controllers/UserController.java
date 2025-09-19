@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDTO> register(@Valid @RequestBody UserRegistrationDTO dto) {
+    public ResponseEntity<UserResponseDTO> register( @RequestBody UserRegistrationDTO dto) {
         System.out.println("DTO received: " + dto);
 
         UserResponseDTO response = userService.registerUser(dto);

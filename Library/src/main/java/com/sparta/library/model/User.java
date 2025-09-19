@@ -28,7 +28,7 @@ public class User {
     private String password;
 
     @Column(name = "createdAt", nullable = false)
-    private LocalDateTime createdTime;
+    private LocalDateTime createdAt;
     @OneToMany(
             mappedBy = "user",
             cascade = CascadeType.ALL,
