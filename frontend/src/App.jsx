@@ -11,41 +11,38 @@ import MyAccount from "./pages/MyAccount";
 import { UserProvider } from "./context/UserProvider";
 import Footer from "./components/Footer";
 import ResultsPage from "./pages/ResultsPage";
-import { CartProvider } from "./components/Book Page/CartContext";
+import { CartProvider } from "./components/Book Page/CartContext"; 
 import ProtectedRoute from "./components/ProtectedRoute";
-import SearchResults from "./components/SearchResults";
 
-export default function App() {
-    return (
-        <>
-            <UserProvider>
-                <CartProvider>
-                    <Router>
-                        <Nav />
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/genre/:genre" element={<Genre />} />
-                            <Route path="/cart" element={<Cart />} />
-                            <Route path="/book/:id" element={<Book />} />
-                            <Route path="/search" element={<SearchResults />} />
-                            <Route
-                                path="/signinsignup"
-                                element={<SignInSignUp />}
-                            />
-                            <Route
-                                path="/account"
-                                element={
-                                    <ProtectedRoute>
-                                        <MyAccount />
-                                    </ProtectedRoute>
-                                }
-                            />
-                        </Routes>
-                    </Router>
-                </CartProvider>
-            </UserProvider>
-
-            {/* <Footer /> */}
-        </>
-    );
+export default function App() { 
+  return (
+    <UserProvider>
+      <CartProvider>
+        <div className="app-wrapper">
+          <Router>
+            <Nav />
+            <main className="main-content">
+              <Routes>        
+                <Route path="/" element={<Home />} />  
+                <Route path="/genre/:genre" element={<Genre />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/book/:bookID" element={<Book />} />
+                <Route path="/results/:searchId" element={<ResultsPage />} />
+                <Route path="/signinsignup" element={<SignInSignUp />} />
+                <Route
+                  path="/account"
+                  element={
+                    <ProtectedRoute>
+                      <MyAccount />
+                    </ProtectedRoute>
+                  }
+                />
+              </Routes>
+            </main>
+          </Router>
+          <Footer />
+        </div>
+      </CartProvider>
+    </UserProvider>
+  );
 }
