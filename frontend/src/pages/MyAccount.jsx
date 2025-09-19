@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./MyAccount.css";
 import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export default function MyAccount() {
     const { user, setUser } = useContext(UserContext);
+    const navigate = useNavigate();
     const [avatar, setAvatar] = useState(null);
 
-    // Password modal state
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentPwd, setCurrentPwd] = useState("");
     const [newPwd, setNewPwd] = useState("");
@@ -16,7 +18,6 @@ export default function MyAccount() {
     const [wishlistBooks, setWishlistBooks] = useState([]);
     const [ordersDetails, setOrdersDetails] = useState([]);
 
-    // Fetch user from mock API only if not already set
     useEffect(() => {
         if (!user) {
             fetch("http://localhost:4000/users/1")
@@ -26,11 +27,8 @@ export default function MyAccount() {
         }
     }, [user, setUser]);
 
-    // Helper: fetch book info by ISBN
     const fetchBookByISBN = async (isbn) => {
-        const res = await fetch(
-            `https://openlibrary.org/search.json?isbn=${isbn}`
-        );
+        const res = await fetch(`https://openlibrary.org/search.json?isbn=${isbn}`);
         const data = await res.json();
         const doc = data.docs[0] || {};
         return {
@@ -40,7 +38,6 @@ export default function MyAccount() {
         };
     };
 
-    // Load wishlist books
     useEffect(() => {
         if (!user?.wishlist?.length) return;
         Promise.all(user.wishlist.map((isbn) => fetchBookByISBN(isbn)))
@@ -48,7 +45,6 @@ export default function MyAccount() {
             .catch(console.error);
     }, [user]);
 
-    // Load order details
     useEffect(() => {
         if (!user?.orders?.length) return;
         Promise.all(
@@ -63,14 +59,12 @@ export default function MyAccount() {
             .catch(console.error);
     }, [user]);
 
-    // Avatar handlers
     const handleAvatarChange = (e) => {
         const file = e.target.files[0];
         if (file) setAvatar(URL.createObjectURL(file));
     };
     const handleResetAvatar = () => setAvatar(null);
 
-    // Modal handlers
     const openModal = () => {
         setCurrentPwd("");
         setNewPwd("");
@@ -80,7 +74,6 @@ export default function MyAccount() {
     };
     const closeModal = () => setIsModalOpen(false);
 
-    // Change-password form submit
     const handleChangePassword = (e) => {
         e.preventDefault();
         if (newPwd !== confirmPwd) {
@@ -91,10 +84,13 @@ export default function MyAccount() {
             setPwdMessage("❌ Current password is incorrect.");
             return;
         }
-
-        // Update password locally (mock only)
         setUser({ ...user, password: newPwd });
         setPwdMessage("✅ Password changed successfully!");
+    };
+
+    const handleLogout = () => {
+        setUser(null);
+        navigate("/signinsignup");
     };
 
     if (!user) return <p className="loading">Loading account...</p>;
@@ -102,9 +98,7 @@ export default function MyAccount() {
     return (
         <div className="account-page">
             <h1 className="account-title">ACCOUNT</h1>
-
             <div className="account-content">
-                {/* Left column */}
                 <aside className="account-left">
                     <div className="avatar-section">
                         <img
@@ -135,9 +129,7 @@ export default function MyAccount() {
 
                     <div className="account-info under-photo">
                         <p>
-                            <span className="info-label">
-                                Account Holder Name:
-                            </span>
+                            <span className="info-label">Account Holder Name:</span>
                             <span className="info-value">{user.name}</span>
                         </p>
                         <p>
@@ -151,7 +143,6 @@ export default function MyAccount() {
                     </button>
                 </aside>
 
-                {/* Center column */}
                 <main className="account-center">
                     <section className="wishlist">
                         <h3>Wishlist</h3>
@@ -165,20 +156,13 @@ export default function MyAccount() {
                                                   alt={book.title}
                                               />
                                           ) : (
-                                              <div className="no-cover">
-                                                  No Cover
-                                              </div>
+                                              <div className="no-cover">No Cover</div>
                                           )}
-                                          <p className="book-title">
-                                              {book.title}
-                                          </p>
+                                          <p className="book-title">{book.title}</p>
                                       </div>
                                   ))
                                 : user.wishlist.map((_, i) => (
-                                      <div
-                                          key={i}
-                                          className="book-placeholder"
-                                      />
+                                      <div key={i} className="book-placeholder" />
                                   ))}
                         </div>
                     </section>
@@ -191,10 +175,7 @@ export default function MyAccount() {
                                       <p className="order-date">{order.date}</p>
                                       <div className="order-books">
                                           {order.books.map((book) => (
-                                              <div
-                                                  key={book.key}
-                                                  className="book-item-sm"
-                                              >
+                                              <div key={book.key} className="book-item-sm">
                                                   {book.coverId ? (
                                                       <img
                                                           src={`https://covers.openlibrary.org/b/id/${book.coverId}-S.jpg`}
@@ -251,12 +232,30 @@ export default function MyAccount() {
                                 <button type="submit">Update</button>
                             </div>
                         </form>
-                        {pwdMessage && (
-                            <p className="modal-message">{pwdMessage}</p>
-                        )}
+                        {pwdMessage && <p className="modal-message">{pwdMessage}</p>}
                     </div>
                 </div>
             )}
+
+            {/* Logout Button */}
+            <div className="logout-section">
+                <Button
+                    onClick={handleLogout}
+                    variant="outlined"
+                    sx={{
+                        color: "rgb(234 88 12)",
+                        border: "1px solid rgb(234 88 12)",
+                        textTransform: "none",
+                        borderRadius: "8px",
+                        fontWeight: 500,
+                        height: "32px",
+                        padding: "0 12px",
+                        marginTop: "30px",
+                    }}
+                >
+                    Log Out
+                </Button>
+            </div>
         </div>
     );
 }
