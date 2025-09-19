@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+/*
 @RestController
 @RequestMapping("/authors")
 public class AuthorController {
@@ -18,7 +18,7 @@ public class AuthorController {
 
     @Operation(summary = "get all Authors")
     @GetMapping
-    public List<AuthorDTO> getAllAuthors(){
+    public List<AddAuthorDTO> getAllAuthors(){
         return authorService.getAllAuthors();
     }
 
@@ -47,3 +47,4 @@ public class AuthorController {
         return authorService.deleteAuthor(id);
     }
 }
+*/

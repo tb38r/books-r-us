@@ -82,6 +82,9 @@ public class OrderItem { //I think this is actually a basket
     public double getPrice() {
         return price;
     }
+    public void setPrice(double price) {
+        this.price = price;
+    }
     /*
     public LocalDateTime getTimeOfPurchase() {
         return timeOfPurchase;

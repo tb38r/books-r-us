@@ -14,14 +14,13 @@ import java.util.NoSuchElementException;
 public class BooksService {
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
-
     public BooksService(BookRepository bookRepository, BookMapper bookMapper) {
         if(bookRepository == null) throw new IllegalArgumentException("BookRepository cannot be null");
         if(bookMapper == null) throw new IllegalArgumentException("BookMapper cannot be null");
         this.bookRepository = bookRepository;
         this.bookMapper = bookMapper;
     }
-
+    /*
     public List<BookDTO> getAllBooks() {
         List<Book> books = bookRepository.findAll();
         List<BookDTO> bookDTOs = new ArrayList<>();
@@ -59,4 +58,9 @@ public class BooksService {
         }
         return false;
     }
+    */
+     public List<BookDTO> getAllBooks() {
+         List<Book> books = bookRepository.findAll();
+         return books.stream().map(bookMapper::bookDTO).toList();
+     }
 }

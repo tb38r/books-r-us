@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@Service
+//@Service
+/*
 public class AuthorService {
+
     private final AuthorRepository authorRepository;
     private final AuthorMapper authorMapper;
 
@@ -60,3 +62,4 @@ public class AuthorService {
         return false;
     }
 }
+*/
