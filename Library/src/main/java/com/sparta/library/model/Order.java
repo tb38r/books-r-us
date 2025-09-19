@@ -1,7 +1,9 @@
 package com.sparta.library.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,11 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "userID")
     private User user;
+
+    @CreationTimestamp
+    @Column(name = "order-date", nullable = false, updatable = false)
+    private LocalDateTime timeOfPurchase;
+
     @OneToMany(
             mappedBy = "order",
             cascade = CascadeType.ALL,
@@ -50,5 +57,12 @@ public class Order {
 
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
+    }
+    public LocalDateTime getTimeOfPurchase() {
+        return timeOfPurchase;
+    }
+
+    public void setTimeOfPurchase() {
+        this.timeOfPurchase = LocalDateTime.now();
     }
 }

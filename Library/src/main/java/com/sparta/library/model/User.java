@@ -106,4 +106,7 @@ public class User {
     public void setOrders(List<OrderItem> orders) {
         this.orders = orders;
     }
+    public void setCreatedTime() {
+        createdTime = LocalDateTime.now();
+    }
 }

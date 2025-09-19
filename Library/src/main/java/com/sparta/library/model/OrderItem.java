@@ -1,6 +1,9 @@
 package com.sparta.library.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orderitems")
@@ -27,11 +30,8 @@ public class OrderItem { //I think this is actually a basket
     @Column(name = "price", nullable = false)
     private double price;
     //I think this is not needed
-    /*
-    @CreationTimestamp
-    @Column(name = "order-date", nullable = false, updatable = false)
-    private LocalDateTime timeOfPurchase;
-    */
+
+
 
     public OrderItem() {}
     //LocalDateTime timeOfPurchase
@@ -85,14 +85,8 @@ public class OrderItem { //I think this is actually a basket
     public void setPrice(double price) {
         this.price = price;
     }
-    /*
-    public LocalDateTime getTimeOfPurchase() {
-        return timeOfPurchase;
-    }
 
-    public void setTimeOfPurchase(LocalDateTime timeOfPurchase) {
-        this.timeOfPurchase = timeOfPurchase;
-    }
-    */
+
+
 
 }

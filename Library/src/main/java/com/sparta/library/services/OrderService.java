@@ -50,6 +50,7 @@ public class OrderService {
         for (Order order : orders) {
             OrdersDto ordersDto = new OrdersDto();
             ordersDto.setUserId(id);
+            ordersDto.setTimeOfPurchase(order.getTimeOfPurchase());
             var totalPrice = 0.0;
             var books = new ArrayList<Book>();
             for(int i = 0; i < order.getOrderItems().size(); i++) {
@@ -90,6 +91,7 @@ public class OrderService {
             bookRepository.save(b);
             order.getOrderItems().add(orderItem);
         }
+        order.setTimeOfPurchase();
         ordersRepository.save(order);
     }
 }
