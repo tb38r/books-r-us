@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 import "./SignInSignUp.css";
 
-export default function SignInSignUp({ setUser }) {
+export default function SignInSignUp() {
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   // Sign-In state
@@ -11,44 +13,73 @@ export default function SignInSignUp({ setUser }) {
   const [signInMessage, setSignInMessage] = useState("");
 
   // Sign-Up state
-  const [signUpName, setSignUpName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
   const [signUpConfirm, setSignUpConfirm] = useState("");
   const [signUpMessage, setSignUpMessage] = useState("");
 
-  // Dummy credentials for Sign-In
-  const dummyUser = {
-    name: "Harpreet",
-    email: "harpreet@example.com",
-    password: "books123",
-  };
-
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    if (
-      signInEmail === dummyUser.email &&
-      signInPassword === dummyUser.password
-    ) {
-      setSignInMessage("");
-      // update app-level user so MyAccount sees it
-      setUser({ name: dummyUser.name, email: dummyUser.email });
-      navigate("/account");
-    } else {
-      setSignInMessage("❌ Wrong email or password.");
+    try {
+      const res = await fetch("http://localhost:3001/users");
+      const users = await res.json();
+      const found = users.find(
+        (u) => u.email === signInEmail && u.password === signInPassword
+      );
+      if (found) {
+        setUser(found);
+        navigate("/account");
+      } else {
+        setSignInMessage("❌ Wrong email or password.");
+      }
+    } catch (error) {
+      console.error("Sign-in error:", error);
+      setSignInMessage("❌ Error connecting to server.");
     }
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     if (signUpPassword !== signUpConfirm) {
       setSignUpMessage("❌ Passwords do not match.");
       return;
     }
-    setSignUpMessage("");
-    // update app-level user and navigate
-    setUser({ name: signUpName, email: signUpEmail });
-    navigate("/account");
+
+    const fullName = `${firstName.trim()} ${lastName.trim()}`;
+
+    try {
+      const res = await fetch("http://localhost:3001/users");
+      const users = await res.json();
+      const emailExists = users.some((u) => u.email === signUpEmail);
+
+      if (emailExists) {
+        setSignUpMessage("❌ Email already exists. Try signing in.");
+        return;
+      }
+
+      const newUser = {
+        name: fullName,
+        email: signUpEmail,
+        password: signUpPassword,
+        wishlist: [],
+        orders: []
+      };
+
+      const createRes = await fetch("http://localhost:3001/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
+      });
+
+      const createdUser = await createRes.json();
+      setUser(createdUser);
+      navigate("/account");
+    } catch (error) {
+      console.error("Sign-up error:", error);
+      setSignUpMessage("❌ Failed to create account.");
+    }
   };
 
   return (
@@ -82,9 +113,16 @@ export default function SignInSignUp({ setUser }) {
         <form onSubmit={handleSignUp}>
           <input
             type="text"
-            placeholder="Name"
-            value={signUpName}
-            onChange={(e) => setSignUpName(e.target.value)}
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             required
           />
           <input
@@ -113,5 +151,5 @@ export default function SignInSignUp({ setUser }) {
         {signUpMessage && <p className="auth-message">{signUpMessage}</p>}
       </div>
     </div>
-);
+  );
 }

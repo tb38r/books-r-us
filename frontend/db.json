@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Harpreet",
+      "email": "harpreet@example.com",
+      "password": "123456",
+      "wishlist": [
+        "0451526538",
+        "0140449132"
+      ],
+      "orders": [
+        {
+          "date": "12 / 08 / 2025",
+          "books": [
+            "0451526538"
+          ]
+        },
+        {
+          "date": "05 / 07 / 2025",
+          "books": [
+            "0140449132",
+            "0451526538"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d7d9",
+      "name": "yellow cow",
+      "email": "yellow@gmail.com",
+      "password": "hello",
+      "wishlist": [],
+      "orders": []
+    }
+  ]
+}

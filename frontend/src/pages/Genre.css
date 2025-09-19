@@ -1,0 +1,11 @@
+.genre-books-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 36px;
+    justify-content: center;
+}
+
+.genre-page-container{
+    text-align: center;
+    margin-top: 36px;
+}
