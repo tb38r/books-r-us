@@ -42,7 +42,6 @@
       "genre": "Fantasy",
       "cover": "https://covers.openlibrary.org/b/id/8231991-L.jpg"
     },
- 
     {
       "id": 7,
       "title": "1984",
@@ -85,7 +84,6 @@
       "genre": "Dystopian",
       "cover": "https://covers.openlibrary.org/b/id/7222161-L.jpg"
     },
- 
     {
       "id": 13,
       "title": "To Kill a Mockingbird",
@@ -128,7 +126,6 @@
       "genre": "Classic",
       "cover": "https://covers.openlibrary.org/b/id/8232411-L.jpg"
     },
- 
     {
       "id": 19,
       "title": "Dune",
@@ -170,6 +167,49 @@
       "author": "Orson Scott Card",
       "genre": "Sci-Fi",
       "cover": "https://covers.openlibrary.org/b/id/8135364-L.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Harpreet",
+      "email": "harpreet@example.com",
+      "password": "123456",
+      "wishlist": [
+        "0451526538",
+        "0140449132"
+      ],
+      "orders": [
+        {
+          "date": "12 / 08 / 2025",
+          "books": [
+            "0451526538"
+          ]
+        },
+        {
+          "date": "05 / 07 / 2025",
+          "books": [
+            "0140449132",
+            "0451526538"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d7d9",
+      "name": "yellow cow",
+      "email": "yellow@gmail.com",
+      "password": "hello",
+      "wishlist": [],
+      "orders": []
+    },
+    {
+      "id": "8bf2",
+      "name": "Karl Campbell",
+      "email": "test@gmail.com",
+      "password": "123456",
+      "wishlist": [],
+      "orders": []
     }
   ]
 }
