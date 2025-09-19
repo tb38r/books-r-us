@@ -9,6 +9,6 @@ import java.util.List;
 @Data
 public class CreateOrderDto {
     private LocalDateTime timeOfPurchase;
-    private int UserId;
+    private Integer UserId;
     private List<BookDTO> books = new ArrayList<>();
 }

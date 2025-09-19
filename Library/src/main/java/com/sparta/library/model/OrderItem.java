@@ -1,6 +1,9 @@
 package com.sparta.library.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orderitems")
@@ -15,6 +18,10 @@ public class OrderItem { //I think this is actually a basket
     private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
     @JoinColumn(name = "bookId")
     private Book book;
 
@@ -24,24 +31,26 @@ public class OrderItem { //I think this is actually a basket
 
     @Column(name = "quantity", nullable = false)
     private int quantity;
+
     @Column(name = "price", nullable = false)
     private double price;
     //I think this is not needed
-    /*
+
     @CreationTimestamp
     @Column(name = "order-date", nullable = false, updatable = false)
     private LocalDateTime timeOfPurchase;
-    */
+
 
     public OrderItem() {}
     //LocalDateTime timeOfPurchase
-    public OrderItem(Integer id, Book book, Order order, int quantity) {
+    public OrderItem(Integer id, Book book, Order order, int quantity, User user, LocalDateTime timeOfPurchase) {
         this.id = id;
         this.book = book;
         this.order = order;
         this.quantity = quantity;
+        this.user = user;
         price = book.getPrice() * quantity;
-        //this.timeOfPurchase = timeOfPurchase;
+        this.timeOfPurchase = timeOfPurchase;
     }
 
     public OrderItem(Book book, Order order) {
@@ -82,14 +91,6 @@ public class OrderItem { //I think this is actually a basket
     public double getPrice() {
         return price;
     }
-    /*
-    public LocalDateTime getTimeOfPurchase() {
-        return timeOfPurchase;
-    }
 
-    public void setTimeOfPurchase(LocalDateTime timeOfPurchase) {
-        this.timeOfPurchase = timeOfPurchase;
-    }
-    */
 
 }
