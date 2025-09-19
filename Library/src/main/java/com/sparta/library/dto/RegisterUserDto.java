@@ -15,5 +15,4 @@ public class RegisterUserDto {
     private String email;
     @NotBlank(message = "Password required")
     private String password;
-    private LocalDateTime createdDate;
 }

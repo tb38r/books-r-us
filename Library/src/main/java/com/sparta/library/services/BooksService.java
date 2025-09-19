@@ -20,45 +20,6 @@ public class BooksService {
         this.bookRepository = bookRepository;
         this.bookMapper = bookMapper;
     }
-    /*
-    public List<BookDTO> getAllBooks() {
-        List<Book> books = bookRepository.findAll();
-        List<BookDTO> bookDTOs = new ArrayList<>();
-        for (Book book : books) {
-            bookDTOs.add(bookMapper.bookDTO(book));
-        }
-        return bookDTOs;
-    }
-
-    public BookDTO getBookById(int id) {
-        Book book = bookRepository.findById(id).orElse(null);
-        return bookMapper.bookDTO(book);
-    }
-
-    public BookDTO createBook(BookDTO bookDTO) {
-        Book entity = bookMapper.toBook(bookDTO);
-        Book saved = bookRepository.save(entity);
-        return bookMapper.bookDTO(saved);
-    }
-
-    public BookDTO updateBook(BookDTO bookDTO) {
-        Integer id = Integer.valueOf(bookDTO.getBookId());
-        if (!bookRepository.existsById(id)) {
-            throw new NoSuchElementException("Book with ID " + id + " does not exist");
-        }
-        Book entity = bookMapper.toBook(bookDTO);
-        Book saved = bookRepository.save(entity);
-        return bookMapper.bookDTO(saved);
-    }
-
-    public boolean deleteBook(int id) {
-        if (bookRepository.existsById(id)) {
-            bookRepository.deleteById(id);
-            return true;
-        }
-        return false;
-    }
-    */
      public List<BookDTO> getAllBooks() {
          List<Book> books = bookRepository.findAll();
          return books.stream().map(bookMapper::bookDTO).toList();

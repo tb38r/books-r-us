@@ -26,6 +26,7 @@ public class UserService {
             throw new UserExistsException();
         }
         var user = userMapper.toUser(registerUserDto);
+        user.setCreatedTime();
         userRepository.save(user);
     }
     public void validateUser(ValidateUserDto validateUserDto) {
