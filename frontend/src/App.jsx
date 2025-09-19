@@ -12,6 +12,7 @@ import { UserProvider } from "./context/UserProvider";
 import Footer from "./components/Footer";
 import ResultsPage from "./pages/ResultsPage";
 import { CartProvider } from "./components/Book Page/CartContext"; 
+import ProtectedRoute from "./components/ProtectedRoute";
 import SearchResults from "./components/SearchResults";
 
 export default function App() { 
@@ -29,8 +30,14 @@ export default function App() {
           <Route path="/book/:id" element={<Book />} />
           <Route path="/search" element={<SearchResults />} />
           <Route path="/signinsignup" element={<SignInSignUp />} />
-          <Route path="/account" element={<MyAccount />} />
-
+          <Route
+            path="/account"
+            element={
+              <ProtectedRoute>
+                <MyAccount />
+              </ProtectedRoute>
+            }
+          />
             </Routes>
         </Router>
     </CartProvider>

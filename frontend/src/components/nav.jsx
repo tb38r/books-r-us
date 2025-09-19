@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "@mui/material/Button";
-import "./Nav.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import "./Nav.css";
 import { Link, useNavigate } from "react-router-dom";
 import { TextField, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 
 export default function Nav() {
+    const { user } = useContext(UserContext);
     const [query, setQuery] = useState("");
     const navigate = useNavigate();
 
@@ -29,6 +32,7 @@ export default function Nav() {
     <header className="nav-header">
       <div className="nav-top">
         <div className="nav-left">
+
               <Link to="/">
                   <HomeIcon className="home" />
               </Link>
@@ -50,30 +54,79 @@ export default function Nav() {
           <h1 className="site-title">
             <Link to="/">Books-R-Us</Link>
           </h1>
+
         </div>
 
         <div className="nav-right">
+          {user ? (
+            <Button
+              component={Link}
+              to="/account"
+              variant="outlined"
+              className="sign-in-button"
+              sx={{
+                "&:hover": {
+                  backgroundColor: "rgba(234, 88, 12, 0.1)",
+                  border: "1px solid rgb(234 88 12)",
+                },
+                color: "rgb(234 88 12)",
+                border: "1px solid rgb(234 88 12)",
+                textTransform: "none",
+                borderRadius: "8px",
+                fontWeight: 500,
+                height: "32px",
+                padding: "0 12px",
+              }}
+            >
+              My Account
+            </Button>
+          ) : (
+            <Button
+              component={Link}
+              to="/signinsignup"
+              variant="outlined"
+              className="sign-in-button"
+              sx={{
+                "&:hover": {
+                  backgroundColor: "rgba(234, 88, 12, 0.1)",
+                  border: "1px solid rgb(234 88 12)",
+                },
+                color: "rgb(234 88 12)",
+                border: "1px solid rgb(234 88 12)",
+                textTransform: "none",
+                borderRadius: "8px",
+                fontWeight: 500,
+                height: "32px",
+                padding: "0 12px",
+              }}
+            >
+              Sign In
+            </Button>
+          )}
+
           <Button
             component={Link}
-            to="/signinsignup"
+            to="/cart"
             variant="outlined"
-            className="sign-in-button"
+            className="cart-button"
             sx={{
-              "&:hover": {
-                backgroundColor: "rgba(234, 88, 12, 0.1)",
-                border: "1px solid rgb(234 88 12)",
-              },
-              color: "rgb(234 88 12)",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
               border: "1px solid rgb(234 88 12)",
-              textTransform: "none",
+              color: "rgb(234 88 12)",
               borderRadius: "8px",
+              textTransform: "none",
               fontWeight: 500,
               height: "32px",
-              padding: "0 12px",
+              padding: "0 10px",
+              minWidth: "auto",
             }}
           >
-            Sign in
+            <ShoppingCartIcon fontSize="small" />
+            Cart
           </Button>
+
 
           <Button
             component={Link}
@@ -111,4 +164,5 @@ export default function Nav() {
             </nav>
         </header>
     );
+
 }
