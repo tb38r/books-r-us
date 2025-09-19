@@ -1,20 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import "./MyAccount.css";
+import { UserContext } from "../context/UserContext";
 
-export default function MyAccount({ user, setUser }) {
-  // Avatar state
+export default function MyAccount() {
+  const { user, setUser } = useContext(UserContext);
   const [avatar, setAvatar] = useState(null);
 
-  // Password-change modal state
+  // Password modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPwd, setCurrentPwd] = useState("");
   const [newPwd, setNewPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [pwdMessage, setPwdMessage] = useState("");
 
-  // Wishlist & orders state
   const [wishlistBooks, setWishlistBooks] = useState([]);
   const [ordersDetails, setOrdersDetails] = useState([]);
+
+  // Fetch user from mock API only if not already set
+  useEffect(() => {
+    if (!user) {
+      fetch("http://localhost:3001/users/1")
+        .then((res) => res.json())
+        .then(setUser)
+        .catch(console.error);
+    }
+  }, [user, setUser]);
 
   // Helper: fetch book info by ISBN
   const fetchBookByISBN = async (isbn) => {
@@ -79,13 +89,13 @@ export default function MyAccount({ user, setUser }) {
       setPwdMessage("❌ Current password is incorrect.");
       return;
     }
+
+    // Update password locally (mock only)
     setUser({ ...user, password: newPwd });
     setPwdMessage("✅ Password changed successfully!");
   };
 
-  // Defaults to avoid map errors
-  const wishlist = user?.wishlist || [];
-  const orders = user?.orders || [];
+  if (!user) return <p className="loading">Loading account...</p>;
 
   return (
     <div className="account-page">
@@ -94,7 +104,6 @@ export default function MyAccount({ user, setUser }) {
       <div className="account-content">
         {/* Left column */}
         <aside className="account-left">
-          {/* Profile Photo */}
           <div className="avatar-section">
             <img
               src={avatar || "/default-avatar.png"}
@@ -122,19 +131,17 @@ export default function MyAccount({ user, setUser }) {
             </div>
           </div>
 
-          {/* Name & Email */}
           <div className="account-info under-photo">
             <p>
               <span className="info-label">Account Holder Name:</span>
-              <span className="info-value">{user?.name || "Guest"}</span>
+              <span className="info-value">{user.name}</span>
             </p>
             <p>
               <span className="info-label">Email Address:</span>
-              <span className="info-value">{user?.email || "N/A"}</span>
+              <span className="info-value">{user.email}</span>
             </p>
           </div>
 
-          {/* Change Password */}
           <button className="change-password" onClick={openModal}>
             Change Password
           </button>
@@ -159,7 +166,7 @@ export default function MyAccount({ user, setUser }) {
                       <p className="book-title">{book.title}</p>
                     </div>
                   ))
-                : wishlist.map((_, i) => (
+                : user.wishlist.map((_, i) => (
                     <div key={i} className="book-placeholder" />
                   ))}
             </div>
@@ -187,7 +194,7 @@ export default function MyAccount({ user, setUser }) {
                     </div>
                   </div>
                 ))
-              : orders.map((order, i) => (
+              : user.orders.map((order, i) => (
                   <p key={i} className="order-placeholder">
                     {order.date} – {order.books.length} Books
                   </p>
