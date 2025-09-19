@@ -100,29 +100,6 @@ export default function Nav() {
                         </Button>
                     )}
 
-                    {/* <Button
-                        component={Link}
-                        to="/cart"
-                        variant="outlined"
-                        className="cart-button"
-                        sx={{
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: "6px",
-                            border: "1px solid rgb(234 88 12)",
-                            color: "rgb(234 88 12)",
-                            borderRadius: "8px",
-                            textTransform: "none",
-                            fontWeight: 500,
-                            height: "32px",
-                            padding: "0 10px",
-                            minWidth: "auto",
-                        }}
-                    >
-                        <ShoppingCartIcon fontSize="small" />
-                        Cart
-                    </Button> */}
-
                     <Button
                         component={Link}
                         to="/cart"
@@ -149,13 +126,14 @@ export default function Nav() {
             </div>
 
             <nav className="nav-bottom">
-                <Link to="/genre/scifi">Science Fiction</Link>
-                <Link to="/genre/fantasy">Fantasy</Link>
-                <Link to="/genre/romance">Romance</Link>
-                <Link to="/genre/mystery">Mystery</Link>
-                <Link to="/genre/thriller">Thriller</Link>
-                <Link to="/genre/horror">Horror</Link>
-                <Link to="/genre/historical">Historical</Link>
+                <Link to="/genre/Sci-Fi">Science Fiction</Link>
+                <Link to="/genre/Fantasy">Fantasy</Link>
+                <Link to="/genre/Romance">Romance</Link>
+                <Link to="/genre/Mystery">Mystery</Link>
+                <Link to="/genre/Thriller">Thriller</Link>
+                <Link to="/genre/Horror">Horror</Link>
+                <Link to="/genre/Historical">Historical</Link>
+                <Link to="/genre/Comedy">Comedy</Link>
             </nav>
         </header>
     );
