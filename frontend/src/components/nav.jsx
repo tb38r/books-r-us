@@ -1,26 +1,60 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import "./Nav.css";
+import { Link, useNavigate } from "react-router-dom";
+import { TextField, IconButton } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home";
 
 export default function Nav() {
-  const { user } = useContext(UserContext);
+    const { user } = useContext(UserContext);
+    const [query, setQuery] = useState("");
+    const navigate = useNavigate();
+
+
+  // handle typing only updates query
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
+
+  // handle search submit navigates to results page
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (query.trim() !== "") {
+      navigate(`/search?query=${encodeURIComponent(query)}`);
+    }
+  };
 
   return (
     <header className="nav-header">
       <div className="nav-top">
         <div className="nav-left">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search for books..."
-          />
+
+              <Link to="/">
+                  <HomeIcon className="home" />
+              </Link>
+          <form onSubmit={handleSearch} className="flex items-center">
+            <TextField
+              label="Search books or authors"
+              variant="outlined"
+              value={query}
+              onChange={handleChange}
+              className="w-full max-w-lg"
+            />
+            <IconButton type="submit" color="primary">
+              <SearchIcon />
+            </IconButton>
+          </form>
         </div>
 
         <div className="nav-center">
-          <h1 className="site-title">Books‑R‑Us</h1>
+          <h1 className="site-title">
+            <Link to="/">Books-R-Us</Link>
+          </h1>
+
         </div>
 
         <div className="nav-right">
@@ -92,18 +126,43 @@ export default function Nav() {
             <ShoppingCartIcon fontSize="small" />
             Cart
           </Button>
+
+
+          <Button
+            component={Link}
+            to="/cart"
+            variant="outlined"
+            className="cart-button"
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              border: "1px solid rgb(234 88 12)",
+              color: "rgb(234 88 12)",
+              borderRadius: "8px",
+              textTransform: "none",
+              fontWeight: 500,
+              height: "32px",
+              padding: "0 10px",
+              minWidth: "auto",
+            }}
+          >
+            <ShoppingCartIcon fontSize="small" />
+            Cart
+          </Button>
         </div>
       </div>
 
-      <nav className="nav-bottom">
-        <Link to="/scifi">Science Fiction</Link>
-        <Link to="/fantasy">Fantasy</Link>
-        <Link to="/romance">Romance</Link>
-        <Link to="/mystery">Mystery</Link>
-        <Link to="/thriller">Thriller</Link>
-        <Link to="/horror">Horror</Link>
-        <Link to="/historical">Historical</Link>
-      </nav>
-    </header>
-  );
+            <nav className="nav-bottom">
+                <Link to="/genre/scifi">Science Fiction</Link>
+                <Link to="/genre/fantasy">Fantasy</Link>
+                <Link to="/genre/romance">Romance</Link>
+                <Link to="/genre/mystery">Mystery</Link>
+                <Link to="/genre/thriller">Thriller</Link>
+                <Link to="/genre/horror">Horror</Link>
+                <Link to="/genre/historical">Historical</Link>
+            </nav>
+        </header>
+    );
+
 }
