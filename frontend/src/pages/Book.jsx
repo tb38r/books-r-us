@@ -12,34 +12,39 @@ import {
     Grid,
 } from "@mui/material";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
-import { useCart } from "..//components/Book Page/CartContext";
+import { useCart } from "..//components/Book Page/CartContext"; 
 import QuantitySelector from "../components/Book Page/QuantitySelector";
+import { useNavigate } from "react-router-dom";
+import AddToCartButton from "../components/Book Page/AddToCart";
+import BasicRating from "../components/Book Page/RatingFeature";
 import { UserContext } from "../context/UserContext";
 
-export default function Book() {
-    const { bookId } = useParams();
-    const [book, setBook] = useState(null);
-    const [cart, setCart] = useState([]);
-    const { addToCart } = useCart();
-    const { user } = useContext(UserContext);
 
-    useEffect(() => {
-        fetch("http://localhost:1800/books")
-            .then((res) => res.json())
-            .then((data) => {
-                const foundBook = data.find(
-                    (b) =>
-                        String(b.id) === String(bookId) ||
-                        String(b.bookid) === String(bookId)
-                );
-                setBook(foundBook);
-            })
-            .catch((err) => console.error("Error fetching book:", err));
-    }, [bookId]);
+export default function Book() {
+const { id } = useParams();
+  const [book, setBook] = useState(null);
+  const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
+  const { addToCart } = useCart(); 
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/books")
+      .then((res) => res.json())
+      .then((data) => {
+        const foundBook = data.find(
+  (b) => String(b.id) === String(id) || String(b.bookid) === String(id)
+);
+
+        setBook(foundBook);
+      })
+      .catch((err) => console.error("Error fetching book:", err));
+  }, [id]);
 
     if (!book) {
         return <Typography>Loading book details...</Typography>;
     }
+
 
     return (
         <>
@@ -76,26 +81,23 @@ export default function Book() {
                         />
                     </Grid>
 
-                    <Grid item xs={12} md={8}>
-                        <Typography variant="h4" fontWeight="bold" gutterBottom>
-                            {book.title}
-                        </Typography>
-                        <Typography variant="h6" gutterBottom>
-                            by{" "}
-                            <span style={{ fontWeight: "600" }}>
-                                {book.author}
-                            </span>
-                        </Typography>
-                        <Typography variant="body1" gutterBottom>
-                            Released: <strong>{book.releaseDate}</strong>
-                        </Typography>
+          <Grid item xs={12} md={8}>
+            <Typography variant="h4" fontWeight="bold" gutterBottom>
+              {book.title}
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+              by <span style={{ fontWeight: "600" }}>{book.author}</span>
+            </Typography>
+          <BasicRating />
+            {/* <Box display="flex" alignItems="center" mb={2}>
+              <Rating value={book.rating} readOnly />
+              <Typography variant="body2" sx={{ ml: 1 }}>
+                ({book.rating}-star rating)
+              </Typography>
+            </Box> */}
 
-                        <Box display="flex" alignItems="center" mb={2}>
-                            <Rating value={book.rating} readOnly />
-                            <Typography variant="body2" sx={{ ml: 1 }}>
-                                ({book.rating}-star rating)
-                            </Typography>
-                        </Box>
+
+
 
                         <Typography
                             variant="h5"
@@ -106,8 +108,9 @@ export default function Book() {
                             {book.price}
                         </Typography>
 
-                        <Box display="flex" gap={2} mb={3}>
-                            <Button
+
+            <Box display="flex" gap={2} mb={3}>
+            <Button
                                 variant="contained"
                                 color="success"
                                 onClick={() => {
@@ -122,21 +125,17 @@ export default function Book() {
                             >
                                 Add to Cart
                             </Button>
-                            <Tooltip title="Save to Wishlist">
-                                <IconButton>
-                                    <BookmarkAddIcon />
-                                </IconButton>
-                            </Tooltip>
-                        </Box>
-
-                        <QuantitySelector />
-
-                        <Typography variant="body1" color="text.secondary">
-                            {book.description}
-                        </Typography>
-                    </Grid>
-                </Grid>
+              <Tooltip title="Save to Wishlist">
+                <IconButton>
+                  <BookmarkAddIcon />
+                </IconButton>
+              </Tooltip>
             </Box>
-        </>
-    );
+
+            <QuantitySelector />
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  );
 }

@@ -12,6 +12,7 @@ import { UserProvider } from "./context/UserProvider";
 import Footer from "./components/Footer";
 import ResultsPage from "./pages/ResultsPage";
 import { CartProvider } from "./components/Book Page/CartContext"; 
+import SearchResults from "./components/SearchResults";
 
 export default function App() { 
   return (
@@ -25,8 +26,8 @@ export default function App() {
           <Route path="/" element={<Home />} />  
           <Route path="/genre/:genre" element={<Genre />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/book/:bookID" element={<Book />} />
-          <Route path="/results/:searchId" element={<ResultsPage />} />
+          <Route path="/book/:id" element={<Book />} />
+          <Route path="/search" element={<SearchResults />} />
           <Route path="/signinsignup" element={<SignInSignUp />} />
           <Route path="/account" element={<MyAccount />} />
 
