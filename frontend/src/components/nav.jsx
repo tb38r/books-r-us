@@ -3,21 +3,54 @@ import Button from "@mui/material/Button";
 import "./Nav.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { TextField, IconButton } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Nav() {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+ const handleSearch = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+
+    if (value.trim() === "") {
+      setResults([]);
+      return;
+    }
+
+    const filtered = books.filter(
+      (b) =>
+        b.title.toLowerCase().includes(value.toLowerCase()) ||
+        b.author.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setResults(filtered);
+  };
   return (
     <header className="nav-header">
       <div className="nav-top">
         <div className="nav-left">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search for books..."
-          />
+          <form onSubmit={handleSearch} className="flex items-center">
+        <TextField
+        label="Search books or authors"
+        variant="outlined"
+        value={query}
+        onChange={handleSearch}
+        className="w-full max-w-lg"
+      />
+        <IconButton type="submit" color="primary">
+          <SearchIcon />
+        </IconButton>
+      </form>
         </div>
 
         <div className="nav-center">
-          <h1 className="site-title">Books‑R‑Us</h1>
+          <Link to="/" className="site-title">
+    <h2>Books-R-Us</h2>
+  </Link>
         </div>
 
         <div className="nav-right">
