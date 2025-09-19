@@ -8,6 +8,7 @@ import com.sparta.library.exceptions.UserNotFoundException;
 import com.sparta.library.mappers.UserMapper;
 import com.sparta.library.repositories.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -19,7 +20,7 @@ public class UserService {
         this.userMapper = userMapper;
         this.userRepository = userRepository;
     }
-
+    @Transactional
     public void createUser(RegisterUserDto registerUserDto) {
         if(userRepository.existsByEmail(registerUserDto.getEmail())) {
             throw new UserExistsException();

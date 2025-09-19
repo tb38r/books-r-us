@@ -39,7 +39,7 @@ public class OrderService {
         this.orderItemRepository = orderItemRepository;
         this.bookMapper = bookMapper;
     }
-
+    @Transactional
     public List<OrdersDto> getOrdersByUserId(Integer id) {
         var user = userRepository.findById(id).orElse(null);
         if (user == null) {
