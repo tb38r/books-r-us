@@ -1,31 +1,43 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/nav";
 import "./App.css";
-
-// Pages
-import Home from "./pages/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/home";
 import Genre from "./pages/Genre";
 import SignInSignUp from "./pages/SignInSignUp";
 import Cart from "./pages/Cart";
 import Book from "./pages/Book";
 import MyAccount from "./pages/MyAccount";
 import { UserProvider } from "./context/UserProvider";
+import Footer from "./components/Footer";
+import ResultsPage from "./pages/ResultsPage";
+import { CartProvider } from "./components/Book Page/CartContext"; 
 
-export default function App() {
+export default function App() { 
   return (
-    <UserProvider>
+      <>
+     <UserProvider>
+
+    <CartProvider>
       <Router>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/genre/:genre" element={<Genre />} />
-        <Route path="/signinsignup" element={<SignInSignUp />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/book/:bookID" element={<Book />} />
-        <Route path="/account" element={<MyAccount />} />
-      </Routes>
-    </Router>
+        <Nav />
+        <Routes>        
+          <Route path="/" element={<Home />} />  
+          <Route path="/genre/:genre" element={<Genre />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/book/:bookID" element={<Book />} />
+          <Route path="/results/:searchId" element={<ResultsPage />} />
+          <Route path="/signinsignup" element={<SignInSignUp />} />
+          <Route path="/account" element={<MyAccount />} />
+
+            </Routes>
+        </Router>
+    </CartProvider>
     </UserProvider>
-  );
+
+    <Footer />
+     </>
+    );
+
 }
+

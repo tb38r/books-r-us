@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import "./Shelf.css";
 import Button from "@mui/material/Button";
 import Book from "./Book";
+import { Link } from "react-router-dom";
+
 
 export default function Shelf({ genre, books }) {
     return (
@@ -27,7 +29,7 @@ export default function Shelf({ genre, books }) {
                         padding: "0 12px",
                     }}
                 >
-                    See More
+                    <Link to={`/genre/${genre}`}>See More</Link>
                 </Button>
             </div>
 
@@ -39,6 +41,7 @@ export default function Shelf({ genre, books }) {
                             cover={book.cover}
                             title={book.title}
                             author={book.author}
+                            id={book.id}
                         />
                     );
                 })}
