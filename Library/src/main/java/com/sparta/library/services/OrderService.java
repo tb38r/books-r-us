@@ -1,10 +1,12 @@
 package com.sparta.library.services;
 
+import com.sparta.library.dto.BookDTO;
 import com.sparta.library.dto.CreateOrderDto;
 import com.sparta.library.dto.OrdersDto;
 import com.sparta.library.exceptions.BookNotFoundException;
 import com.sparta.library.exceptions.QuantityExceededException;
 import com.sparta.library.exceptions.UserNotFoundException;
+import com.sparta.library.mappers.BookMapper;
 import com.sparta.library.model.Book;
 import com.sparta.library.model.Order;
 import com.sparta.library.model.OrderItem;
@@ -28,12 +30,14 @@ public class OrderService {
     private final UserRepository userRepository;
     private final BookRepository bookRepository;
     private final OrderItemRepository orderItemRepository;
+    private final BookMapper bookMapper;
 
-    public OrderService(OrderRepository ordersRepository, UserRepository userRepository, BookRepository bookRepository, OrderItemRepository orderItemRepository) {
+    public OrderService(OrderRepository ordersRepository, UserRepository userRepository, BookRepository bookRepository, OrderItemRepository orderItemRepository, BookMapper bookMapper) {
         this.ordersRepository = ordersRepository;
         this.userRepository = userRepository;
         this.bookRepository = bookRepository;
         this.orderItemRepository = orderItemRepository;
+        this.bookMapper = bookMapper;
     }
 
     public List<OrdersDto> getOrdersByUserId(Integer id) {
@@ -46,9 +50,15 @@ public class OrderService {
         for (Order order : orders) {
             OrdersDto ordersDto = new OrdersDto();
             ordersDto.setUserId(id);
-            //ordersDto.setTotalPrice();
-            //ordersDto.setTimeOfPurchase();
-            //ordersDto.setBooks();
+            var totalPrice = 0.0;
+            var books = new ArrayList<Book>();
+            for(int i = 0; i < order.getOrderItems().size(); i++) {
+                totalPrice += order.getOrderItems().get(i).getPrice();
+                books.add(order.getOrderItems().get(i).getBook());
+            }
+            ordersDto.setTotalPrice(totalPrice);
+            ordersDto.setBooks(books.stream().map(bookMapper::bookDTO).toList());
+            ordersDtos.add(ordersDto);
         }
         return ordersDtos;
     }
