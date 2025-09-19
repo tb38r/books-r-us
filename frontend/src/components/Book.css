@@ -2,6 +2,8 @@
     margin-left: 36px;
     text-align: center;
     flex-direction: column;
+    margin-bottom: 24px;
+    width: 150px;
 }
 
 .title {

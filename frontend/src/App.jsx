@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Nav from "./components/Nav";
 import "./App.css";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/home";
 import Genre from "./pages/Genre";
 import SignInSignUp from "./pages/SignInSignUp";
 import Cart from "./pages/Cart";
@@ -30,30 +31,18 @@ export default function App() {
     <CartProvider>
       <Router>
         <Nav />
-        <Routes>
-         
-          <Route path="/" element={<Home />} />
-
-          
+        <Routes>        
+          <Route path="/" element={<Home />} />  
           <Route path="/genre/:genre" element={<Genre />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/book/:bookID" element={<Book />} />
           <Route path="/results/:searchId" element={<ResultsPage />} />
-
-          <Route
-            path="/signinsignup"
-            element={<SignInSignUp setUser={setUser} />}
-          />
-          <Route
-            path="/account"
-            element={<MyAccount user={user} setUser={setUser} />}
-          />
-        </Routes>
-        
-      </Router>
-      
+          <Route path="/signinsignup" element={<SignInSignUp />} />
+            </Routes>
+        </Router>
     </CartProvider>
     <Footer />
-    </>
-  );
+     </>
+    );
 }
+
