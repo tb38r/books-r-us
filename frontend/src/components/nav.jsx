@@ -5,10 +5,12 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link, useNavigate } from "react-router-dom";
 import { TextField, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home";
 
 export default function Nav() {
-  const [query, setQuery] = useState("");
-  const navigate = useNavigate();
+    const [query, setQuery] = useState("");
+    const navigate = useNavigate();
+
 
   // handle typing only updates query
   const handleChange = (e) => {
@@ -27,6 +29,9 @@ export default function Nav() {
     <header className="nav-header">
       <div className="nav-top">
         <div className="nav-left">
+              <Link to="/">
+                  <HomeIcon className="home" />
+              </Link>
           <form onSubmit={handleSearch} className="flex items-center">
             <TextField
               label="Search books or authors"
@@ -95,15 +100,15 @@ export default function Nav() {
         </div>
       </div>
 
-      <nav className="nav-bottom">
-        <Link to="/genre/scifi">Science Fiction</Link>
-        <Link to="/genre/fantasy">Fantasy</Link>
-        <Link to="/genre/romance">Romance</Link>
-        <Link to="/genre/mystery">Mystery</Link>
-        <Link to="/genre/thriller">Thriller</Link>
-        <Link to="/genre/horror">Horror</Link>
-        <Link to="/genre/historical">Historical</Link>
-      </nav>
-    </header>
-  );
+            <nav className="nav-bottom">
+                <Link to="/genre/scifi">Science Fiction</Link>
+                <Link to="/genre/fantasy">Fantasy</Link>
+                <Link to="/genre/romance">Romance</Link>
+                <Link to="/genre/mystery">Mystery</Link>
+                <Link to="/genre/thriller">Thriller</Link>
+                <Link to="/genre/horror">Horror</Link>
+                <Link to="/genre/historical">Historical</Link>
+            </nav>
+        </header>
+    );
 }

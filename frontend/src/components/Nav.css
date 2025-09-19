@@ -111,3 +111,10 @@
   color: rgb(234, 88, 12);
 }
 
+.home{
+  margin-right: 16px;
+}
+
+.home :hover {
+  color: rgb(234, 88, 12);
+}
