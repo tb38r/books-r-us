@@ -34,13 +34,13 @@ public class User {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<OrderItem> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
     // No-args constructor (required by JPA)
     public User() {}
 
     // All-args constructor
-    public User(Integer id, String firstName, String lastName, String email, String password, List<OrderItem> orders) {
+    public User(Integer id, String firstName, String lastName, String email, String password, List<Order> orders) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -99,15 +99,26 @@ public class User {
         this.password = password;
     }
 
-    public List<OrderItem> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<OrderItem> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 
     public void setCreatedTime() {
-        this.createdTime = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
+    }
+
+
+    public void addOrder(Order order) {
+        orders.add(order);
+        order.setUser(this);
+    }
+
+    public void removeOrder(Order order) {
+        orders.remove(order);
+        order.setUser(null);
     }
 }

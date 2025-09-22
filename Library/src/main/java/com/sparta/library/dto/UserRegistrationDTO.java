@@ -23,6 +23,7 @@ public class UserRegistrationDTO {
     @NotBlank(message = "Password required")
     @Size(min = 6)private String password;
 
+
 }
 
 

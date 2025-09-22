@@ -1,5 +1,6 @@
 package com.sparta.library.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -21,8 +22,9 @@ public class OrderItem { //I think this is actually a basket
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "bookId")
+    @JoinColumn(name = "bookId", nullable = false)
     private Book book;
 
     @ManyToOne

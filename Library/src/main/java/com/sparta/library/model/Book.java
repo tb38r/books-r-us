@@ -1,5 +1,6 @@
 package com.sparta.library.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,8 @@ public class Book {
     private int quantity;
     @Column(name = "genre", nullable = false)
     private String genre;
+
+    @JsonManagedReference
     @OneToMany(
             mappedBy = "book",
             cascade = CascadeType.ALL,

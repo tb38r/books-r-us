@@ -20,13 +20,9 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDTO> register( @RequestBody UserRegistrationDTO dto) {
-        System.out.println("DTO received: " + dto);
+    public ResponseEntity<UserResponseDTO> register( @Valid @RequestBody UserRegistrationDTO dto) {
 
         UserResponseDTO response = userService.registerUser(dto);
-        System.out.println("***********");
-        System.out.println(  response);
-        System.out.println("***********");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

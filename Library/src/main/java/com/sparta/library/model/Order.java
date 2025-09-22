@@ -12,9 +12,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
+
     @ManyToOne
     @JoinColumn(name = "userID")
     private User user;
+
     @OneToMany(
             mappedBy = "order",
             cascade = CascadeType.ALL,
