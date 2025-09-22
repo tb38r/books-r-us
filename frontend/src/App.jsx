@@ -1,40 +1,48 @@
 import React from "react";
 import Nav from "./components/nav";
-//import Homepage from "./Homepage";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
-import ScienceFiction from "./pages/ScienceFiction";
-import Fantasy from "./pages/Fantasy";
-import Romance from "./pages/Romance";
-import Mystery from "./pages/Mystery";
-import Thriller from "./pages/Thriller";
-import Horror from "./pages/Horror";
-import Historical from "./pages/Historical";
-import SignIn from "./pages/SignIn";
+import Genre from "./pages/Genre";
+import SignInSignUp from "./pages/SignInSignUp";
 import Cart from "./pages/Cart";
+import Book from "./pages/Book";
+import MyAccount from "./pages/MyAccount";
+import { UserProvider } from "./context/UserProvider";
+import Footer from "./components/Footer";
+import ResultsPage from "./pages/ResultsPage";
+import { CartProvider } from "./components/Book Page/CartContext"; 
+import ProtectedRoute from "./components/ProtectedRoute";
 
-export default function App() {
+export default function App() { 
   return (
-    <Router>
-      <Nav />
-      <Routes>
-        {/* Homepage */}
-        <Route path="/" element={<Home />} />
-
-        {/* Genre pages */}
-        <Route path="/scifi" element={<ScienceFiction />} />
-        <Route path="/fantasy" element={<Fantasy />} />
-        <Route path="/romance" element={<Romance />} />
-        <Route path="/mystery" element={<Mystery />} />
-        <Route path="/thriller" element={<Thriller />} />
-        <Route path="/horror" element={<Horror />} />
-        <Route path="/historical" element={<Historical />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
-    </Router>
+    <UserProvider>
+      <CartProvider>
+        <div className="app-wrapper">
+          <Router>
+            <Nav />
+            <main className="main-content">
+              <Routes>        
+                <Route path="/" element={<Home />} />  
+                <Route path="/genre/:genre" element={<Genre />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/book/:bookID" element={<Book />} />
+                <Route path="/results/:searchId" element={<ResultsPage />} />
+                <Route path="/signinsignup" element={<SignInSignUp />} />
+                <Route
+                  path="/account"
+                  element={
+                    <ProtectedRoute>
+                      <MyAccount />
+                    </ProtectedRoute>
+                  }
+                />
+              </Routes>
+            </main>
+          </Router>
+          <Footer />
+        </div>
+      </CartProvider>
+    </UserProvider>
   );
 }
-
-
