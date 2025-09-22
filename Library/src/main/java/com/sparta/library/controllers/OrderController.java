@@ -1,5 +1,6 @@
 package com.sparta.library.controllers;
 
+import com.sparta.library.dto.BookDTO;
 import com.sparta.library.dto.CreateOrderDto;
 import com.sparta.library.dto.OrdersDto;
 import com.sparta.library.exceptions.BookNotFoundException;
@@ -23,13 +24,13 @@ public class OrderController {
         this.orderService = orderService;
     }
     @GetMapping("/{userId}")
-    public ResponseEntity<List<OrdersDto>> getOrderByUserId(@PathVariable Integer userId) {
+    public ResponseEntity<List<BookDTO>> getOrderByUserId(@PathVariable Integer userId) {
         return ResponseEntity.ok(orderService.getOrdersByUserId(userId));
     }
     @PostMapping
     public ResponseEntity<?> createOrder(@RequestBody CreateOrderDto createOrderDto) {
-        orderService.createOrder(createOrderDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("success", "user created"));
+        orderService.CreateOrder(createOrderDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("success", "order created"));
     }
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleUserNotFound() {

@@ -15,6 +15,7 @@ import com.sparta.library.repositories.BookRepository;
 import com.sparta.library.repositories.OrderItemRepository;
 import com.sparta.library.repositories.OrderRepository;
 import com.sparta.library.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.jaxb.SpringDataJaxb;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,22 +24,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class OrderService {
 
 
     private final OrderRepository ordersRepository;
     private final UserRepository userRepository;
     private final BookRepository bookRepository;
-    private final OrderItemRepository orderItemRepository;
     private final BookMapper bookMapper;
 
-    public OrderService(OrderRepository ordersRepository, UserRepository userRepository, BookRepository bookRepository, OrderItemRepository orderItemRepository, BookMapper bookMapper) {
-        this.ordersRepository = ordersRepository;
-        this.userRepository = userRepository;
-        this.bookRepository = bookRepository;
-        this.orderItemRepository = orderItemRepository;
-        this.bookMapper = bookMapper;
+    @Transactional
+    public void CreateOrder(CreateOrderDto dto) {
+        var order = new Order();
+        System.out.println(dto.getUserId());
+        var user = userRepository.findById(dto.getUserId()).orElse(null);
+        if(user == null) {
+            throw new UserNotFoundException();
+        }
+        var book = bookRepository.findById(dto.getBookId()).orElse(null);
+        if(book == null) {
+            throw new BookNotFoundException();
+        }
+        order.setQuantity(dto.getQuantity());
+        order.setUser(user);
+        order.setBook(book);
+        order.setPurchased(false);
+        ordersRepository.save(order);
     }
+    @Transactional
+    public List<BookDTO> getOrdersByUserId(Integer id) {
+        var user = userRepository.findById(id).orElse(null);
+        List<BookDTO> books = new ArrayList<>();
+        if(user == null) {
+            throw new UserNotFoundException();
+        }
+        var orders = ordersRepository.findByUser(user);
+        for(Order order : orders) {
+            var book = bookRepository.findById(order.getBook().getId()).orElse(null);
+            if(book == null) {
+                throw new BookNotFoundException();
+            }
+            var bookDto = bookMapper.bookDTO(book);
+            bookDto.setQuantity(order.getQuantity());
+            books.add(bookDto);
+        }
+        return books;
+    }
+    /*
     @Transactional
     public List<OrdersDto> getOrdersByUserId(Integer id) {
         var user = userRepository.findById(id).orElse(null);
@@ -94,4 +126,6 @@ public class OrderService {
         order.setTimeOfPurchase();
         ordersRepository.save(order);
     }
+    */
+
 }

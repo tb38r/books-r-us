@@ -1,12 +1,20 @@
 package com.sparta.library.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -22,47 +30,14 @@ public class Order {
     @Column(name = "order-date", nullable = false, updatable = false)
     private LocalDateTime timeOfPurchase;
 
-    @OneToMany(
-            mappedBy = "order",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<OrderItem> orderItems = new ArrayList<>();
-
-    public Order() {}
+    private int quantity;
+    @ManyToOne
+    @JoinColumn(name = "bookId")
+    private Book book;
+    private boolean purchased;
     public Order(Integer id, User user) {
         this.id = id;
         this.user = user;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
-    public LocalDateTime getTimeOfPurchase() {
-        return timeOfPurchase;
-    }
-
-    public void setTimeOfPurchase() {
-        this.timeOfPurchase = LocalDateTime.now();
-    }
 }

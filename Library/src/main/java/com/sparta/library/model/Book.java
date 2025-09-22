@@ -29,12 +29,12 @@ public class Book {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<OrderItem> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
     public Book() {}
 
 
-    public Book(Integer id, String title, Author author, double price, List<OrderItem> orders) {
+    public Book(Integer id, String title, Author author, double price, List<Order> orders) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -84,11 +84,11 @@ public class Book {
         this.price = price;
     }
 
-    public List<OrderItem> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<OrderItem> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 
