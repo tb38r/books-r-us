@@ -4,6 +4,7 @@ import com.sparta.library.dto.BookDTO;
 import com.sparta.library.dto.CreateOrderDto;
 import com.sparta.library.dto.OrdersDto;
 import com.sparta.library.exceptions.BookNotFoundException;
+import com.sparta.library.exceptions.OrderDoesNotExistException;
 import com.sparta.library.exceptions.QuantityExceededException;
 import com.sparta.library.exceptions.UserNotFoundException;
 import com.sparta.library.services.BooksService;
@@ -32,6 +33,11 @@ public class OrderController {
         orderService.CreateOrder(createOrderDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("success", "order created"));
     }
+    @PutMapping
+    public ResponseEntity<?> updateOrder(@RequestBody CreateOrderDto createOrderDto) {
+        orderService.UpdateOrder(createOrderDto);
+        return ResponseEntity.ok(Map.of("success", "order updated"));
+    }
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleUserNotFound() {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "User doesn't exist"));
@@ -43,5 +49,9 @@ public class OrderController {
     @ExceptionHandler(QuantityExceededException.class)
     public ResponseEntity<Map<String, String>> handleQuantityExceededException() {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Quantity exceeded"));
+    }
+    @ExceptionHandler(OrderDoesNotExistException.class)
+    public ResponseEntity<Map<String, String>> handleOrderDoesNotExist() {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Order doesn't exist"));
     }
 }

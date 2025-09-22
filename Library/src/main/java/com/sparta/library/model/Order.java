@@ -39,5 +39,7 @@ public class Order {
         this.id = id;
         this.user = user;
     }
-
+    public boolean getPurchased() {
+        return purchased;
+    }
 }
