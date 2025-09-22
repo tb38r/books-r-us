@@ -22,7 +22,7 @@ export default function Nav() {
     const handleSearch = (e) => {
         e.preventDefault();
         if (query.trim() !== "") {
-            navigate(`/search?query=${encodeURIComponent(query)}`);
+            navigate(`/search/${encodeURIComponent(query)}`);
         }
     };
 

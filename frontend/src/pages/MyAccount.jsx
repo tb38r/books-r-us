@@ -28,7 +28,9 @@ export default function MyAccount() {
     }, [user, setUser]);
 
     const fetchBookByISBN = async (isbn) => {
-        const res = await fetch(`https://openlibrary.org/search.json?isbn=${isbn}`);
+        const res = await fetch(
+            `https://openlibrary.org/search.json?isbn=${isbn}`
+        );
         const data = await res.json();
         const doc = data.docs[0] || {};
         return {
@@ -129,7 +131,9 @@ export default function MyAccount() {
 
                     <div className="account-info under-photo">
                         <p>
-                            <span className="info-label">Account Holder Name:</span>
+                            <span className="info-label">
+                                Account Holder Name:
+                            </span>
                             <span className="info-value">{user.name}</span>
                         </p>
                         <p>
@@ -143,59 +147,7 @@ export default function MyAccount() {
                     </button>
                 </aside>
 
-                <main className="account-center">
-                    <section className="wishlist">
-                        <h3>Wishlist</h3>
-                        <div className="wishlist-items">
-                            {wishlistBooks.length
-                                ? wishlistBooks.map((book) => (
-                                      <div key={book.key} className="book-item">
-                                          {book.coverId ? (
-                                              <img
-                                                  src={`https://covers.openlibrary.org/b/id/${book.coverId}-M.jpg`}
-                                                  alt={book.title}
-                                              />
-                                          ) : (
-                                              <div className="no-cover">No Cover</div>
-                                          )}
-                                          <p className="book-title">{book.title}</p>
-                                      </div>
-                                  ))
-                                : user.wishlist.map((_, i) => (
-                                      <div key={i} className="book-placeholder" />
-                                  ))}
-                        </div>
-                    </section>
-
-                    <section className="orders">
-                        <h3>Past Orders</h3>
-                        {ordersDetails.length
-                            ? ordersDetails.map((order, idx) => (
-                                  <div key={idx} className="order">
-                                      <p className="order-date">{order.date}</p>
-                                      <div className="order-books">
-                                          {order.books.map((book) => (
-                                              <div key={book.key} className="book-item-sm">
-                                                  {book.coverId ? (
-                                                      <img
-                                                          src={`https://covers.openlibrary.org/b/id/${book.coverId}-S.jpg`}
-                                                          alt={book.title}
-                                                      />
-                                                  ) : (
-                                                      <div className="no-cover-sm" />
-                                                  )}
-                                              </div>
-                                          ))}
-                                      </div>
-                                  </div>
-                              ))
-                            : user.orders.map((order, i) => (
-                                  <p key={i} className="order-placeholder">
-                                      {order.date} – {order.books.length} Books
-                                  </p>
-                              ))}
-                    </section>
-                </main>
+                <main className="account-center"></main>
             </div>
 
             {/* Change Password Modal */}
@@ -232,7 +184,9 @@ export default function MyAccount() {
                                 <button type="submit">Update</button>
                             </div>
                         </form>
-                        {pwdMessage && <p className="modal-message">{pwdMessage}</p>}
+                        {pwdMessage && (
+                            <p className="modal-message">{pwdMessage}</p>
+                        )}
                     </div>
                 </div>
             )}

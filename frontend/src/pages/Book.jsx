@@ -28,15 +28,10 @@ export default function Book() {
     const { user } = useContext(UserContext);
 
     useEffect(() => {
-        fetch("http://localhost:4000/books")
+        fetch(`http://localhost:4000/books/${id}`)
             .then((res) => res.json())
             .then((data) => {
-                const foundBook = data.find(
-                    (b) =>
-                        String(b.id) === String(id) ||
-                        String(b.bookid) === String(id)
-                );
-
+                const foundBook = data;
                 setBook(foundBook);
             })
             .catch((err) => console.error("Error fetching book:", err));
