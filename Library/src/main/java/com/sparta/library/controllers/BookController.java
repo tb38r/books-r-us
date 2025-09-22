@@ -22,6 +22,7 @@ public class BookController {
     public ResponseEntity<Iterable<BookDTO>> getAllBooks() {
         return ResponseEntity.ok(booksService.getAllBooks());
     }
+
     @PostMapping
     public ResponseEntity<Map<String, String>> createBook(@Valid @RequestBody AddBookDto dto) {
         booksService.createBook(dto);

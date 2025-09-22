@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dae33c6-02f2-4abc-99aa-dc6aff52e7a6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/books-r-us.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/books-r-us.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/DataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/LibraryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/LibraryApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/dto/AuthorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/dto/AuthorMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/dto/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/dto/BookMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/entities/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/model/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/entities/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/entities/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/model/Orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/repositories/AuthorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/repositories/AuthorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/repositories/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/repositories/BookRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/services/AuthorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/services/AuthorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/services/BooksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/services/BooksService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/main/java/com/sparta/library/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/SignInSignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/SignInSignUp.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +26,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -64,17 +56,18 @@
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.DemoApplication.executor": "Run",
     "Spring Boot.LibraryApplication.executor": "Run",
-    "git-widget-placeholder": "sqldb",
+    "git-widget-placeholder": "MonMerge",
     "last_opened_file_path": "/Users/tolulawal/Coding/sparta-training/books-r-us",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Global Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -98,7 +91,9 @@
       </method>
     </configuration>
     <configuration name="LibraryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="Library" />
+      <option name="ALTERNATIVE_JRE_PATH" value="/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <module name="books-r-us" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.sparta.library.LibraryApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -132,6 +127,8 @@
       <workItem from="1757943906653" duration="291000" />
       <workItem from="1757944206767" duration="126000" />
       <workItem from="1757944341915" duration="4019000" />
+      <workItem from="1758530375646" duration="1112000" />
+      <workItem from="1758531499063" duration="362000" />
     </task>
     <servers />
   </component>

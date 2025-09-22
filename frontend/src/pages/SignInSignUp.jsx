@@ -40,41 +40,43 @@ export default function SignInSignUp() {
         }
     };
 
+
     const handleSignUp = async (e) => {
         e.preventDefault();
-        if (signUpPassword !== signUpConfirm) {
-            setSignUpMessage("❌ Passwords do not match.");
-            return;
-        }
+        // if (signUpPassword !== signUpConfirm) {
+        //     setSignUpMessage("❌ Passwords do not match.");
+        //     return;
+        // }
 
-        const fullName = `${firstName.trim()} ${lastName.trim()}`;
+       // const fullName = `${firstName.trim()} ${lastName.trim()}`;
+        const newUser = {
+            firstName: firstName,
+            lastName:lastName,
+            email: signUpEmail,
+            password: signUpPassword
+        };
 
         try {
-            const res = await fetch("http://localhost:4000/users");
-            const users = await res.json();
-            const emailExists = users.some((u) => u.email === signUpEmail);
+            // const res = await fetch("http://localhost:8080/users");
+            // const users = await res.json();
+          //  const emailExists = users.some((u) => u.email === signUpEmail);
 
-            if (emailExists) {
-                setSignUpMessage("❌ Email already exists. Try signing in.");
-                return;
-            }
+            // if (emailExists) {
+            //     setSignUpMessage("❌ Email already exists. Try signing in.");
+            //     return;
+            // }
 
-            const newUser = {
-                name: fullName,
-                email: signUpEmail,
-                password: signUpPassword,
-                wishlist: [],
-                orders: [],
-            };
 
-            const createRes = await fetch("http://localhost:4000/users", {
+
+            const createRes = await fetch("http://localhost:8080/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newUser),
             });
 
-            const createdUser = await createRes.json();
-            setUser(createdUser);
+            //const createdUser = await createRes.json();
+            console.log("response from backend ---> ", await createRes)
+           if (createRes.status === 200) setUser({name: firstName + " "+ lastName, id: 1, email: signUpEmail, passWord: 'abc', wishList :[], orders: [], date: "12 / 08 / 2025"});
             navigate("/account");
         } catch (error) {
             console.error("Sign-up error:", error);

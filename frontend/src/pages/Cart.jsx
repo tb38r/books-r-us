@@ -13,7 +13,7 @@ export default function Cart() {
     return (
         <Box p={4}>
             <Typography variant="h4" gutterBottom>
-                Your Cart
+                Your Cart {user.firstName} {user.LastName}
             </Typography>
             <List>
                 {cart.map((item) => (
