@@ -8,21 +8,23 @@ import com.sparta.library.exceptions.UserLoginIncorrectException;
 import com.sparta.library.exceptions.UserNotFoundException;
 import com.sparta.library.services.UserService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private final AuthenticationManager authenticationManager;
 
     @PostMapping
     public ResponseEntity<?> createUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
@@ -31,7 +33,12 @@ public class UserController {
     }
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto) {
-        userService.validateUser(validateUserDto);
+        
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(validateUserDto.getEmail(), validateUserDto.getPassword())
+        );
+
+        //userService.validateUser(validateUserDto);
         return ResponseEntity.ok().body(Map.of("message", "User logged in successfully!"));
     }
     @ExceptionHandler(UserNotFoundException.class)
@@ -45,5 +52,9 @@ public class UserController {
     @ExceptionHandler(UserLoginIncorrectException.class)
     public ResponseEntity<Map<String, String>> handleUserLoginIncorrect() {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "User has invalid password"));
+    }
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<Map<String, String>> handleBadCredentials() {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Bad credentials"));
     }
 }

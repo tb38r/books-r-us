@@ -8,6 +8,8 @@ import com.sparta.library.exceptions.UserLoginIncorrectException;
 import com.sparta.library.exceptions.UserNotFoundException;
 import com.sparta.library.mappers.UserMapper;
 import com.sparta.library.repositories.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +17,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserMapper userMapper;
     private final UserRepository userRepository;
-
-    public UserService(UserMapper userMapper, UserRepository userRepository) {
+    private final PasswordEncoder passwordEncoder;
+    public UserService(UserMapper userMapper, UserRepository userRepository,  PasswordEncoder passwordEncoder) {
 
         this.userMapper = userMapper;
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
     @Transactional
     public UserDto createUser(RegisterUserDto registerUserDto) {
@@ -27,6 +30,7 @@ public class UserService {
             throw new UserExistsException();
         }
         var user = userMapper.toUser(registerUserDto);
+        user.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
         user.setCreatedTime();
         userRepository.save(user);
         var userDto = userMapper.toUserDto(user);
@@ -38,7 +42,7 @@ public class UserService {
         if(user == null) {
             throw new UserNotFoundException();
         }
-        if(!user.getPassword().equals(validateUserDto.getPassword())) {
+        if(!passwordEncoder.matches(validateUserDto.getPassword(), user.getPassword())) {
             throw new UserLoginIncorrectException();
         }
     }
