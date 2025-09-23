@@ -33,7 +33,7 @@ public class UserService {
         userDto.setId(user.getId());
         return userDto;
     }
-    public void validateUser(ValidateUserDto validateUserDto) {
+    public UserDto validateUser(ValidateUserDto validateUserDto) {
         var user = userRepository.findByEmail(validateUserDto.getEmail()).orElse(null);
         if(user == null) {
             throw new UserNotFoundException();
@@ -41,5 +41,6 @@ public class UserService {
         if(!user.getPassword().equals(validateUserDto.getPassword())) {
             throw new UserLoginIncorrectException();
         }
+        return userMapper.toUserDto(user);
     }
 }
