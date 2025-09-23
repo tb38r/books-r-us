@@ -30,9 +30,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto) {
-        userService.validateUser(validateUserDto);
-        return ResponseEntity.ok().body(Map.of("message", "User logged in successfully!"));
+    public ResponseEntity<?> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto) {
+        var user = userService.validateUser(validateUserDto);
+        return ResponseEntity.ok(user);
     }
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleUserNotFound() {
