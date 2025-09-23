@@ -27,6 +27,7 @@ export default function Book() {
     const navigate = useNavigate();
     const { addToCart } = useCart();
     const { user } = useContext(UserContext);
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         fetch(`http://localhost:8080/books`)
@@ -94,7 +95,6 @@ export default function Book() {
                 ({book.rating}-star rating)
               </Typography>
             </Box> */}
-
                         <Typography
                             variant="h5"
                             color="success.main"
@@ -103,31 +103,68 @@ export default function Book() {
                         >
                             £{book.price.toFixed(2)}{" "}
                         </Typography>
-
                         <Box display="flex" gap={2} mb={3}>
                             <Button
                                 variant="contained"
                                 color="success"
-                                onClick={() => {
+                                onClick={async () => {
                                     if (!user) {
                                         alert(
                                             "ERROR: Please sign in to add items into your cart!"
                                         );
                                         return;
                                     }
-                                    addToCart(book);
+
+                                    try {
+                                        const res = await fetch(
+                                            "http://localhost:8080/orders",
+                                            {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type":
+                                                        "application/json",
+                                                },
+                                                body: JSON.stringify({
+                                                    userId: user.id,
+                                                    bookId: book.id,
+                                                    quantity: quantity,
+                                                }),
+                                            }
+                                        );
+
+                                        if (res.ok) {
+                                            alert("Book added to cart!");
+                                        } else {
+                                            const err = await res.json();
+                                            alert(
+                                                `Error: ${
+                                                    err.error ||
+                                                    "Failed to add to cart"
+                                                }`
+                                            );
+                                        }
+                                    } catch (error) {
+                                        console.error(
+                                            "Add to cart error:",
+                                            error
+                                        );
+                                        alert("Failed to add book to cart.");
+                                    }
                                 }}
                             >
                                 Add to Cart
                             </Button>
+
                             <Tooltip title="Save to Wishlist">
                                 <IconButton>
                                     <BookmarkAddIcon />
                                 </IconButton>
                             </Tooltip>
                         </Box>
-
-                        <QuantitySelector />
+                        <QuantitySelector
+                            quantity={quantity}
+                            setQuantity={setQuantity}
+                        />
                     </Grid>
                 </Grid>
             </Box>

@@ -14,6 +14,8 @@
 .account-content {
   display: flex;
   gap: 2rem;
+  margin: 0 auto;
+  width: 80%;
 }
 
 /* Left column */
@@ -231,3 +233,7 @@
   color: #333;
 }
 
+.logout-section{
+  text-align: center;
+  
+}

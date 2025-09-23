@@ -3,9 +3,11 @@ import "./MyAccount.css";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import profile from "../assets/defaultprofile.webp";
 
 export default function MyAccount() {
     const { user, setUser } = useContext(UserContext);
+    console.log("Current user from context:", user);
     const navigate = useNavigate();
     const [avatar, setAvatar] = useState(null);
 
@@ -26,40 +28,6 @@ export default function MyAccount() {
                 .catch(console.error);
         }
     }, [user, setUser]);
-
-    const fetchBookByISBN = async (isbn) => {
-        const res = await fetch(
-            `https://openlibrary.org/search.json?isbn=${isbn}`
-        );
-        const data = await res.json();
-        const doc = data.docs[0] || {};
-        return {
-            key: doc.key || isbn,
-            title: doc.title || "Unknown Title",
-            coverId: doc.cover_i,
-        };
-    };
-
-    useEffect(() => {
-        if (!user?.wishlist?.length) return;
-        Promise.all(user.wishlist.map((isbn) => fetchBookByISBN(isbn)))
-            .then(setWishlistBooks)
-            .catch(console.error);
-    }, [user]);
-
-    useEffect(() => {
-        if (!user?.orders?.length) return;
-        Promise.all(
-            user.orders.map(async (order) => {
-                const books = await Promise.all(
-                    order.books.map((isbn) => fetchBookByISBN(isbn))
-                );
-                return { date: order.date, books };
-            })
-        )
-            .then(setOrdersDetails)
-            .catch(console.error);
-    }, [user]);
 
     const handleAvatarChange = (e) => {
         const file = e.target.files[0];
@@ -104,7 +72,7 @@ export default function MyAccount() {
                 <aside className="account-left">
                     <div className="avatar-section">
                         <img
-                            src={avatar || "/default-avatar.png"}
+                            src={profile || "../assets/defaultprofile.webp"}
                             alt="Profile"
                             className="profile-pic"
                         />
@@ -146,8 +114,6 @@ export default function MyAccount() {
                         Change Password
                     </button>
                 </aside>
-
-                <main className="account-center"></main>
             </div>
 
             {/* Change Password Modal */}
