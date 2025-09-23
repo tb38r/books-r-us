@@ -46,7 +46,6 @@ export default function Home() {
     return (
         <main>
             <h2 className="page-title">Welcome to Books‑R‑Us</h2>
-            <p></p>
             {genres.map((genre) => (
                 <Shelf
                     key={genre}
