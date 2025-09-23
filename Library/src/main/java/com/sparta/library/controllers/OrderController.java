@@ -21,9 +21,14 @@ public class OrderController {
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
-    @GetMapping("/{userId}")
-    public ResponseEntity<List<BookDTO>> getOrderByUserId(@PathVariable Integer userId) {
-        return ResponseEntity.ok(orderService.getOrdersByUserId(userId));
+    @GetMapping("/{userId}/{purchased}")
+    public ResponseEntity<List<BookDTO>> getOrderByUserId(@PathVariable Integer userId, @PathVariable boolean purchased) {
+        return ResponseEntity.ok(orderService.getOrdersByUserId(userId, purchased));
+    }
+    @PutMapping("/{userId}")
+    public ResponseEntity<?> purchase(@PathVariable Integer userId) {
+        orderService.purchase(userId);
+        return ResponseEntity.ok(Map.of("success", "order purchased"));
     }
     @PostMapping
     public ResponseEntity<?> createOrder(@RequestBody CreateOrderDto createOrderDto) {

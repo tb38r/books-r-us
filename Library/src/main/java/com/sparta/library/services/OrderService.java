@@ -64,7 +64,7 @@ public class OrderService {
         return orderdto;
     }
     @Transactional
-    public List<BookDTO> getOrdersByUserId(Integer id) {
+    public List<BookDTO> getOrdersByUserId(Integer id, boolean purchased) {
         var user = userRepository.findById(id).orElse(null);
         List<BookDTO> books = new ArrayList<>();
         if(user == null) {
@@ -72,7 +72,7 @@ public class OrderService {
         }
         var orders = ordersRepository.findByUser(user);
         for(Order order : orders) {
-            if(order.getPurchased()) continue;
+            if(order.getPurchased() != purchased) continue;
             var book = bookRepository.findById(order.getBook().getId()).orElse(null);
             if(book == null) {
                 throw new BookNotFoundException();
@@ -109,5 +109,21 @@ public class OrderService {
             throw new OrderDoesNotExistException();
         }
         ordersRepository.delete(order);
+    }
+    @Transactional
+    public void purchase(Integer userId) {
+        var user = userRepository.findById(userId).orElse(null);
+        if(user == null) {
+            throw new UserNotFoundException();
+        }
+        var orders = ordersRepository.findByUser(user);
+        if(orders.isEmpty()) {
+            throw new OrderDoesNotExistException();
+        }
+        for(var order : orders) {
+            if(order.getPurchased()) continue;
+            order.setPurchased(true);
+            ordersRepository.save(order);
+        }
     }
 }
