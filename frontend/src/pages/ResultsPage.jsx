@@ -17,7 +17,7 @@ export default function SearchResults() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:4000/books")
+        fetch("http://localhost:8080/books")
             .then((res) => res.json())
             .then((data) => {
                 const filtered = data.filter(
@@ -53,7 +53,7 @@ export default function SearchResults() {
                                 <CardContent>
                                     <Grid item xs={12} md={4}>
                                         <img
-                                            src={book.cover}
+                                            src={book.coverUrl}
                                             alt={`Cover of ${book.title}`}
                                             style={{
                                                 width: "10%",

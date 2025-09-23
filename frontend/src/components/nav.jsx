@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { UserContext } from "../context/UserContext";
@@ -11,6 +11,7 @@ import HomeIcon from "@mui/icons-material/Home";
 export default function Nav() {
     const { user } = useContext(UserContext);
     const [query, setQuery] = useState("");
+    const [genres, setGenres] = useState([]);
     const navigate = useNavigate();
 
     // handle typing only updates query
@@ -25,6 +26,41 @@ export default function Nav() {
             navigate(`/search/${encodeURIComponent(query)}`);
         }
     };
+
+    function formatGenre(genre) {
+        const romanNumerals = [
+            "i",
+            "ii",
+            "iii",
+            "iv",
+            "v",
+            "vi",
+            "vii",
+            "viii",
+            "ix",
+            "x",
+        ];
+        return genre
+            .split("_")
+            .map((word) => {
+                if (romanNumerals.includes(word.toLowerCase())) {
+                    return word.toUpperCase();
+                }
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            })
+            .join(" ");
+    }
+
+    useEffect(() => {
+        fetch("http://localhost:8080/books")
+            .then((res) => res.json())
+            .then((data) => {
+                const uniqueGenres = [
+                    ...new Set(data.map((book) => book.genre)),
+                ];
+                setGenres(uniqueGenres.slice(0, 8));
+            });
+    }, []);
 
     return (
         <header className="nav-header">
@@ -126,14 +162,11 @@ export default function Nav() {
             </div>
 
             <nav className="nav-bottom">
-                <Link to="/genre/Sci-Fi">Science Fiction</Link>
-                <Link to="/genre/Fantasy">Fantasy</Link>
-                <Link to="/genre/Romance">Romance</Link>
-                <Link to="/genre/Mystery">Mystery</Link>
-                <Link to="/genre/Thriller">Thriller</Link>
-                <Link to="/genre/Horror">Horror</Link>
-                <Link to="/genre/Historical">Historical</Link>
-                <Link to="/genre/Comedy">Comedy</Link>
+                {genres.map((genre) => (
+                    <Link key={genre} to={`/genre/${genre}`}>
+                        {formatGenre(genre)}
+                    </Link>
+                ))}
             </nav>
         </header>
     );

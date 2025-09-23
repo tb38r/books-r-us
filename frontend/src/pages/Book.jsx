@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import AddToCartButton from "../components/Book Page/AddToCart";
 import BasicRating from "../components/Book Page/RatingFeature";
 import { UserContext } from "../context/UserContext";
+import defaultCover from "../assets/defaultcover.jpg";
 
 export default function Book() {
     const { id } = useParams();
@@ -28,10 +29,10 @@ export default function Book() {
     const { user } = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/books/${id}`)
+        fetch(`http://localhost:8080/books`)
             .then((res) => res.json())
             .then((data) => {
-                const foundBook = data;
+                const foundBook = data.find((b) => b.id === parseInt(id));
                 setBook(foundBook);
             })
             .catch((err) => console.error("Error fetching book:", err));
@@ -66,7 +67,7 @@ export default function Book() {
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={4}>
                         <img
-                            src={book.cover}
+                            src={book.coverUrl || defaultCover}
                             alt={`Cover of ${book.title}`}
                             style={{
                                 width: "60%",
