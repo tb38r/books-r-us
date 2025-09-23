@@ -10,5 +10,5 @@ public class AddBookDto {
     private double price;
     private String author;
     private String olid;
-    private  String coverUrl;
+    private String coverUrl;
 }
