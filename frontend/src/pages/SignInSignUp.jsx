@@ -36,6 +36,7 @@ export default function SignInSignUp() {
                 const data = await res.json();
                 console.log(data);
                 setUser({ email: signInEmail });
+
                 navigate("/account");
             } else {
                 const errorData = await res.json();
@@ -49,6 +50,8 @@ export default function SignInSignUp() {
 
     const handleSignUp = async (e) => {
         e.preventDefault();
+
+
         const newUser = {
             firstName: firstName,
             lastName: lastName,
@@ -57,6 +60,8 @@ export default function SignInSignUp() {
         };
 
         try {
+
+
             const createRes = await fetch("http://localhost:8080/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
