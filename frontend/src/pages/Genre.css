@@ -1,11 +1,18 @@
 .genre-books-container{
     display: flex;
     flex-wrap: wrap;
-    margin-top: 36px;
+    margin: 36px 60px;
+    gap: 16px;
     justify-content: center;
 }
 
 .genre-page-container{
     text-align: center;
     margin-top: 36px;
+}
+
+.genre-books-container > single-book-container{
+    flex:1 1 180px;
+    max-width: 220px;
+    text-align: center;
 }
