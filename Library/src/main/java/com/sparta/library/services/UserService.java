@@ -1,6 +1,7 @@
 package com.sparta.library.services;
 
 import com.sparta.library.dto.RegisterUserDto;
+import com.sparta.library.dto.UserDto;
 import com.sparta.library.dto.ValidateUserDto;
 import com.sparta.library.exceptions.UserExistsException;
 import com.sparta.library.exceptions.UserLoginIncorrectException;
@@ -21,13 +22,16 @@ public class UserService {
         this.userRepository = userRepository;
     }
     @Transactional
-    public void createUser(RegisterUserDto registerUserDto) {
+    public UserDto createUser(RegisterUserDto registerUserDto) {
         if(userRepository.existsByEmail(registerUserDto.getEmail())) {
             throw new UserExistsException();
         }
         var user = userMapper.toUser(registerUserDto);
         user.setCreatedTime();
         userRepository.save(user);
+        var userDto = userMapper.toUserDto(user);
+        userDto.setId(user.getId());
+        return userDto;
     }
     public void validateUser(ValidateUserDto validateUserDto) {
         var user = userRepository.findByEmail(validateUserDto.getEmail()).orElse(null);

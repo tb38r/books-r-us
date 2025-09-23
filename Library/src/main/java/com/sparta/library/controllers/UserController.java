@@ -25,9 +25,9 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
-        userService.createUser(registerUserDto);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> createUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
+        var user = userService.createUser(registerUserDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto) {
