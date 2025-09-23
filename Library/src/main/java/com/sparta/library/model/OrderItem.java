@@ -27,9 +27,13 @@ public class OrderItem { //I think this is actually a basket
 
     @Column(name = "quantity", nullable = false)
     private int quantity;
+
     @Column(name = "price", nullable = false)
     private double price;
     //I think this is not needed
+
+
+
 
 
 

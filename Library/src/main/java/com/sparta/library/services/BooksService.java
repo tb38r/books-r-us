@@ -36,17 +36,20 @@ public class BooksService {
      }
      @Transactional
      public void createBook(AddBookDto dto) {
-        Author author = authorRepository.findById(dto.getAuthor().getId())
-                 .orElse(null);
-        if(author != null) {
-            var book = new Book(dto.getTitle(), author, dto.getPrice(), dto.getQuantity(), dto.getGenre());
-            bookRepository.save(book);
-        }
-        else {
-            var book = bookMapper.toBook(dto);
-            authorRepository.save(book.getAuthor());
-            bookRepository.save(book);
-        }
+        List<Book> matches = bookRepository.findByTitleContainingIgnoreCase(dto.getTitle());
+
+         if (matches.isEmpty()) {
+             Book book = new Book(
+                     dto.getTitle(),
+                     dto.getAuthor(),
+                     dto.getPrice(),
+                     dto.getQuantity(),
+                     dto.getGenre(),
+                     dto.getOlid(),
+                     dto.getCoverUrl()
+             );
+             bookRepository.save(book);
+         }
 
      }
 }

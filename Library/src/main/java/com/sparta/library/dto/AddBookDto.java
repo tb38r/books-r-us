@@ -8,5 +8,7 @@ public class AddBookDto {
     private int quantity;
     private String genre;
     private double price;
-    private AddAuthorDto author;
+    private String author;
+    private String olid;
+    private  String coverUrl;
 }

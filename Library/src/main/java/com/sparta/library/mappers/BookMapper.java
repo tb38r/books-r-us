@@ -7,7 +7,7 @@ import com.sparta.library.model.Book;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = {AuthorMapper.class})
+@Mapper(componentModel = "spring")
 public interface BookMapper {
     //@Mapping(source = "author", target = "author")
     BookDTO bookDTO(Book book);
