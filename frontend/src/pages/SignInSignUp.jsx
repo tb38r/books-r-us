@@ -35,7 +35,13 @@ export default function SignInSignUp() {
             if (res.ok) {
                 const data = await res.json();
                 console.log(data);
-                setUser({ email: signInEmail });
+                const userData = {
+                    name: data.firstName + " " + data.lastName,
+                    id: data.id,
+                    email: data.email,
+                };
+                setUser(userData);
+                localStorage.setItem("user", JSON.stringify(userData));
 
                 navigate("/account");
             } else {
@@ -49,8 +55,11 @@ export default function SignInSignUp() {
     };
 
     const handleSignUp = async (e) => {
+        if (signUpPassword !== signUpConfirm) {
+            setSignUpMessage("❌ Passwords do not match.");
+            return;
+        }
         e.preventDefault();
-
 
         const newUser = {
             firstName: firstName,
@@ -60,27 +69,29 @@ export default function SignInSignUp() {
         };
 
         try {
-
-
             const createRes = await fetch("http://localhost:8080/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newUser),
             });
 
-            //const createdUser = await createRes.json();
+            const createdUser = await createRes.json();
             console.log("response from backend ---> ", await createRes);
-            if (createRes.status === 200)
-                setUser({
-                    name: firstName + " " + lastName,
-                    id: 1,
-                    email: signUpEmail,
-                    passWord: "abc",
-                    wishList: [],
-                    orders: [],
-                    date: "12 / 08 / 2025",
-                });
-            navigate("/account");
+            if (createRes.ok) {
+                const userData = {
+                    name: createdUser.firstName + " " + createdUser.lastName,
+                    id: createdUser.id,
+                    email: createdUser.email,
+                };
+                setUser(userData);
+                localStorage.setItem("user", JSON.stringify(userData));
+                navigate("/account");
+            } else {
+                const errorData = await createRes.json();
+                setSignUpMessage(
+                    `❌ ${errorData.error || "Failed to create user"}`
+                );
+            }
         } catch (error) {
             console.error("Sign-up error:", error);
             setSignUpMessage("❌ Failed to create account.");

@@ -27,6 +27,8 @@ export default function Book() {
     const navigate = useNavigate();
     const { addToCart } = useCart();
     const { user } = useContext(UserContext);
+    const [quantity, setQuantity] = useState(1);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         fetch(`http://localhost:8080/books`)
@@ -56,10 +58,10 @@ export default function Book() {
 
             <Box
                 sx={{
-                    bgcolor: "#fff8e2ff",
+                    bgcolor: "#e0e0e0ff",
                     p: 4,
                     borderRadius: 2,
-                    boxShadow: 2,
+                    boxShadow: 8,
                     maxWidth: "900px",
                     margin: "0 auto",
                 }}
@@ -70,7 +72,7 @@ export default function Book() {
                             src={book.coverUrl || defaultCover}
                             alt={`Cover of ${book.title}`}
                             style={{
-                                width: "60%",
+                                width: "90%",
                                 borderRadius: "8px",
                                 objectFit: "cover",
                             }}
@@ -94,40 +96,87 @@ export default function Book() {
                 ({book.rating}-star rating)
               </Typography>
             </Box> */}
-
                         <Typography
                             variant="h5"
-                            color="success.main"
+                            color=""
                             fontWeight="bold"
                             gutterBottom
                         >
                             £{book.price.toFixed(2)}{" "}
                         </Typography>
-
                         <Box display="flex" gap={2} mb={3}>
                             <Button
                                 variant="contained"
                                 color="success"
-                                onClick={() => {
+                                onClick={async () => {
                                     if (!user) {
-                                        alert(
-                                            "ERROR: Please sign in to add items into your cart!"
+                                        setError(
+                                            "Please sign in to add items to your cart!"
                                         );
                                         return;
                                     }
-                                    addToCart(book);
+
+                                    try {
+                                        const res = await fetch(
+                                            "http://localhost:8080/orders",
+                                            {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type":
+                                                        "application/json",
+                                                },
+                                                body: JSON.stringify({
+                                                    userId: user.id,
+                                                    bookId: book.id,
+                                                    quantity: quantity,
+                                                }),
+                                            }
+                                        );
+
+                                        if (res.ok) {
+                                            setError(""); // clear error if successful
+                                            alert("Book added to cart!");
+                                        } else {
+                                            const err = await res.json();
+                                            setError(
+                                                err.error ||
+                                                    "Failed to add to cart"
+                                            );
+                                        }
+                                    } catch (error) {
+                                        console.error(
+                                            "Add to cart error:",
+                                            error
+                                        );
+                                        setError("Failed to add book to cart.");
+                                    }
+                                }}
+                                sx={{
+                                    backgroundColor: "grey.500",
+                                    textTransform: "capitalize",
+                                    fontSize: "0.8rem",
+                                    padding: "4px 10px",
+                                    borderRadius: "6px",
+                                    "&:hover": { backgroundColor: "grey.600" },
                                 }}
                             >
                                 Add to Cart
                             </Button>
-                            <Tooltip title="Save to Wishlist">
-                                <IconButton>
-                                    <BookmarkAddIcon />
-                                </IconButton>
-                            </Tooltip>
+                            {error && (
+                                <Typography
+                                    color="error"
+                                    variant="body2"
+                                    sx={{ mt: 1 }}
+                                >
+                                    {error}
+                                </Typography>
+                            )}
                         </Box>
-
-                        <QuantitySelector />
+                        <QuantitySelector
+                            min={1}
+                            max={99}
+                            onChange={(val) => setQuantity(val)}
+                        />
                     </Grid>
                 </Grid>
             </Box>
