@@ -50,7 +50,7 @@ public class OrderController {
     }
     @ExceptionHandler(QuantityExceededException.class)
     public ResponseEntity<Map<String, String>> handleQuantityExceededException() {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Quantity exceeded"));
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", "Quantity exceeded"));
     }
     @ExceptionHandler(OrderDoesNotExistException.class)
     public ResponseEntity<Map<String, String>> handleOrderDoesNotExist() {

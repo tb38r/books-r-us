@@ -45,6 +45,9 @@ public class OrderService {
         if(book == null) {
             throw new BookNotFoundException();
         }
+        if(book.getQuantity() < dto.getQuantity()) {
+            throw new QuantityExceededException();
+        }
         var orders = ordersRepository.findByUserAndBook(user, book);
         if(!orders.isEmpty()) {
             throw new OrderAlreadyExistsException();
@@ -88,6 +91,9 @@ public class OrderService {
         var book = bookRepository.findById(dto.getBookId()).orElse(null);
         if(book == null) {
             throw new BookNotFoundException();
+        }
+        if(book.getQuantity() < dto.getQuantity()) {
+            throw new QuantityExceededException();
         }
         var orders = ordersRepository.findByUserAndBook(user, book);
         if(orders.isEmpty()) {
