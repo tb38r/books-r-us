@@ -101,7 +101,7 @@ export default function Book() {
                             fontWeight="bold"
                             gutterBottom
                         >
-                            {book.price}
+                            £{book.price.toFixed(2)}{" "}
                         </Typography>
 
                         <Box display="flex" gap={2} mb={3}>
