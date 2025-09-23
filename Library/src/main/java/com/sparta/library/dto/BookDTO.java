@@ -10,5 +10,6 @@ public class BookDTO {
     private int quantity;
     private String genre;
     private double price;
-
+    private String olid;
+    private String coverUrl;
 }
