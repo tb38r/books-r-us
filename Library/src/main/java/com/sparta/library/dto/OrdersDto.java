@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 public class OrdersDto {
     private LocalDateTime timeOfPurchase;
-    private double totalPrice;
-    private Integer userId;
-    private List<BookDTO> books = new ArrayList<>();
+    private Integer orderId;
+    private BookDTO book;
+    private int quantityInBasket;
 }

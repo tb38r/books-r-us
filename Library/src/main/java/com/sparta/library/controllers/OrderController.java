@@ -3,10 +3,7 @@ package com.sparta.library.controllers;
 import com.sparta.library.dto.BookDTO;
 import com.sparta.library.dto.CreateOrderDto;
 import com.sparta.library.dto.OrdersDto;
-import com.sparta.library.exceptions.BookNotFoundException;
-import com.sparta.library.exceptions.OrderDoesNotExistException;
-import com.sparta.library.exceptions.QuantityExceededException;
-import com.sparta.library.exceptions.UserNotFoundException;
+import com.sparta.library.exceptions.*;
 import com.sparta.library.services.BooksService;
 import org.springframework.data.domain.jaxb.SpringDataJaxb;
 import org.springframework.http.HttpStatus;
@@ -30,13 +27,18 @@ public class OrderController {
     }
     @PostMapping
     public ResponseEntity<?> createOrder(@RequestBody CreateOrderDto createOrderDto) {
-        orderService.CreateOrder(createOrderDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("success", "order created"));
+        var dto = orderService.CreateOrder(createOrderDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
     @PutMapping
     public ResponseEntity<?> updateOrder(@RequestBody CreateOrderDto createOrderDto) {
         orderService.UpdateOrder(createOrderDto);
         return ResponseEntity.ok(Map.of("success", "order updated"));
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteOrder(@PathVariable Integer id) {
+        orderService.DeleteOrder(id);
+        return ResponseEntity.noContent().build();
     }
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleUserNotFound() {
@@ -53,5 +55,9 @@ public class OrderController {
     @ExceptionHandler(OrderDoesNotExistException.class)
     public ResponseEntity<Map<String, String>> handleOrderDoesNotExist() {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Order doesn't exist"));
+    }
+    @ExceptionHandler(OrderAlreadyExistsException.class)
+    public ResponseEntity<Map<String, String>> handleOrderAlreadyExists() {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Order already exists, use put mapping"));
     }
 }
