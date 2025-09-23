@@ -2,6 +2,7 @@ package com.sparta.library.controllers;
 
 import com.sparta.library.dto.BookDTO;
 import com.sparta.library.dto.CreateOrderDto;
+import com.sparta.library.dto.GetOrderDto;
 import com.sparta.library.dto.OrdersDto;
 import com.sparta.library.exceptions.*;
 import com.sparta.library.services.BooksService;
@@ -22,7 +23,7 @@ public class OrderController {
         this.orderService = orderService;
     }
     @GetMapping("/{userId}/{purchased}")
-    public ResponseEntity<List<BookDTO>> getOrderByUserId(@PathVariable Integer userId, @PathVariable boolean purchased) {
+    public ResponseEntity<List<GetOrderDto>> getOrderByUserId(@PathVariable Integer userId, @PathVariable boolean purchased) {
         return ResponseEntity.ok(orderService.getOrdersByUserId(userId, purchased));
     }
     @PutMapping("/{userId}")

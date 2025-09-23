@@ -2,6 +2,7 @@ package com.sparta.library.services;
 
 import com.sparta.library.dto.BookDTO;
 import com.sparta.library.dto.CreateOrderDto;
+import com.sparta.library.dto.GetOrderDto;
 import com.sparta.library.dto.OrdersDto;
 import com.sparta.library.exceptions.*;
 import com.sparta.library.mappers.BookMapper;
@@ -64,14 +65,15 @@ public class OrderService {
         return orderdto;
     }
     @Transactional
-    public List<BookDTO> getOrdersByUserId(Integer id, boolean purchased) {
+    public List<GetOrderDto> getOrdersByUserId(Integer id, boolean purchased) {
         var user = userRepository.findById(id).orElse(null);
-        List<BookDTO> books = new ArrayList<>();
+        List<GetOrderDto> books = new ArrayList<>();
         if(user == null) {
             throw new UserNotFoundException();
         }
         var orders = ordersRepository.findByUser(user);
         for(Order order : orders) {
+            var dto = new GetOrderDto();
             if(order.getPurchased() != purchased) continue;
             var book = bookRepository.findById(order.getBook().getId()).orElse(null);
             if(book == null) {
@@ -79,7 +81,9 @@ public class OrderService {
             }
             var bookDto = bookMapper.bookDTO(book);
             bookDto.setQuantity(order.getQuantity());
-            books.add(bookDto);
+            dto.setBook(bookDto);
+            dto.setId(order.getId());
+            books.add(dto);
         }
         return books;
     }
