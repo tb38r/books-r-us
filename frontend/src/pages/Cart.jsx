@@ -17,9 +17,10 @@ export default function Cart() {
     const { user } = useContext(UserContext);
     const [cart, setCart] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        if (!user) return;
+        if (!user || !user.id) return;
 
         const fetchCart = async () => {
             try {
@@ -39,13 +40,15 @@ export default function Cart() {
     }, [user]);
 
     const updateQuantity = async (item, newQty) => {
+        if (newQty < 1) return;
+        setErrors((prev) => ({ ...prev, [item.id]: "" }));
         try {
             const res = await fetch("http://localhost:8080/orders", {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     userId: user.id,
-                    bookId: item.id,
+                    bookId: item.book.id,
                     quantity: newQty,
                 }),
             });
@@ -53,12 +56,17 @@ export default function Cart() {
             if (res.ok) {
                 setCart((prev) =>
                     prev.map((i) =>
-                        i.id === item.id ? { ...i, quantity: newQty } : i
+                        i.id === item.id
+                            ? { ...i, book: { ...i.book, quantity: newQty } }
+                            : i
                     )
                 );
             } else {
-                const err = await res.json();
-                alert(err.error || "Failed to update quantity");
+                const errData = await res.json();
+                setErrors((prev) => ({
+                    ...prev,
+                    [item.id]: errData.error || "Failed to update quantity",
+                }));
             }
         } catch (err) {
             console.error("Update quantity error:", err);
@@ -73,6 +81,7 @@ export default function Cart() {
 
             if (res.ok) {
                 setCart((prev) => prev.filter((i) => i.id !== item.id));
+                console.log("item removed");
             } else {
                 const err = await res.json();
                 alert(err.error || "Failed to remove item");
@@ -103,12 +112,26 @@ export default function Cart() {
     if (!user)
         return <Typography>Please sign in to view your cart.</Typography>;
     if (loading) return <Typography>Loading cart...</Typography>;
-    if (cart.length === 0) return <Typography>Your cart is empty.</Typography>;
+    if (cart.length === 0)
+        return (
+            <Box
+                sx={{
+                    height: "70vh", // take most of the screen
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <Typography variant="h5" color="text.secondary">
+                    Your cart is empty.
+                </Typography>
+            </Box>
+        );
 
     return (
         <Box p={4}>
             <Typography variant="h4" gutterBottom>
-                Your Cart, {user.firstName}
+                Your Cart, {user.name}
             </Typography>
 
             <List>
@@ -122,22 +145,27 @@ export default function Cart() {
                             flexWrap: "wrap",
                             borderBottom: "1px solid #ddd",
                             py: 2,
+                            gap: 6,
                         }}
                     >
                         <Book
-                            cover={item.coverUrl}
-                            title={item.title}
-                            author={item.author}
-                            id={item.id}
+                            cover={item.book.coverUrl}
+                            title={item.book.title}
+                            author={item.book.author}
+                            id={item.book.id}
                         />
+
                         <Box
                             display="flex"
                             flexDirection="column"
                             alignItems="flex-start"
                         >
                             <Typography>
-                                £{item.price.toFixed(2)} each
+                                £{item.book.price.toFixed(2)} each
                             </Typography>
+
+                            {/* quantity controls */}
+
                             <Box
                                 display="flex"
                                 alignItems="center"
@@ -149,22 +177,44 @@ export default function Cart() {
                                     onClick={() =>
                                         updateQuantity(
                                             item,
-                                            Math.max(item.quantity - 1, 1)
+                                            Math.max(item.book.quantity - 1, 1)
                                         )
                                     }
                                 >
                                     <RemoveIcon fontSize="small" />
                                 </IconButton>
-                                <Typography>{item.quantity}</Typography>
+                                <Typography>{item.book.quantity}</Typography>
                                 <IconButton
                                     size="small"
                                     onClick={() =>
-                                        updateQuantity(item, item.quantity + 1)
+                                        updateQuantity(
+                                            item,
+                                            item.book.quantity + 1
+                                        )
                                     }
                                 >
                                     <AddIcon fontSize="small" />
                                 </IconButton>
                             </Box>
+                            {errors[item.id] && (
+                                <Box
+                                    position="absolute"
+                                    top={50}
+                                    left="75%"
+                                    sx={{
+                                        bgcolor: "error.main",
+                                        color: "white",
+                                        px: 1.5,
+                                        py: 0.5,
+                                        borderRadius: 1,
+                                        fontSize: "0.8rem",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    {errors[item.id]}
+                                </Box>
+                            )}
+                            {/* remove */}
                             <Button
                                 variant="outlined"
                                 color="error"

@@ -8,6 +8,7 @@ import {
     CardActionArea,
 } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
+import defaultCover from "../assets/defaultcover.jpg";
 
 export default function SearchResults() {
     // const [query, setQuery] = useState("");
@@ -35,54 +36,60 @@ export default function SearchResults() {
     }, [searchId]);
 
     return (
-        <div className="flex flex-col items-center p-6 gap-6">
-            <Typography variant="h5" className="font-semibold">
+        <div className="flex flex-col items-center justify-center min-h-screen p-6 gap-6">
+            <Typography variant="h5" className="font-semibold text-center">
                 Results for "{searchId}"
             </Typography>
 
-            <div className="grid gap-4 w-full max-w-4xl sm:grid-cols-2 lg:grid-cols-3">
-                {results.length > 0 ? (
-                    results.map((book) => (
+            {results.length > 0 ? (
+                <div className="grid gap-6 w-full max-w-5xl sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
+                    {results.map((book) => (
                         <Card
                             key={book.id || book.bookid}
-                            className="shadow-md rounded-2xl"
+                            className="shadow-md rounded-2xl flex flex-col items-center"
                         >
                             <CardActionArea
                                 onClick={() => navigate(`/book/${book.id}`)}
                             >
-                                <CardContent>
-                                    <Grid item xs={12} md={4}>
-                                        <img
-                                            src={book.coverUrl}
-                                            alt={`Cover of ${book.title}`}
-                                            style={{
-                                                width: "10%",
-                                                borderRadius: "8px",
-                                                objectFit: "cover",
-                                            }}
-                                        />
-                                    </Grid>
+                                <CardContent className="flex flex-col items-center gap-2">
+                                    <img
+                                        src={book.coverUrl || defaultCover}
+                                        alt={`Cover of ${book.title}`}
+                                        style={{
+                                            width: "120px",
+                                            height: "180px",
+                                            borderRadius: "8px",
+                                            objectFit: "cover",
+                                        }}
+                                    />
                                     <Typography
                                         variant="h6"
-                                        className="font-bold"
+                                        className="font-bold text-center"
                                     >
                                         {book.title}
                                     </Typography>
-                                    <Typography color="textSecondary">
+                                    <Typography
+                                        color="textSecondary"
+                                        className="text-center"
+                                    >
                                         {book.author}
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>
                         </Card>
-                    ))
-                ) : (
-                    <Typography variant="body1" color="textSecondary">
-                        {searchId
-                            ? "No results found."
-                            : "Start typing to search for books."}
-                    </Typography>
-                )}
-            </div>
+                    ))}
+                </div>
+            ) : (
+                <Typography
+                    variant="body1"
+                    color="textSecondary"
+                    className="text-center"
+                >
+                    {searchId
+                        ? "No results found."
+                        : "Start typing to search for books."}
+                </Typography>
+            )}
         </div>
     );
 }

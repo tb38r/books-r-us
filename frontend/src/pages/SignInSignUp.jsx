@@ -35,7 +35,13 @@ export default function SignInSignUp() {
             if (res.ok) {
                 const data = await res.json();
                 console.log(data);
-                setUser({ email: signInEmail });
+                const userData = {
+                    name: data.firstName + " " + data.lastName,
+                    id: data.id,
+                    email: data.email,
+                };
+                setUser(userData);
+                localStorage.setItem("user", JSON.stringify(userData));
 
                 navigate("/account");
             } else {
@@ -49,6 +55,10 @@ export default function SignInSignUp() {
     };
 
     const handleSignUp = async (e) => {
+        if (signUpPassword !== signUpConfirm) {
+            setSignUpMessage("❌ Passwords do not match.");
+            return;
+        }
         e.preventDefault();
 
         const newUser = {
@@ -68,11 +78,13 @@ export default function SignInSignUp() {
             const createdUser = await createRes.json();
             console.log("response from backend ---> ", await createRes);
             if (createRes.ok) {
-                setUser({
+                const userData = {
                     name: createdUser.firstName + " " + createdUser.lastName,
                     id: createdUser.id,
                     email: createdUser.email,
-                });
+                };
+                setUser(userData);
+                localStorage.setItem("user", JSON.stringify(userData));
                 navigate("/account");
             } else {
                 const errorData = await createRes.json();

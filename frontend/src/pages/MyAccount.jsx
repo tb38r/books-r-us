@@ -60,6 +60,7 @@ export default function MyAccount() {
 
     const handleLogout = () => {
         setUser(null);
+        localStorage.removeItem("user");
         navigate("/signinsignup");
     };
 
@@ -72,7 +73,7 @@ export default function MyAccount() {
                 <aside className="account-left">
                     <div className="avatar-section">
                         <img
-                            src={profile || "../assets/defaultprofile.webp"}
+                            src={profile}
                             alt="Profile"
                             className="profile-pic"
                         />
@@ -99,9 +100,7 @@ export default function MyAccount() {
 
                     <div className="account-info under-photo">
                         <p>
-                            <span className="info-label">
-                                Account Holder Name:
-                            </span>
+                            <span className="info-label">Name:</span>
                             <span className="info-value">{user.name}</span>
                         </p>
                         <p>

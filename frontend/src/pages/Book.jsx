@@ -28,6 +28,7 @@ export default function Book() {
     const { addToCart } = useCart();
     const { user } = useContext(UserContext);
     const [quantity, setQuantity] = useState(1);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         fetch(`http://localhost:8080/books`)
@@ -79,15 +80,10 @@ export default function Book() {
                     </Grid>
 
                     <Grid item xs={12} md={8}>
-                        <Typography 
-                        variant="h4" 
-                        fontWeight="bold" 
-                        gutterBottom>
+                        <Typography variant="h4" fontWeight="bold" gutterBottom>
                             {book.title}
                         </Typography>
-                        <Typography 
-                        variant="h6" 
-                        gutterBottom>
+                        <Typography variant="h6" gutterBottom>
                             by{" "}
                             <span style={{ fontWeight: "600" }}>
                                 {book.author}
@@ -111,13 +107,11 @@ export default function Book() {
                         <Box display="flex" gap={2} mb={3}>
                             <Button
                                 variant="contained"
-
                                 color="success"
                                 onClick={async () => {
-
                                     if (!user) {
-                                        alert(
-                                            "ERROR: Please sign in to add items into your cart!"
+                                        setError(
+                                            "Please sign in to add items to your cart!"
                                         );
                                         return;
                                     }
@@ -140,14 +134,13 @@ export default function Book() {
                                         );
 
                                         if (res.ok) {
+                                            setError(""); // clear error if successful
                                             alert("Book added to cart!");
                                         } else {
                                             const err = await res.json();
-                                            alert(
-                                                `Error: ${
-                                                    err.error ||
+                                            setError(
+                                                err.error ||
                                                     "Failed to add to cart"
-                                                }`
                                             );
                                         }
                                     } catch (error) {
@@ -155,28 +148,35 @@ export default function Book() {
                                             "Add to cart error:",
                                             error
                                         );
-                                        alert("Failed to add book to cart.");
+                                        setError("Failed to add book to cart.");
                                     }
                                 }}
-                                  sx={{
-                                    backgroundColor: "grey.500", 
+                                sx={{
+                                    backgroundColor: "grey.500",
                                     textTransform: "capitalize",
                                     fontSize: "0.8rem",
                                     padding: "4px 10px",
                                     borderRadius: "6px",
-                                    "&:hover": {
-                                         backgroundColor: "grey.600", },
-                                    }}
+                                    "&:hover": { backgroundColor: "grey.600" },
+                                }}
                             >
                                 Add to Cart
                             </Button>
-
+                            {error && (
+                                <Typography
+                                    color="error"
+                                    variant="body2"
+                                    sx={{ mt: 1 }}
+                                >
+                                    {error}
+                                </Typography>
+                            )}
                         </Box>
                         <QuantitySelector
-                            quantity={quantity}
-                            setQuantity={setQuantity}
+                            min={1}
+                            max={99}
+                            onChange={(val) => setQuantity(val)}
                         />
-
                     </Grid>
                 </Grid>
             </Box>
