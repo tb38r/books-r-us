@@ -77,7 +77,7 @@ export default function Nav() {
                             onChange={handleChange}
                             className="w-full max-w-lg"
                         />
-                        <IconButton type="submit" color="primary">
+                        <IconButton type="submit" className="search">
                             <SearchIcon />
                         </IconButton>
                     </form>
@@ -98,7 +98,7 @@ export default function Nav() {
                             className="sign-in-button"
                             sx={{
                                 "&:hover": {
-                                    backgroundColor: "rgba(234, 88, 12, 0.1)",
+                                    backgroundColor: "rgba(255, 255, 255, 1)",
                                     border: "1px solid rgb(234 88 12)",
                                 },
                                 color: "rgb(234 88 12)",
@@ -120,11 +120,11 @@ export default function Nav() {
                             className="sign-in-button"
                             sx={{
                                 "&:hover": {
-                                    backgroundColor: "rgba(234, 88, 12, 0.1)",
+                                    backgroundColor: "rgba(255, 255, 255, 1)",
                                     border: "1px solid rgb(234 88 12)",
                                 },
-                                color: "rgb(234 88 12)",
-                                border: "1px solid rgb(234 88 12)",
+                                color: "primary",
+                                border: "1px solid ",
                                 textTransform: "none",
                                 borderRadius: "8px",
                                 fontWeight: 500,
@@ -142,11 +142,15 @@ export default function Nav() {
                         variant="outlined"
                         className="cart-button"
                         sx={{
+                            "&:hover": {
+                                    backgroundColor: "rgba(255, 255, 255, 1)",
+                                    border: "1px solid rgb(234 88 12)",
+                                },
                             display: "inline-flex",
                             alignItems: "center",
                             gap: "6px",
-                            border: "1px solid rgb(234 88 12)",
-                            color: "rgb(234 88 12)",
+                            border: "1px solid ",
+                            color: "",
                             borderRadius: "8px",
                             textTransform: "none",
                             fontWeight: 500,

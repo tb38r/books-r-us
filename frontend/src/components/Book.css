@@ -17,5 +17,16 @@
 
 .book-cover {
     width: 150px;
-    height: 220px;    
+    height: 220px; 
+       
+}
+
+.book-cover img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px; /* optional: rounded corners */
+}
+
+.book-cover img:hover {
+  transform: scale(1.05); /* slight zoom effect */
+  box-shadow: 0 0 20px rgba(56, 38, 4, 0.6); /* glowing orange */
 }

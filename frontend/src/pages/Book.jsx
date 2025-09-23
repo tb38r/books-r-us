@@ -56,10 +56,10 @@ export default function Book() {
 
             <Box
                 sx={{
-                    bgcolor: "#fff8e2ff",
+                    bgcolor: "#e0e0e0ff",
                     p: 4,
                     borderRadius: 2,
-                    boxShadow: 2,
+                    boxShadow: 8,
                     maxWidth: "900px",
                     margin: "0 auto",
                 }}
@@ -70,7 +70,7 @@ export default function Book() {
                             src={book.coverUrl || defaultCover}
                             alt={`Cover of ${book.title}`}
                             style={{
-                                width: "60%",
+                                width: "90%",
                                 borderRadius: "8px",
                                 objectFit: "cover",
                             }}
@@ -78,10 +78,15 @@ export default function Book() {
                     </Grid>
 
                     <Grid item xs={12} md={8}>
-                        <Typography variant="h4" fontWeight="bold" gutterBottom>
+                        <Typography 
+                        variant="h4" 
+                        fontWeight="bold" 
+                        gutterBottom>
                             {book.title}
                         </Typography>
-                        <Typography variant="h6" gutterBottom>
+                        <Typography 
+                        variant="h6" 
+                        gutterBottom>
                             by{" "}
                             <span style={{ fontWeight: "600" }}>
                                 {book.author}
@@ -97,7 +102,7 @@ export default function Book() {
 
                         <Typography
                             variant="h5"
-                            color="success.main"
+                            color=""
                             fontWeight="bold"
                             gutterBottom
                         >
@@ -107,7 +112,6 @@ export default function Book() {
                         <Box display="flex" gap={2} mb={3}>
                             <Button
                                 variant="contained"
-                                color="success"
                                 onClick={() => {
                                     if (!user) {
                                         alert(
@@ -117,17 +121,22 @@ export default function Book() {
                                     }
                                     addToCart(book);
                                 }}
+                                  sx={{
+                                    backgroundColor: "grey.500", 
+                                    textTransform: "capitalize",
+                                    fontSize: "0.8rem",
+                                    padding: "4px 10px",
+                                    borderRadius: "6px",
+                                    "&:hover": {
+                                         backgroundColor: "grey.600", },
+                                    }}
                             >
                                 Add to Cart
                             </Button>
-                            <Tooltip title="Save to Wishlist">
-                                <IconButton>
-                                    <BookmarkAddIcon />
-                                </IconButton>
-                            </Tooltip>
+                            <QuantitySelector />
                         </Box>
 
-                        <QuantitySelector />
+                        
                     </Grid>
                 </Grid>
             </Box>

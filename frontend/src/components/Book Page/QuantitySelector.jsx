@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, IconButton, TextField } from "@mui/material";
+import { Box, IconButton, TextField, Typography } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
 
 export default function QuantitySelector({ min = 1, max = 99, onChange }) {
@@ -21,14 +21,6 @@ export default function QuantitySelector({ min = 1, max = 99, onChange }) {
     }
   };
 
-  const handleInputChange = (e) => {
-    let value = parseInt(e.target.value, 10);
-    if (isNaN(value)) value = min;
-    if (value < min) value = min;
-    if (value > max) value = max;
-    setQuantity(value);
-    onChange?.(value);
-  };
 
   return (
     <Box display="flex" alignItems="center" gap={1}>
@@ -37,23 +29,29 @@ export default function QuantitySelector({ min = 1, max = 99, onChange }) {
         disabled={quantity <= min}
         size="small"
       >
-        <Remove />
+        <Remove fontSize="small"  />
       </IconButton>
 
-      <TextField
+      {/* <TextField
         value={quantity}
-        onChange={handleInputChange}
+        // onChange={handleInputChange}
         type="number"
         size="small"
         inputProps={{ min, max, style: { textAlign: "center", width: "50px" } }}
-      />
+      /> */}
 
+          <Typography 
+          variant="body2" 
+          sx={{ minWidth: "20px", textAlign: "center" }}>
+        {quantity}
+      </Typography>
+      
       <IconButton
         onClick={handleIncrease}
         disabled={quantity >= max}
         size="small"
       >
-        <Add />
+        <Add fontSize="small" />
       </IconButton>
     </Box>
   );

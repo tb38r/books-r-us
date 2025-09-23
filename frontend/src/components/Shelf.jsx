@@ -41,6 +41,7 @@ export default function Shelf({ genre, books, urlGenre }) {
                             title={book.title}
                             author={book.author}
                             id={book.id}
+    
                         />
                     );
                 })}
