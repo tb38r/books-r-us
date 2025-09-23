@@ -23,16 +23,24 @@ export default function SignInSignUp() {
     const handleSignIn = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch("http://localhost:8080/users");
-            const users = await res.json();
-            const found = users.find(
-                (u) => u.email === signInEmail && u.password === signInPassword
-            );
-            if (found) {
-                setUser(found);
+            const res = await fetch("http://localhost:8080/users/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: signInEmail,
+                    password: signInPassword,
+                }),
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                console.log(data);
+                setUser({ email: signInEmail });
+
                 navigate("/account");
             } else {
-                setSignInMessage("❌ Wrong email or password.");
+                const errorData = await res.json();
+                setSignInMessage(`❌ ${errorData.error}`);
             }
         } catch (error) {
             console.error("Sign-in error:", error);
@@ -42,12 +50,8 @@ export default function SignInSignUp() {
 
     const handleSignUp = async (e) => {
         e.preventDefault();
-        // if (signUpPassword !== signUpConfirm) {
-        //     setSignUpMessage("❌ Passwords do not match.");
-        //     return;
-        // }
 
-        // const fullName = `${firstName.trim()} ${lastName.trim()}`;
+
         const newUser = {
             firstName: firstName,
             lastName: lastName,
@@ -56,14 +60,7 @@ export default function SignInSignUp() {
         };
 
         try {
-            // const res = await fetch("http://localhost:8080/users");
-            // const users = await res.json();
-            //  const emailExists = users.some((u) => u.email === signUpEmail);
 
-            // if (emailExists) {
-            //     setSignUpMessage("❌ Email already exists. Try signing in.");
-            //     return;
-            // }
 
             const createRes = await fetch("http://localhost:8080/users", {
                 method: "POST",
