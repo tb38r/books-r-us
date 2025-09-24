@@ -29,6 +29,7 @@ export default function Book() {
     const { user } = useContext(UserContext);
     const [quantity, setQuantity] = useState(1);
     const [error, setError] = useState("");
+    const [successMsg, setSuccessMsg] = useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:8080/books`)
@@ -39,6 +40,73 @@ export default function Book() {
             })
             .catch((err) => console.error("Error fetching book:", err));
     }, [id]);
+
+    const addToCartHandler = async () => {
+        if (!user) {
+            setError("Please sign in to add items to your cart!");
+            return;
+        }
+
+        try {
+            const resCheck = await fetch(
+                `http://localhost:8080/orders/${user.id}/false`
+            );
+            const cartData = await resCheck.json();
+
+            const existingItem = cartData.find((i) => i.book.id === book.id);
+            const inCartQty = existingItem ? existingItem.book.quantity : 0;
+
+            const availableStock = book.quantity - inCartQty;
+
+            if (availableStock <= 0) {
+                setError("You already have all available copies in your cart.");
+                return;
+            }
+
+            const qtyToAdd = Math.min(quantity, availableStock);
+
+            if (existingItem) {
+                const resUpdate = await fetch("http://localhost:8080/orders", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        userId: user.id,
+                        bookId: book.id,
+                        quantity: inCartQty + qtyToAdd,
+                    }),
+                });
+
+                if (!resUpdate.ok) {
+                    const errData = await resUpdate.json();
+                    setError(errData.error || "Failed to update quantity");
+                    return;
+                }
+            } else {
+                const resPost = await fetch("http://localhost:8080/orders", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        userId: user.id,
+                        bookId: book.id,
+                        quantity: qtyToAdd,
+                    }),
+                });
+
+                if (!resPost.ok) {
+                    const errData = await resPost.json();
+                    setError(errData.error || "Failed to add to cart");
+                    return;
+                }
+            }
+
+            setError("");
+            setSuccessMsg(true);
+            setTimeout(() => setSuccessMsg(false), 2000);
+        } catch (err) {
+            console.error("Add to cart error:", err);
+            setError("Failed to add book to cart.");
+        }
+    };
 
     if (!book) {
         return <Typography>Loading book details...</Typography>;
@@ -89,13 +157,7 @@ export default function Book() {
                                 {book.author}
                             </span>
                         </Typography>
-                        <BasicRating />
-                        {/* <Box display="flex" alignItems="center" mb={2}>
-              <Rating value={book.rating} readOnly />
-              <Typography variant="body2" sx={{ ml: 1 }}>
-                ({book.rating}-star rating)
-              </Typography>
-            </Box> */}
+
                         <Typography
                             variant="h5"
                             color=""
@@ -104,79 +166,82 @@ export default function Book() {
                         >
                             £{book.price.toFixed(2)}{" "}
                         </Typography>
-                        <Box display="flex" gap={2} mb={3}>
-                            <Button
-                                variant="contained"
-                                color="success"
-                                onClick={async () => {
-                                    if (!user) {
-                                        setError(
-                                            "Please sign in to add items to your cart!"
-                                        );
-                                        return;
-                                    }
-
-                                    try {
-                                        const res = await fetch(
-                                            "http://localhost:8080/orders",
-                                            {
-                                                method: "POST",
-                                                headers: {
-                                                    "Content-Type":
-                                                        "application/json",
-                                                },
-                                                body: JSON.stringify({
-                                                    userId: user.id,
-                                                    bookId: book.id,
-                                                    quantity: quantity,
-                                                }),
-                                            }
-                                        );
-
-                                        if (res.ok) {
-                                            setError(""); // clear error if successful
-                                            alert("Book added to cart!");
-                                        } else {
-                                            const err = await res.json();
-                                            setError(
-                                                err.error ||
-                                                    "Failed to add to cart"
-                                            );
+                        <Box
+                            display="flex"
+                            flexDirection="column"
+                            gap={1}
+                            mb={3}
+                        >
+                            {book.quantity > 0 ? (
+                                <>
+                                    <Typography
+                                        color={
+                                            book.quantity < 10
+                                                ? "warning.main"
+                                                : "success.main"
                                         }
-                                    } catch (error) {
-                                        console.error(
-                                            "Add to cart error:",
-                                            error
-                                        );
-                                        setError("Failed to add book to cart.");
-                                    }
-                                }}
-                                sx={{
-                                    backgroundColor: "grey.500",
-                                    textTransform: "capitalize",
-                                    fontSize: "0.8rem",
-                                    padding: "4px 10px",
-                                    borderRadius: "6px",
-                                    "&:hover": { backgroundColor: "grey.600" },
-                                }}
-                            >
-                                Add to Cart
-                            </Button>
-                            {error && (
+                                        variant="body2"
+                                        fontWeight="500"
+                                    >
+                                        {book.quantity < 10
+                                            ? book.quantity === 1
+                                                ? "Only 1 left!"
+                                                : `Only ${book.quantity} left!`
+                                            : `In Stock: ${book.quantity} copies`}
+                                    </Typography>
+
+                                    <QuantitySelector
+                                        min={1}
+                                        max={Math.min(book.quantity, 99)}
+                                        onChange={(val) => setQuantity(val)}
+                                    />
+
+                                    <Button
+                                        variant="contained"
+                                        color="success"
+                                        onClick={addToCartHandler}
+                                        sx={{
+                                            backgroundColor: "grey.500",
+                                            textTransform: "capitalize",
+                                            fontSize: "0.8rem",
+                                            padding: "4px 10px",
+                                            borderRadius: "6px",
+                                            "&:hover": {
+                                                backgroundColor: "grey.600",
+                                            },
+                                        }}
+                                    >
+                                        Add to Cart
+                                    </Button>
+
+                                    {error && (
+                                        <Typography
+                                            color="error"
+                                            variant="body2"
+                                        >
+                                            {error}
+                                        </Typography>
+                                    )}
+                                </>
+                            ) : (
                                 <Typography
                                     color="error"
-                                    variant="body2"
-                                    sx={{ mt: 1 }}
+                                    fontWeight="bold"
+                                    variant="h6"
                                 >
-                                    {error}
+                                    Sold Out
                                 </Typography>
                             )}
                         </Box>
-                        <QuantitySelector
-                            min={1}
-                            max={99}
-                            onChange={(val) => setQuantity(val)}
-                        />
+                        {successMsg && (
+                            <Typography
+                                color="success"
+                                variant="body2"
+                                sx={{ mt: 1, fontWeight: 500 }}
+                            >
+                                Added to cart!
+                            </Typography>
+                        )}
                     </Grid>
                 </Grid>
             </Box>
