@@ -66,4 +66,8 @@ public class OrderController {
     public ResponseEntity<Map<String, String>> handleOrderAlreadyExists() {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Order already exists, use put mapping"));
     }
+    @ExceptionHandler(BookOutOfStockException.class)
+    public ResponseEntity<Map<String, String>> handleBookOutOfStock() {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", "Book out of stock"));
+    }
 }

@@ -46,6 +46,9 @@ public class OrderService {
         if(book == null) {
             throw new BookNotFoundException();
         }
+        if(book.getQuantity() == 0) {
+            throw new BookOutOfStockException();
+        }
         if(book.getQuantity() < dto.getQuantity()) {
             throw new QuantityExceededException();
         }
