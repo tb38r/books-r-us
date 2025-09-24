@@ -3,6 +3,10 @@ import { useEffect, useState, useContext } from "react";
 import Shelf from "../components/Shelf";
 import { UserContext } from "../context/UserContext";
 import "../pages/Home.css";
+import Banner from "../components/Banner";
+import Carousel from "../components/Carousel";
+import AuthorBanner from "../components/images/AuthorBanner.png"
+
 
 export default function Home() {
     const [books, setBooks] = useState([]);
@@ -46,18 +50,28 @@ export default function Home() {
     }
 
     return (
-        <main>
-            <h2 className="page-title">
-                Welcome to Books-R-Us{user?.name ? `, ${user.name}` : ""}{" "}
-            </h2>
-            {genres.map((genre) => (
-                <Shelf
-                    key={genre}
-                    genre={formatGenre(genre)}
-                    urlGenre={genre}
-                    books={books.filter((b) => b.genre === genre).slice(0, 5)}
-                />
-            ))}
-        </main>
+<main>
+  <h2 className="page-title">Welcome to Books-R-Us</h2>
+        <Carousel books={books.slice(0, 10)} />
+  {genres.map((genre, index) => (
+    <React.Fragment key={genre}>
+      <Shelf
+        genre={formatGenre(genre)}
+        urlGenre={genre}
+        books={books.filter((b) => b.genre === genre).slice(0, 5)}
+      />
+
+      {(index + 1) % 2 === 0 && (
+    <div className="banner">
+      <a >
+        <img src={AuthorBanner} alt="Banner" className="banner-img" />
+      </a>
+    </div>
+      )}
+
+      
+    </React.Fragment>
+  ))}
+</main>
     );
 }

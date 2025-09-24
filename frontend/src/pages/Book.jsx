@@ -19,6 +19,7 @@ import AddToCartButton from "../components/Book Page/AddToCart";
 import BasicRating from "../components/Book Page/RatingFeature";
 import { UserContext } from "../context/UserContext";
 import defaultCover from "../assets/defaultcover.jpg";
+import "./Book.css";
 
 export default function Book() {
     const { id } = useParams();
@@ -126,12 +127,14 @@ export default function Book() {
 
             <Box
                 sx={{
-                    bgcolor: "#e0e0e0ff",
-                    p: 4,
-                    borderRadius: 2,
-                    boxShadow: 8,
-                    maxWidth: "900px",
-                    margin: "0 auto",
+    bgcolor: "#e0e0e0ff",
+    p: 4,
+    borderRadius: 2,
+    boxShadow: 8,
+    width: "900px",         
+    height: "600px",        
+    margin: "0 auto",
+    overflow: "auto",
                 }}
             >
                 <Grid container spacing={4}>
@@ -148,10 +151,10 @@ export default function Book() {
                     </Grid>
 
                     <Grid item xs={12} md={8}>
-                        <Typography variant="h4" fontWeight="bold" gutterBottom>
+                        <Typography className="book-title" variant="h4" fontWeight="bold" gutterBottom>
                             {book.title}
                         </Typography>
-                        <Typography variant="h6" gutterBottom>
+                        <Typography className="book-author" variant="h6" gutterBottom>
                             by{" "}
                             <span style={{ fontWeight: "600" }}>
                                 {book.author}

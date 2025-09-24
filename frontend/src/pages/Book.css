@@ -1,0 +1,25 @@
+.book-title {
+  color: #000000ff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: Capitalise;
+  letter-spacing: 1px;
+}
+.book-author{
+  color: #4821a3ff;
+  font-size: 1.5rem;
+  font-weight: 100;
+  text-transform: Capitalise;
+}
+
+.book-cover{
+    
+}
+
+/* .book-title {
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+} */
