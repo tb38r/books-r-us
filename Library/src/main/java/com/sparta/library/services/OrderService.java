@@ -49,8 +49,9 @@ public class OrderService {
         if(book.getQuantity() < dto.getQuantity()) {
             throw new QuantityExceededException();
         }
-        var orders = ordersRepository.findByUserAndBook(user, book);
-        if(!orders.isEmpty()) {
+        //var orders = ordersRepository.findByUserAndBook(user, book);
+        var o = ordersRepository.findByUserAndBookAndNotPurchased(user, book).orElse(null);
+        if(o != null) {
             throw new OrderAlreadyExistsException();
         }
         order.setQuantity(dto.getQuantity());
@@ -126,6 +127,15 @@ public class OrderService {
         }
         for(var order : orders) {
             if(order.getPurchased()) continue;
+            var book = bookRepository.findById(order.getBook().getId()).orElse(null);
+            if(book == null) {
+                throw new BookNotFoundException();
+            }
+            else {
+                var quantity = book.getQuantity();
+                book.setQuantity(quantity - order.getQuantity());
+                bookRepository.save(book);
+            }
             order.setPurchased(true);
             ordersRepository.save(order);
         }
