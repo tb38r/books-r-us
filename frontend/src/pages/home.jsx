@@ -1,11 +1,13 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shelf from "../components/Shelf";
+import { UserContext } from "../context/UserContext";
 import "../pages/Home.css";
 
 export default function Home() {
     const [books, setBooks] = useState([]);
     const [genres, setGenres] = useState([]);
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         fetch("http://localhost:8080/books")
@@ -45,7 +47,9 @@ export default function Home() {
 
     return (
         <main>
-            <h2 className="page-title">Welcome to Books‑R‑Us</h2>
+            <h2 className="page-title">
+                Welcome to Books-R-Us{user?.name ? `, ${user.name}` : ""}{" "}
+            </h2>
             {genres.map((genre) => (
                 <Shelf
                     key={genre}

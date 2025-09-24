@@ -8,10 +8,10 @@ export default function Shelf({ genre, books, urlGenre }) {
     return (
         <div className="shelf-container">
             <div className="title-button-container">
-                <h1>{genre}</h1>
+                <Link to={`/genre/${urlGenre}`}>
+                    <h1>{genre}</h1>
+                </Link>
                 <Button
-                    // component={Link}
-                    // to="/signin"
                     variant="outlined"
                     className="sign-in-button"
                     sx={{
@@ -41,7 +41,6 @@ export default function Shelf({ genre, books, urlGenre }) {
                             title={book.title}
                             author={book.author}
                             id={book.id}
-    
                         />
                     );
                 })}

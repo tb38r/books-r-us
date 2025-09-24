@@ -6,6 +6,8 @@ import {
     List,
     ListItem,
     IconButton,
+    Snackbar,
+    Alert,
 } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -18,6 +20,9 @@ export default function Cart() {
     const [cart, setCart] = useState([]);
     const [loading, setLoading] = useState(true);
     const [errors, setErrors] = useState({});
+    const [checkoutMessage, setCheckoutMessage] = useState("");
+    const [checkoutSuccess, setCheckoutSuccess] = useState(false);
+    const [openBanner, setOpenBanner] = useState(false);
 
     useEffect(() => {
         if (!user || !user.id) return;
@@ -81,10 +86,14 @@ export default function Cart() {
 
             if (res.ok) {
                 setCart((prev) => prev.filter((i) => i.id !== item.id));
-                console.log("item removed");
+                setCheckoutMessage("Item removed from cart");
+                setCheckoutSuccess(true);
+                setOpenBanner(true);
             } else {
                 const err = await res.json();
-                alert(err.error || "Failed to remove item");
+                setCheckoutMessage(err.error || "Failed to remove item");
+                setCheckoutSuccess(false);
+                setOpenBanner(true);
             }
         } catch (err) {
             console.error("Remove item error:", err);
@@ -98,14 +107,21 @@ export default function Cart() {
             });
 
             if (res.ok) {
-                alert("Order purchased successfully!");
                 setCart([]);
+                setCheckoutMessage("Order purchased successfully!");
+                setCheckoutSuccess(true);
+                setOpenBanner(true);
             } else {
                 const err = await res.json();
-                alert(err.error || "Failed to checkout");
+                setCheckoutMessage(err.error || "Failed to checkout");
+                setCheckoutSuccess(false);
+                setOpenBanner(true);
             }
         } catch (err) {
             console.error("Checkout error:", err);
+            setCheckoutMessage("Failed to checkout");
+            setCheckoutSuccess(false);
+            setOpenBanner(true);
         }
     };
 
@@ -116,7 +132,7 @@ export default function Cart() {
         return (
             <Box
                 sx={{
-                    height: "70vh", // take most of the screen
+                    height: "70vh",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -129,114 +145,133 @@ export default function Cart() {
         );
 
     return (
-        <Box p={4}>
-            <Typography variant="h4" gutterBottom>
-                Your Cart, {user.name}
-            </Typography>
+        <>
+            <Box p={4}>
+                <Typography variant="h4" gutterBottom>
+                    Your Cart, {user.name}
+                </Typography>
 
-            <List>
-                {cart.map((item) => (
-                    <ListItem
-                        key={item.id}
-                        sx={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            flexWrap: "wrap",
-                            borderBottom: "1px solid #ddd",
-                            py: 2,
-                            gap: 6,
-                        }}
-                    >
-                        <Book
-                            cover={item.book.coverUrl}
-                            title={item.book.title}
-                            author={item.book.author}
-                            id={item.book.id}
-                        />
-
-                        <Box
-                            display="flex"
-                            flexDirection="column"
-                            alignItems="flex-start"
+                <List>
+                    {cart.map((item) => (
+                        <ListItem
+                            key={item.id}
+                            sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                                flexWrap: "wrap",
+                                borderBottom: "1px solid #ddd",
+                                py: 2,
+                                gap: 6,
+                            }}
                         >
-                            <Typography>
-                                £{item.book.price.toFixed(2)} each
-                            </Typography>
-
-                            {/* quantity controls */}
+                            <Book
+                                cover={item.book.coverUrl}
+                                title={item.book.title}
+                                author={item.book.author}
+                                id={item.book.id}
+                            />
 
                             <Box
                                 display="flex"
-                                alignItems="center"
-                                gap={1}
-                                my={1}
+                                flexDirection="column"
+                                alignItems="flex-start"
                             >
-                                <IconButton
-                                    size="small"
-                                    onClick={() =>
-                                        updateQuantity(
-                                            item,
-                                            Math.max(item.book.quantity - 1, 1)
-                                        )
-                                    }
-                                >
-                                    <RemoveIcon fontSize="small" />
-                                </IconButton>
-                                <Typography>{item.book.quantity}</Typography>
-                                <IconButton
-                                    size="small"
-                                    onClick={() =>
-                                        updateQuantity(
-                                            item,
-                                            item.book.quantity + 1
-                                        )
-                                    }
-                                >
-                                    <AddIcon fontSize="small" />
-                                </IconButton>
-                            </Box>
-                            {errors[item.id] && (
-                                <Box
-                                    position="absolute"
-                                    top={50}
-                                    left="75%"
-                                    sx={{
-                                        bgcolor: "error.main",
-                                        color: "white",
-                                        px: 1.5,
-                                        py: 0.5,
-                                        borderRadius: 1,
-                                        fontSize: "0.8rem",
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    {errors[item.id]}
-                                </Box>
-                            )}
-                            {/* remove */}
-                            <Button
-                                variant="outlined"
-                                color="error"
-                                onClick={() => removeFromCart(item)}
-                            >
-                                Remove
-                            </Button>
-                        </Box>
-                    </ListItem>
-                ))}
-            </List>
+                                <Typography>
+                                    £{item.book.price.toFixed(2)} each
+                                </Typography>
 
-            <Box mt={3}>
-                <Button
-                    variant="contained"
-                    color="warning"
-                    startIcon={<ShoppingCartCheckoutIcon />}
-                    onClick={handleCheckout}
-                >
-                    Checkout
-                </Button>
+                                <Box
+                                    display="flex"
+                                    alignItems="center"
+                                    gap={1}
+                                    my={1}
+                                >
+                                    <IconButton
+                                        size="small"
+                                        onClick={() =>
+                                            updateQuantity(
+                                                item,
+                                                Math.max(
+                                                    item.book.quantity - 1,
+                                                    1
+                                                )
+                                            )
+                                        }
+                                    >
+                                        <RemoveIcon fontSize="small" />
+                                    </IconButton>
+                                    <Typography>
+                                        {item.book.quantity}
+                                    </Typography>
+                                    <IconButton
+                                        size="small"
+                                        onClick={() =>
+                                            updateQuantity(
+                                                item,
+                                                item.book.quantity + 1
+                                            )
+                                        }
+                                    >
+                                        <AddIcon fontSize="small" />
+                                    </IconButton>
+                                </Box>
+                                {errors[item.id] && (
+                                    <Box
+                                        position="absolute"
+                                        top={50}
+                                        left="75%"
+                                        sx={{
+                                            bgcolor: "error.main",
+                                            color: "white",
+                                            px: 1.5,
+                                            py: 0.5,
+                                            borderRadius: 1,
+                                            fontSize: "0.8rem",
+                                            textAlign: "center",
+                                        }}
+                                    >
+                                        {errors[item.id]}
+                                    </Box>
+                                )}
+                                {/* remove */}
+                                <Button
+                                    variant="outlined"
+                                    color="error"
+                                    onClick={() => removeFromCart(item)}
+                                >
+                                    Remove
+                                </Button>
+                            </Box>
+                        </ListItem>
+                    ))}
+                </List>
+
+                <Box mt={3}>
+                    <Button
+                        variant="contained"
+                        color="warning"
+                        startIcon={<ShoppingCartCheckoutIcon />}
+                        onClick={handleCheckout}
+                    >
+                        Checkout
+                    </Button>
+                </Box>
             </Box>
-        </Box>
+            <Snackbar
+                open={openBanner}
+                autoHideDuration={3000}
+                onClose={() => setOpenBanner(false)}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+                <Alert
+                    onClose={() => setOpenBanner(false)}
+                    severity={checkoutSuccess ? "success" : "error"}
+                    sx={{ width: "100%" }}
+                >
+                    {checkoutMessage}
+                </Alert>
+            </Snackbar>
+        </>
     );
 }

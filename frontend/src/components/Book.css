@@ -18,15 +18,16 @@
 .book-cover {
     width: 150px;
     height: 220px; 
-       
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.book-cover img {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 8px; /* optional: rounded corners */
+
+.book-cover:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.664);
 }
 
-.book-cover img:hover {
-  transform: scale(1.05); /* slight zoom effect */
-  box-shadow: 0 0 20px rgba(56, 38, 4, 0.6); /* glowing orange */
+.single-book-container:hover {
+    transform: scale(1.05);    
 }
