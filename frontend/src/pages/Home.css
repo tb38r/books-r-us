@@ -10,9 +10,9 @@ main{
 }
 h2{
     margin-bottom: 36px;
-    font-family: 'Libre Baskerville';
+    font-family: 'IBM Plex Sans';
     font-size: 3rem;
-    color: rgba(75, 75, 75, 1);
+    color: #573ba3;
 }
 
 .banner {
