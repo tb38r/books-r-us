@@ -1,0 +1,59 @@
+.book-title{
+    color: #000000ff;
+    /* margin-top: 16px; */
+    /* margin-bottom: 8px; */
+    font-size : 1rem;
+    letter-spacing: 1px;
+  text-transform: Capitalise;
+
+}
+
+.book-author{
+    color: #000000ff;
+    /* margin-top: 16px; */
+    /* margin-bottom: 8px; */
+    font-size : 1rem;
+    text-transform: Capitalise;
+
+}
+
+.single-book-container {
+    margin-left: 36px;
+    text-align: center;
+    flex-direction: column;
+    margin-bottom: 24px;
+    width: 150px;
+    flex: 1 1 150px;
+    max-width: 200px;
+    text-align: center;
+}
+
+.title {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.book-cover {
+    width: 150px;
+    height: 220px; 
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.book-cover:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.664);
+}
+
+.single-book-container:hover {
+    transform: scale(1.05);    
+}
+
+.results-title{
+    margin-bottom: 36px;
+    font-family: 'Libre Baskerville';
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 1);
+}
