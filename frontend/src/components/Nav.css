@@ -21,6 +21,9 @@ body {
   gap: 0.75rem;
   flex-wrap: wrap;
   margin-bottom: 0.3rem;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-top: 16px;
 }
 
 .nav-logo img.logo-img {
