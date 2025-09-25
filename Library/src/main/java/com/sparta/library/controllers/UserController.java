@@ -1,11 +1,14 @@
 package com.sparta.library.controllers;
 
 
+import com.sparta.library.dto.JwtDto;
 import com.sparta.library.dto.RegisterUserDto;
 import com.sparta.library.dto.ValidateUserDto;
 import com.sparta.library.exceptions.UserExistsException;
 import com.sparta.library.exceptions.UserLoginIncorrectException;
 import com.sparta.library.exceptions.UserNotFoundException;
+import com.sparta.library.model.User;
+import com.sparta.library.services.JwtService;
 import com.sparta.library.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -19,20 +22,33 @@ import java.util.Map;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
     @PostMapping
     public ResponseEntity<?> createUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
         var user = userService.createUser(registerUserDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+        var accessToken = jwtService.generateAccessToken(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new JwtDto(accessToken.toString()));
     }
     @PostMapping("/login")
-    public ResponseEntity<?> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto) {
-        var user = userService.validateUser(validateUserDto);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<JwtDto> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto) {
+        
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(validateUserDto.getEmail(), validateUserDto.getPassword())
+        );
+        var user = userService.returnUserFromEmail(validateUserDto.getEmail());
+        if(user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        var accessToken = jwtService.generateAccessToken(user);
+        //userService.validateUser(validateUserDto);
+        return ResponseEntity.ok(new JwtDto(accessToken.toString()));
+    }
+    @DeleteMapping
+    public ResponseEntity<Void> deleteCurrentUser() {
+        userService.deleteUser();
+        return ResponseEntity.noContent().build();
     }
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleUserNotFound() {
