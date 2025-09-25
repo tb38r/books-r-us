@@ -51,7 +51,6 @@ export default function Book() {
     fetchAIResponse();
   }, [book]);
 
-  console.log("ai response", aiResponse);
 
   const addToCartHandler = async () => {
     if (!user) {
