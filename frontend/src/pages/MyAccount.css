@@ -1,7 +1,7 @@
 .account-page {
-  padding: 2rem;
+  padding: 4rem;
   font-family: sans-serif;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9;  
 }
 
 .account-title {
@@ -236,4 +236,9 @@
 .logout-section{
   text-align: center;
   
+}
+
+.name-info{
+  margin-bottom: 12px;
+  text-align: center;
 }

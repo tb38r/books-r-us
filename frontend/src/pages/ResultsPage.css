@@ -1,7 +1,5 @@
 .book-title{
-    color: #000000ff;
-    /* margin-top: 16px; */
-    /* margin-bottom: 8px; */
+    color: #000000ff;    
     font-size : 1rem;
     letter-spacing: 1px;
   text-transform: Capitalise;
@@ -10,8 +8,6 @@
 
 .book-author{
     color: #000000ff;
-    /* margin-top: 16px; */
-    /* margin-bottom: 8px; */
     font-size : 1rem;
     text-transform: Capitalise;
 
@@ -55,5 +51,11 @@
     margin-bottom: 36px;
     font-family: 'Libre Baskerville';
     font-size: 3rem;
-    color: rgba(0, 0, 0, 1);
+    color: #3c1a6e;
+    text-align: center;
+}
+
+.title-container{
+    margin-bottom: 36px;
+    margin-top: 16px;
 }

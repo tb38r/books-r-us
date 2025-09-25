@@ -19,7 +19,6 @@ import AddToCartButton from "../components/Book Page/AddToCart";
 import BasicRating from "../components/Book Page/RatingFeature";
 import { UserContext } from "../context/UserContext";
 import defaultCover from "../assets/defaultcover.jpg";
-import "./Book.css";
 
 export default function Book() {
     const { id } = useParams();
@@ -31,6 +30,7 @@ export default function Book() {
     const [quantity, setQuantity] = useState(1);
     const [error, setError] = useState("");
     const [successMsg, setSuccessMsg] = useState(false);
+    const isInCart = cart.some((item) => item.book.id === book.id);
 
     useEffect(() => {
         fetch(`http://localhost:8080/books`)
@@ -41,6 +41,28 @@ export default function Book() {
             })
             .catch((err) => console.error("Error fetching book:", err));
     }, [id]);
+
+    useEffect(() => {
+        if (!user?.id) return;
+
+        const fetchCart = async () => {
+            try {
+                const res = await fetch(
+                    `http://localhost:8080/orders/${user.id}/false`
+                );
+                if (res.ok) {
+                    const data = await res.json();
+                    setCart(data);
+                } else {
+                    console.error("Failed to fetch cart");
+                }
+            } catch (err) {
+                console.error("Error fetching cart:", err);
+            }
+        };
+
+        fetchCart();
+    }, [user]);
 
     const addToCartHandler = async () => {
         if (!user) {
@@ -100,6 +122,18 @@ export default function Book() {
                 }
             }
 
+            setCart((prev) => {
+                if (!existingItem) {
+                    return [...prev, { book, quantity: qtyToAdd }];
+                } else {
+                    return prev.map((item) =>
+                        item.book.id === book.id
+                            ? { ...item, quantity: inCartQty + qtyToAdd }
+                            : item
+                    );
+                }
+            });
+
             setError("");
             setSuccessMsg(true);
             setTimeout(() => setSuccessMsg(false), 2000);
@@ -127,115 +161,162 @@ export default function Book() {
 
             <Box
                 sx={{
-    bgcolor: "#e0e0e0ff",
-    p: 4,
-    borderRadius: 2,
-    boxShadow: 8,
-    width: "900px",         
-    height: "600px",        
-    margin: "0 auto",
-    overflow: "auto",
+                    display: "flex",
+                    justifyContent: "center",
+                    px: 2,
+                    mt: 6,
                 }}
             >
-                <Grid container spacing={4}>
-                    <Grid item xs={12} md={4}>
+                <Box
+                    sx={{
+                        bgcolor: "#e0e0e0",
+                        p: 4,
+                        borderRadius: 2,
+                        boxShadow: 4,
+                        maxWidth: "800px",
+                        width: "100%",
+                        display: "flex",
+                        gap: "2rem",
+                        flexDirection: { xs: "column", md: "row" },
+                        alignItems: "flex-start",
+                    }}
+                >
+                    <Box
+                        sx={{
+                            flexShrink: 0,
+                            display: "flex",
+                            justifyContent: "center",
+                        }}
+                    >
                         <img
                             src={book.coverUrl || defaultCover}
                             alt={`Cover of ${book.title}`}
                             style={{
-                                width: "90%",
+                                width: "180px",
+                                height: "270px",
                                 borderRadius: "8px",
-                                objectFit: "cover",
                             }}
                         />
-                    </Grid>
+                    </Box>
 
-                    <Grid item xs={12} md={8}>
-                        <Typography className="book-title" variant="h4" fontWeight="bold" gutterBottom>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 1,
+                            flexGrow: 1,
+                        }}
+                    >
+                        <Typography
+                            variant="h4"
+                            fontWeight="bold"
+                            sx={{
+                                wordWrap: "break-word",
+                                whiteSpace: "normal",
+                            }}
+                        >
                             {book.title}
                         </Typography>
-                        <Typography className="book-author" variant="h6" gutterBottom>
+                        <Typography variant="h6">
                             by{" "}
                             <span style={{ fontWeight: "600" }}>
                                 {book.author}
                             </span>
                         </Typography>
 
-                        <Typography
-                            variant="h5"
-                            color=""
-                            fontWeight="bold"
-                            gutterBottom
-                        >
-                            £{book.price.toFixed(2)}{" "}
+                        <Typography variant="h5" fontWeight="bold">
+                            £{book.price.toFixed(2)}
                         </Typography>
-                        <Box
-                            display="flex"
-                            flexDirection="column"
-                            gap={1}
-                            mb={3}
-                        >
-                            {book.quantity > 0 ? (
-                                <>
-                                    <Typography
-                                        color={
-                                            book.quantity < 10
-                                                ? "warning.main"
-                                                : "success.main"
-                                        }
-                                        variant="body2"
-                                        fontWeight="500"
-                                    >
-                                        {book.quantity < 10
-                                            ? book.quantity === 1
-                                                ? "Only 1 left!"
-                                                : `Only ${book.quantity} left!`
-                                            : `In Stock: ${book.quantity} copies`}
-                                    </Typography>
 
-                                    <QuantitySelector
-                                        min={1}
-                                        max={Math.min(book.quantity, 99)}
-                                        onChange={(val) => setQuantity(val)}
-                                    />
+                        {book.quantity > 0 ? (
+                            <>
+                                <Typography
+                                    color={
+                                        book.quantity < 10
+                                            ? "warning.main"
+                                            : "success.main"
+                                    }
+                                    variant="body2"
+                                    fontWeight="500"
+                                >
+                                    {book.quantity < 10
+                                        ? book.quantity === 1
+                                            ? "Only 1 left!"
+                                            : `Only ${book.quantity} left!`
+                                        : `In Stock: ${book.quantity} copies`}
+                                </Typography>
 
+                                <QuantitySelector
+                                    min={1}
+                                    max={Math.min(book.quantity, 99)}
+                                    onChange={(val) => setQuantity(val)}
+                                />
+
+                                {cart.some(
+                                    (item) => item.book.id === book.id
+                                ) ? (
                                     <Button
                                         variant="contained"
-                                        color="success"
-                                        onClick={addToCartHandler}
+                                        color="info"
+                                        onClick={() => navigate("/cart")}
                                         sx={{
-                                            backgroundColor: "grey.500",
                                             textTransform: "capitalize",
                                             fontSize: "0.8rem",
                                             padding: "4px 10px",
                                             borderRadius: "6px",
+                                            width: "120px",
+                                            mt: 1,
                                             "&:hover": {
-                                                backgroundColor: "grey.600",
+                                                backgroundColor: "info.dark",
                                             },
                                         }}
                                     >
-                                        Add to Cart
+                                        In Basket
                                     </Button>
+                                ) : (
+                                    <Button
+                                        variant="contained"
+                                        color="success"
+                                        onClick={() => {
+                                            if (isInCart) {
+                                                navigate("/cart");
+                                            } else {
+                                                addToCartHandler();
+                                            }
+                                        }}
+                                        sx={{
+                                            textTransform: "capitalize",
+                                            fontSize: "0.8rem",
+                                            padding: "4px 10px",
+                                            borderRadius: "6px",
+                                            width: "120px",
+                                            mt: 1,
+                                        }}
+                                    >
+                                        {isInCart ? "In Basket" : "Add to Cart"}
+                                    </Button>
+                                )}
 
-                                    {error && (
-                                        <Typography
-                                            color="error"
-                                            variant="body2"
-                                        >
-                                            {error}
-                                        </Typography>
-                                    )}
-                                </>
-                            ) : (
-                                <Typography
-                                    color="error"
-                                    fontWeight="bold"
-                                    variant="h6"
-                                >
-                                    Sold Out
-                                </Typography>
-                            )}
-                        </Box>
+                                {error && (
+                                    <Typography
+                                        color="error"
+                                        variant="body2"
+                                        sx={{ mt: 1 }}
+                                    >
+                                        {error}
+                                    </Typography>
+                                )}
+                            </>
+                        ) : (
+                            <Typography
+                                color="error"
+                                fontWeight="bold"
+                                variant="h6"
+                            >
+                                Sold Out
+                            </Typography>
+                        )}
+
                         {successMsg && (
                             <Typography
                                 color="success"
@@ -245,8 +326,8 @@ export default function Book() {
                                 Added to cart!
                             </Typography>
                         )}
-                    </Grid>
-                </Grid>
+                    </Box>
+                </Box>
             </Box>
         </>
     );
