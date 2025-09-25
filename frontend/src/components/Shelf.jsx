@@ -4,15 +4,14 @@ import Button from "@mui/material/Button";
 import Book from "./Book";
 import { Link } from "react-router-dom";
 
-
-export default function Shelf({ genre, books }) {
+export default function Shelf({ genre, books, urlGenre }) {
     return (
         <div className="shelf-container">
             <div className="title-button-container">
-                <h1>{genre}</h1>
+                <Link to={`/genre/${urlGenre}`}>
+                    <h1>{genre}</h1>
+                </Link>
                 <Button
-                    // component={Link}
-                    // to="/signin"
                     variant="outlined"
                     className="sign-in-button"
                     sx={{
@@ -29,7 +28,7 @@ export default function Shelf({ genre, books }) {
                         padding: "0 12px",
                     }}
                 >
-                    <Link to={`/genre/${genre}`}>See More</Link>
+                    <Link to={`/genre/${urlGenre}`}>See More</Link>
                 </Button>
             </div>
 
@@ -38,7 +37,7 @@ export default function Shelf({ genre, books }) {
                     return (
                         <Book
                             key={book.id}
-                            cover={book.cover}
+                            cover={book.coverUrl}
                             title={book.title}
                             author={book.author}
                             id={book.id}

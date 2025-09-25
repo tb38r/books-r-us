@@ -40,7 +40,7 @@ public class UserService {
         userDto.setId(user.getId());
         return userDto;
     }
-    public void validateUser(ValidateUserDto validateUserDto) {
+    public UserDto validateUser(ValidateUserDto validateUserDto) {
         var user = userRepository.findByEmail(validateUserDto.getEmail()).orElse(null);
         if(user == null) {
             throw new UserNotFoundException();
@@ -48,6 +48,7 @@ public class UserService {
         if(!passwordEncoder.matches(validateUserDto.getPassword(), user.getPassword())) {
             throw new UserLoginIncorrectException();
         }
+        return userMapper.toUserDto(user);
     }
     public User returnUserFromEmail(String email) {
         var user = userRepository.findByEmail(email).orElse(null);
