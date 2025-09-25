@@ -7,11 +7,14 @@ import com.sparta.library.exceptions.UserExistsException;
 import com.sparta.library.exceptions.UserLoginIncorrectException;
 import com.sparta.library.exceptions.UserNotFoundException;
 import com.sparta.library.mappers.UserMapper;
+import com.sparta.library.model.User;
 import com.sparta.library.repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -45,5 +48,9 @@ public class UserService {
         if(!passwordEncoder.matches(validateUserDto.getPassword(), user.getPassword())) {
             throw new UserLoginIncorrectException();
         }
+    }
+    public User returnUserFromEmail(String email) {
+        var user = userRepository.findByEmail(email).orElse(null);
+        return user;
     }
 }

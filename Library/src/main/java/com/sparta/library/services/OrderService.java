@@ -16,6 +16,7 @@ import com.sparta.library.repositories.OrderRepository;
 import com.sparta.library.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.jaxb.SpringDataJaxb;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,15 +33,26 @@ public class OrderService {
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
     private final OrdersMapper ordersMapper;
-
+    public User returnAuthUser() {
+        var authUser = SecurityContextHolder.getContext().getAuthentication();
+        var authId =  Integer.parseInt(authUser.getPrincipal().toString());
+        var user =  userRepository.findById(authId).orElse(null);
+        if(user == null) {
+            throw new UserNotFoundException();
+        }
+        return user;
+    }
     @Transactional
     public OrdersDto CreateOrder(CreateOrderDto dto) {
         var order = new Order();
-        System.out.println(dto.getUserId());
+
+        var user = returnAuthUser();
+        /*
         var user = userRepository.findById(dto.getUserId()).orElse(null);
         if(user == null) {
             throw new UserNotFoundException();
         }
+         */
         var book = bookRepository.findById(dto.getBookId()).orElse(null);
         if(book == null) {
             throw new BookNotFoundException();
@@ -49,7 +61,8 @@ public class OrderService {
             throw new QuantityExceededException();
         }
         var orders = ordersRepository.findByUserAndBook(user, book);
-        if(!orders.isEmpty()) {
+        var o = ordersRepository.findByUserAndBookAndNotPurchased(user, book).orElse(null);
+        if(o != null) {
             throw new OrderAlreadyExistsException();
         }
         order.setQuantity(dto.getQuantity());
@@ -64,12 +77,16 @@ public class OrderService {
         return orderdto;
     }
     @Transactional
-    public List<BookDTO> getOrdersByUserId(Integer id, boolean purchased) {
-        var user = userRepository.findById(id).orElse(null);
+    public List<BookDTO> getOrdersByUserId(boolean purchased) {
+        var user = returnAuthUser();
         List<BookDTO> books = new ArrayList<>();
+        /*
+        var user = userRepository.findById(id).orElse(null);
         if(user == null) {
             throw new UserNotFoundException();
         }
+        */
+
         var orders = ordersRepository.findByUser(user);
         for(Order order : orders) {
             if(order.getPurchased() != purchased) continue;
@@ -84,10 +101,13 @@ public class OrderService {
         return books;
     }
     public void UpdateOrder(CreateOrderDto dto) {
+        var user = returnAuthUser();
+        /*
         var user = userRepository.findById(dto.getUserId()).orElse(null);
         if(user == null) {
             throw new UserNotFoundException();
         }
+         */
         var book = bookRepository.findById(dto.getBookId()).orElse(null);
         if(book == null) {
             throw new BookNotFoundException();
@@ -111,11 +131,14 @@ public class OrderService {
         ordersRepository.delete(order);
     }
     @Transactional
-    public void purchase(Integer userId) {
+    public void purchase() {
+        var user = returnAuthUser();
+        /*
         var user = userRepository.findById(userId).orElse(null);
         if(user == null) {
             throw new UserNotFoundException();
         }
+         */
         var orders = ordersRepository.findByUser(user);
         if(orders.isEmpty()) {
             throw new OrderDoesNotExistException();

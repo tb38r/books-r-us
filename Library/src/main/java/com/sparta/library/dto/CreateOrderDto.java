@@ -9,6 +9,5 @@ import java.util.List;
 @Data
 public class CreateOrderDto {
     private int bookId;
-    private int userId;
     private int quantity;
 }

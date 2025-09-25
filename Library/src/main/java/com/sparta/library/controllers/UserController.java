@@ -1,11 +1,14 @@
 package com.sparta.library.controllers;
 
 
+import com.sparta.library.dto.JwtDto;
 import com.sparta.library.dto.RegisterUserDto;
 import com.sparta.library.dto.ValidateUserDto;
 import com.sparta.library.exceptions.UserExistsException;
 import com.sparta.library.exceptions.UserLoginIncorrectException;
 import com.sparta.library.exceptions.UserNotFoundException;
+import com.sparta.library.model.User;
+import com.sparta.library.services.JwtService;
 import com.sparta.library.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,22 +28,34 @@ import java.util.Map;
 public class UserController {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
-
+    private final JwtService jwtService;
     @PostMapping
     public ResponseEntity<?> createUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
         var user = userService.createUser(registerUserDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto) {
+    public ResponseEntity<JwtDto> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto) {
         
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(validateUserDto.getEmail(), validateUserDto.getPassword())
         );
+        var user = userService.returnUserFromEmail(validateUserDto.getEmail());
+        if(user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
 
+        var accessToken = jwtService.generateAccessToken(user);
         //userService.validateUser(validateUserDto);
-        return ResponseEntity.ok().body(Map.of("message", "User logged in successfully!"));
+        return ResponseEntity.ok(new JwtDto(accessToken.toString()));
     }
+    /*
+    @PostMapping("validate")
+    public boolean valid(@RequestHeader("Authorization") String authHeader) {
+        var token = authHeader.replace("Bearer ", "");
+        return jwtService.validateToken(token);
+    }
+     */
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleUserNotFound() {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "User doesn't exist"));

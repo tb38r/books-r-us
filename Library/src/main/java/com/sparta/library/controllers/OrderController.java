@@ -21,13 +21,13 @@ public class OrderController {
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
-    @GetMapping("/{userId}/{purchased}")
-    public ResponseEntity<List<BookDTO>> getOrderByUserId(@PathVariable Integer userId, @PathVariable boolean purchased) {
-        return ResponseEntity.ok(orderService.getOrdersByUserId(userId, purchased));
+    @GetMapping("/{purchased}")
+    public ResponseEntity<List<BookDTO>> getOrderByUserId(@PathVariable boolean purchased) {
+        return ResponseEntity.ok(orderService.getOrdersByUserId(purchased));
     }
-    @PutMapping("/{userId}")
-    public ResponseEntity<?> purchase(@PathVariable Integer userId) {
-        orderService.purchase(userId);
+    @PutMapping("/purchase")
+    public ResponseEntity<?> purchase() {
+        orderService.purchase();
         return ResponseEntity.ok(Map.of("success", "order purchased"));
     }
     @PostMapping
