@@ -15,13 +15,10 @@ export default function Shelf({ genre, books, urlGenre }) {
                     variant="outlined"
                     className="sign-in-button"
                     sx={{
-                        "&:hover": {
-                            backgroundColor: "rgba(234, 88, 12, 0.1)",
-                            border: "1px solid rgb(234 88 12)",
-                        },
-                        color: "rgb(234 88 12)",
-                        border: "1px solid rgb(234 88 12)",
+                        color: "#3c1a6e",
+                        border: "0",
                         textTransform: "none",
+
                         borderRadius: "8px",
                         fontWeight: 500,
                         height: "32px",

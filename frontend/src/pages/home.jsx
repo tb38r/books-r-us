@@ -47,9 +47,9 @@ export default function Home() {
 
     return (
         <main>
-            <h2 className="page-title">
+            {/* <h2 className="page-title">
                 Welcome to Books-R-Us{user?.name ? `, ${user.name}` : ""}{" "}
-            </h2>
+            </h2> */}
             {genres.map((genre) => (
                 <Shelf
                     key={genre}
