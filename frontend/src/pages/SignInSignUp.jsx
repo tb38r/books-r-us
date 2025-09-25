@@ -102,7 +102,7 @@ export default function SignInSignUp() {
         <div className="auth-wrapper">
             {/* Left: Sign In */}
             <div className="auth-box left">
-                <h2>Already got an account?</h2>
+                <h2>Existing Customer?</h2>
                 <form onSubmit={handleSignIn}>
                     <input
                         type="email"
@@ -127,7 +127,7 @@ export default function SignInSignUp() {
 
             {/* Right: Sign Up */}
             <div className="auth-box right">
-                <h2>Don’t have an account yet?</h2>
+                <h2>New Customer?</h2>
                 <form onSubmit={handleSignUp}>
                     <input
                         type="text"
