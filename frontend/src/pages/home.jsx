@@ -9,8 +9,10 @@ export default function Home() {
     const [genres, setGenres] = useState([]);
     const { user } = useContext(UserContext);
 
+    const port = "8080"
+
     useEffect(() => {
-        fetch("http://localhost:8080/books")
+        fetch(`http://localhost:${port}/books`)
             .then((res) => res.json())
             .then((data) => {
                 setBooks(data);
