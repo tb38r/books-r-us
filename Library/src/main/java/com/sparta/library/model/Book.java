@@ -42,7 +42,7 @@ public class Book {
     public Book() {}
 
 
-    public Book(Integer id, String title, String author, double price, List<Order> orders) {
+    public Book(Integer id , String title, String author, double price, List<Order> orders) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -60,6 +60,18 @@ public class Book {
         this.olid = olid;
         this.coverUrl = coverUrl;
     }
+
+    public Book(Integer id , String title, String author, double price, int quantity, String genre, String olid, String coverUrl) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.quantity = quantity;
+        this.genre = genre;
+        this.price = price;
+        this.olid = olid;
+        this.coverUrl = coverUrl;
+    }
+
 
 
     public Integer getId() {

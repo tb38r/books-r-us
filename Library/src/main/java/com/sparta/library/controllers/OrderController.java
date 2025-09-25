@@ -2,7 +2,6 @@ package com.sparta.library.controllers;
 
 import com.sparta.library.dto.BookDTO;
 import com.sparta.library.dto.CreateOrderDto;
-import com.sparta.library.dto.GetOrderDto;
 import com.sparta.library.dto.OrdersDto;
 import com.sparta.library.exceptions.*;
 import com.sparta.library.services.BooksService;
@@ -15,7 +14,6 @@ import com.sparta.library.services.OrderService;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -23,13 +21,13 @@ public class OrderController {
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
-    @GetMapping("/{userId}/{purchased}")
-    public ResponseEntity<List<GetOrderDto>> getOrderByUserId(@PathVariable Integer userId, @PathVariable boolean purchased) {
-        return ResponseEntity.ok(orderService.getOrdersByUserId(userId, purchased));
+    @GetMapping("/{purchased}")
+    public ResponseEntity<List<BookDTO>> getOrderByUserId(@PathVariable boolean purchased) {
+        return ResponseEntity.ok(orderService.getOrdersByUserId(purchased));
     }
-    @PutMapping("/{userId}")
-    public ResponseEntity<?> purchase(@PathVariable Integer userId) {
-        orderService.purchase(userId);
+    @PutMapping("/purchase")
+    public ResponseEntity<?> purchase() {
+        orderService.purchase();
         return ResponseEntity.ok(Map.of("success", "order purchased"));
     }
     @PostMapping
@@ -66,9 +64,5 @@ public class OrderController {
     @ExceptionHandler(OrderAlreadyExistsException.class)
     public ResponseEntity<Map<String, String>> handleOrderAlreadyExists() {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Order already exists, use put mapping"));
-    }
-    @ExceptionHandler(BookOutOfStockException.class)
-    public ResponseEntity<Map<String, String>> handleBookOutOfStock() {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("error", "Book out of stock"));
     }
 }

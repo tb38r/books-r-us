@@ -5,7 +5,6 @@ import com.sparta.library.dto.AddBookDto;
 import com.sparta.library.dto.BookDTO;
 import com.sparta.library.model.Book;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface BookMapper {
