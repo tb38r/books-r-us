@@ -28,7 +28,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
     @Transactional
-    public UserDto createUser(RegisterUserDto registerUserDto) {
+    public User createUser(RegisterUserDto registerUserDto) {
         if(userRepository.existsByEmail(registerUserDto.getEmail())) {
             throw new UserExistsException();
         }
@@ -36,9 +36,12 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
         user.setCreatedTime();
         userRepository.save(user);
+        return user;
+        /*
         var userDto = userMapper.toUserDto(user);
         userDto.setId(user.getId());
         return userDto;
+         */
     }
     public UserDto validateUser(ValidateUserDto validateUserDto) {
         var user = userRepository.findByEmail(validateUserDto.getEmail()).orElse(null);

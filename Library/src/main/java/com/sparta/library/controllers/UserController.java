@@ -32,7 +32,8 @@ public class UserController {
     @PostMapping
     public ResponseEntity<?> createUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
         var user = userService.createUser(registerUserDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+        var accessToken = jwtService.generateAccessToken(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new JwtDto(accessToken.toString()));
     }
     @PostMapping("/login")
     public ResponseEntity<JwtDto> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto) {
