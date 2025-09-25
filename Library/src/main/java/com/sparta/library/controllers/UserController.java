@@ -50,13 +50,11 @@ public class UserController {
         //userService.validateUser(validateUserDto);
         return ResponseEntity.ok(new JwtDto(accessToken.toString()));
     }
-    /*
-    @PostMapping("validate")
-    public boolean valid(@RequestHeader("Authorization") String authHeader) {
-        var token = authHeader.replace("Bearer ", "");
-        return jwtService.validateToken(token);
+    @DeleteMapping
+    public ResponseEntity<Void> deleteCurrentUser() {
+        userService.deleteUser();
+        return ResponseEntity.noContent().build();
     }
-     */
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleUserNotFound() {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "User doesn't exist"));

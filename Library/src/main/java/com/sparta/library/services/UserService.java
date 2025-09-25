@@ -9,6 +9,7 @@ import com.sparta.library.exceptions.UserNotFoundException;
 import com.sparta.library.mappers.UserMapper;
 import com.sparta.library.model.User;
 import com.sparta.library.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,15 @@ public class UserService {
         this.userMapper = userMapper;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+    public User returnAuthUser() {
+        var authUser = SecurityContextHolder.getContext().getAuthentication();
+        var authId =  Integer.parseInt(authUser.getPrincipal().toString());
+        var user =  userRepository.findById(authId).orElse(null);
+        if(user == null) {
+            throw new UserNotFoundException();
+        }
+        return user;
     }
     @Transactional
     public User createUser(RegisterUserDto registerUserDto) {
@@ -56,5 +66,9 @@ public class UserService {
     public User returnUserFromEmail(String email) {
         var user = userRepository.findByEmail(email).orElse(null);
         return user;
+    }
+    public void deleteUser() {
+        var user = returnAuthUser();
+        userRepository.delete(user);
     }
 }

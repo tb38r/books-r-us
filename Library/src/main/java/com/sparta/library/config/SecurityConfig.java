@@ -47,7 +47,7 @@ public class SecurityConfig {
         ).csrf(
                 c -> c.disable())
                 .authorizeHttpRequests(c ->
-                        c.requestMatchers("/users/**").permitAll()
+                        c.requestMatchers(HttpMethod.POST, "/users/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/books").permitAll()
                                 .anyRequest().authenticated()
                 ).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
