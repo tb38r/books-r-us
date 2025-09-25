@@ -67,6 +67,13 @@ public class UserService {
         var user = userRepository.findByEmail(email).orElse(null);
         return user;
     }
+    public User returnUserFromId(int userId) {
+        var user = userRepository.findById(userId).orElse(null);
+        if(user == null) {
+            throw new UserNotFoundException();
+        }
+        else return user;
+    }
     public void deleteUser() {
         var user = returnAuthUser();
         userRepository.delete(user);

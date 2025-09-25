@@ -1,6 +1,7 @@
 package com.sparta.library.controllers;
 
 
+import com.sparta.library.config.JwtConfig;
 import com.sparta.library.dto.JwtDto;
 import com.sparta.library.dto.RegisterUserDto;
 import com.sparta.library.dto.ValidateUserDto;
@@ -10,8 +11,11 @@ import com.sparta.library.exceptions.UserNotFoundException;
 import com.sparta.library.model.User;
 import com.sparta.library.services.JwtService;
 import com.sparta.library.services.UserService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpCookie;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,14 +33,26 @@ public class UserController {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    private final JwtConfig jwtConfig;
+    private Cookie createCookie(User u) {
+        var refreshToken = jwtService.generateRefreshToken(u);
+        var cookie = new Cookie("refreshToken", refreshToken.toString());
+        cookie.setHttpOnly(true);
+        cookie.setPath("/users/refresh");
+        cookie.setMaxAge(jwtConfig.getRefreshTokenExpiration());
+        cookie.setSecure(true);
+        return cookie;
+    }
     @PostMapping
-    public ResponseEntity<?> createUser(@Valid @RequestBody RegisterUserDto registerUserDto) {
+    public ResponseEntity<?> createUser(@Valid @RequestBody RegisterUserDto registerUserDto, HttpServletResponse response) {
         var user = userService.createUser(registerUserDto);
         var accessToken = jwtService.generateAccessToken(user);
+        var cookie = createCookie(user);
+        response.addCookie(cookie);
         return ResponseEntity.status(HttpStatus.CREATED).body(new JwtDto(accessToken.toString()));
     }
     @PostMapping("/login")
-    public ResponseEntity<JwtDto> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto) {
+    public ResponseEntity<JwtDto> validateUser(@Valid @RequestBody ValidateUserDto validateUserDto, HttpServletResponse response) {
         
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(validateUserDto.getEmail(), validateUserDto.getPassword())
@@ -47,13 +63,27 @@ public class UserController {
         }
 
         var accessToken = jwtService.generateAccessToken(user);
-        //userService.validateUser(validateUserDto);
+        var cookie = createCookie(user);
+        response.addCookie(cookie);
         return ResponseEntity.ok(new JwtDto(accessToken.toString()));
     }
     @DeleteMapping
     public ResponseEntity<Void> deleteCurrentUser() {
         userService.deleteUser();
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/refresh")
+    public ResponseEntity<JwtDto> refresh(@CookieValue(value = "refreshToken") String refreshToken) {
+        var jwt = jwtService.parse(refreshToken);
+        if(jwt == null || !jwt.isValid()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        else {
+            var userId = jwt.getUserIdFromToken();
+            var user = userService.returnUserFromId(userId);
+            var accessToken = jwtService.generateAccessToken(user);
+            return ResponseEntity.ok(new JwtDto(accessToken.toString()));
+        }
     }
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleUserNotFound() {

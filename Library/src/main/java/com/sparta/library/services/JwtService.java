@@ -20,6 +20,7 @@ public class JwtService {
     public Jwt generateAccessToken(User u) {
         return getToken(u, jwtConfig.getAccessTokenExpiration());
     }
+    public Jwt generateRefreshToken(User u) {return getToken(u, jwtConfig.getRefreshTokenExpiration());}
     private Jwt getToken(User u, long expiration) {
         String idString = u.getId().toString();
         var claims = Jwts.claims().subject(idString).add("email", u.getEmail())
