@@ -48,19 +48,19 @@ export default function Home() {
             books={books.filter((b) => b.genre === genre).slice(0, 5)}
           />
           {genre === "young_adult" && (
-            <Banner image={HarryPotter} alt="Harry Potter" link="/search/harry%20potter" />
+            <Banner image={HarryPotter} alt="Harry Potter" link="/book/179" />
           )}
           {genre === "horror" && (
-          <Banner image={DraculaBanner} alt="Dracula Banner" link="/search/dracula" />
+          <Banner image={DraculaBanner} alt="Dracula Banner" link="/book/33" />
         )}
         {genre === "fantasy" && (
-          <Banner image={OzBanner} alt="Oz Banner" link='/search/wizard%20of%20Oz'/>
+          <Banner image={OzBanner} alt="Oz Banner" link='/book/47'/>
         )}
         {genre === "art_history" && (
-          <Banner image={ArtHistory} alt="Art History" link='/genre/art_history'/>
+          <Banner image={ArtHistory} alt="Art History" link='/book/118'/>
         )}
         {genre === "mystery_and_detective_stories" && (
-          <Banner image={Sherlock} alt="Sherlock" link='/search/The%20Return%20of%20Sherlock%20Holmes'/>
+          <Banner image={Sherlock} alt="Sherlock" link='/book/86'/>
         )}
         
         </React.Fragment>
