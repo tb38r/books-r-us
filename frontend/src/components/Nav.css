@@ -1,9 +1,7 @@
-/* Global Font */
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* Container */
 .nav-container {
   display: flex;
   flex-direction: column;
@@ -12,27 +10,28 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 0.75rem 1.5rem;
+  
   box-sizing: border-box;
 }
 
-/* Top Row */
 .nav-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
+  margin-bottom: 0.3rem;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-top: 16px;
 }
 
-/* Logo */
 .nav-logo img.logo-img {
-  height: 100px;
+  height: 70px;
   max-width: 220px;
   object-fit: contain;
 }
 
-/* Search Bar */
 .nav-search {
   display: flex;
   align-items: center;
@@ -40,29 +39,26 @@ body {
   border: none;
   border-radius: 999px;
   width: 100%;
-  max-width: 500px;
-  height: 40px;
+  max-width: 480px;
+  height: 36px;
   padding: 0 0.5rem;
   transition: box-shadow 0.2s ease;
 }
 
-/* Focus effect like Bookshop */
 .nav-search:focus-within {
-  box-shadow: 0 0 0 2px #a78bfa; /* Light purple outline */
+  box-shadow: 0 0 0 2px #a78bfa;
 }
 
-/* Input */
 .search-input {
   flex: 1;
   border: none;
   background: transparent;
   padding: 0 1rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #333;
   outline: none;
 }
 
-/* Button */
 .search-button {
   background: none;
   border: none;
@@ -73,17 +69,15 @@ body {
   justify-content: center;
 }
 
-/* Icon */
 .search-icon {
   color: #3c1a6e;
-  font-size: 20px;
+  font-size: 18px;
 }
 
-/* Right Buttons */
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .nav-button {
@@ -92,7 +86,7 @@ body {
   font-weight: 500;
   background: none;
   border: none;
-  padding: 0.4rem 0.8rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 4px;
   transition: background 0.2s ease;
   display: inline-flex;
@@ -108,23 +102,30 @@ body {
   outline: none;
 }
 
-/* Genre Links */
 .nav-bottom {
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding: 0.5rem 0;
-  border-top: 1px solid #eee;
+  gap: 1.5rem;
+  height: 40px;
+  border-bottom: 1px solid #eee;
+  padding: 0;
+  margin-top: -0.2rem;
 }
+
 
 .genre-link {
   position: relative;
   text-decoration: none;
   color: #444;
   font-weight: 500;
-  font-size: 0.95rem;
-  padding-bottom: 4px;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding-bottom: 2px;
+  display: flex;
+  align-items: center;
+  height: 100%;
   transition: color 0.2s ease;
 }
 

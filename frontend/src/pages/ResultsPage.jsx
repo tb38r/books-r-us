@@ -28,9 +28,11 @@ export default function SearchResults() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-6 gap-6">
-            <Typography className="results-title" variant="h4" >
-                Results for "{searchId}"
-            </Typography>
+            <div className="title-container">
+                <Typography className="results-title" variant="h4">
+                    Results for "{searchId}"
+                </Typography>
+            </div>
 
             {results.length > 0 ? (
                 <div className="all-books-container flex flex-col gap-4 w-full px-4">

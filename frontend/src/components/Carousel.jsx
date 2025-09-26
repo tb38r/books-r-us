@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
-import NatureBooks from "./images/NatureBooks.png";
-import AuthorBanner from "./images/AuthorBanner.png";
-import BooksOfMonth from "./images/BookOfMonthBanner.png";
-import ExampleCarouselImage from "./images/ExampleCarouselImage.jpg";
+import Horror from "./images/Horror.png";
+import ScienceFiction from "./images/ScienceFiction.png";
+import Fantasy from "./images/Fantasy.png";
+import Romance from "./images/Romance.png";
+import "./Carousel.css";
+import { Link } from "react-router-dom";
+
 
 export default function Carousel() {
-  const images = [
-    { src: NatureBooks, alt: "Nature Books" },
-    { src: AuthorBanner, alt: "Author Banner" },
-    { src: BooksOfMonth, alt: "Books of the Month" },
-    { src: ExampleCarouselImage, alt: "Example Carousel" },
-  ];
+const images = [
+  { src: Fantasy, alt: "Fantasy", link: "genre/fantasy" },
+  { src: Horror, alt: "Horror", link: "genre/horror" },
+  { src: ScienceFiction, alt: "Science Fiction", link: "genre/science_fiction" },
+  { src: Romance, alt: "Romance", link: "genre/romance" },
+];
+
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -19,23 +23,20 @@ export default function Carousel() {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000);
-
+    }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
 
   const currentImage = images[currentIndex];
 
   return (
-    <div className="slideshow flex flex-col items-center">
-      <div className="slideshow-item transition-all duration-700 ease-in-out">
-        <img
-          src={currentImage.src}
-          alt={currentImage.alt}
-          className="w-full h-[400px] object-cover"
-        />
-        <p className="mt-2 text-lg font-medium">{currentImage.alt}</p>
-      </div>
+    <div className="carousel-wrapper">
+    <div className="carousel-image-container">
+      <Link to={currentImage.link}>
+        <img src={currentImage.src} alt={currentImage.alt} className="carousel-image" />
+      </Link>
     </div>
+  </div>
   );
 }
+
