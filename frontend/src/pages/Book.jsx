@@ -216,6 +216,7 @@ export default function Book() {
                         flexDirection: { xs: "column", md: "row" },
                         alignItems: "flex-start",
                         backgroundColor: "#f9f4f4",
+
                     }}
                 >
                     <Box
@@ -327,7 +328,7 @@ export default function Book() {
                                             borderRadius: "6px",
                                             width: "120px",
                                             mt: 1,
-                                            background: "#3c1a6e",
+                                            background:'#3c1a6e'
                                         }}
                                     >
                                         {isInCart ? "In Basket" : "Add to Cart"}
