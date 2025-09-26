@@ -19,6 +19,7 @@ import AddToCartButton from "../components/Book Page/AddToCart";
 import BasicRating from "../components/Book Page/RatingFeature";
 import { UserContext } from "../context/UserContext";
 import defaultCover from "../assets/defaultcover.jpg";
+import { getGroqChatCompletion } from "../ai/geminiClient";
 
 export default function Book() {
     const { id } = useParams();
@@ -31,6 +32,7 @@ export default function Book() {
     const [error, setError] = useState("");
     const [successMsg, setSuccessMsg] = useState(false);
     const [aiResponse, setAiResponse] = useState(null);
+    const [incart, setIncart] = useState([]);
     const isInCart = book && cart.some((item) => item.book.id === book.id);
 
     useEffect(() => {
@@ -44,8 +46,6 @@ export default function Book() {
     }, [id]);
 
     useEffect(() => {
-        if (!user?.id) return;
-
         const fetchCart = async () => {
             try {
                 const res = await fetch(`http://localhost:8080/orders/false`, {
@@ -54,6 +54,9 @@ export default function Book() {
                 if (res.ok) {
                     const data = await res.json();
                     setCart(data);
+                    const bookIds = data.map((item) => item.book.id);
+                    setIncart(bookIds);
+                    console.log("Book IDs in cart:", bookIds);
                 } else {
                     console.error("Failed to fetch cart");
                 }
@@ -63,7 +66,7 @@ export default function Book() {
         };
 
         fetchCart();
-    }, [user]);
+    }, []);
 
     useEffect(() => {
         if (!book?.title) return;
@@ -212,6 +215,7 @@ export default function Book() {
                         gap: "2rem",
                         flexDirection: { xs: "column", md: "row" },
                         alignItems: "flex-start",
+                        backgroundColor: "#f9f4f4",
                     }}
                 >
                     <Box
@@ -309,7 +313,6 @@ export default function Book() {
                                 ) : (
                                     <Button
                                         variant="contained"
-                                        color="success"
                                         onClick={() => {
                                             if (isInCart) {
                                                 navigate("/cart");
@@ -324,6 +327,7 @@ export default function Book() {
                                             borderRadius: "6px",
                                             width: "120px",
                                             mt: 1,
+                                            background: "#3c1a6e",
                                         }}
                                     >
                                         {isInCart ? "In Basket" : "Add to Cart"}
@@ -372,7 +376,10 @@ export default function Book() {
                         borderRadius: 2,
                     }}
                 >
-                    <Typography color="text.primary">
+                    <Typography
+                        color="text.primary"
+                        sx={{ backgroundColor: "#f9f4f4" }}
+                    >
                         {aiResponse.choices[0].message.content}
                     </Typography>
                 </Box>
