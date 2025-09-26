@@ -1,3 +1,18 @@
+.book-title{
+    color: #000000ff;    
+    font-size : 1rem;
+    letter-spacing: 1px;
+  text-transform: Capitalise;
+
+}
+
+.book-author{
+    color: #000000ff;
+    font-size : 1rem;
+    text-transform: Capitalise;
+
+}
+
 .single-book-container {
     margin-left: 36px;
     text-align: center;
@@ -29,5 +44,18 @@
 }
 
 .single-book-container:hover {
-    transform: scale(1.1);    
+    transform: scale(1.05);    
+}
+
+.results-title{
+    margin-bottom: 36px;
+    font-family: 'Libre Baskerville';
+    font-size: 3rem;
+    color: #3c1a6e;
+    text-align: center;
+}
+
+.title-container{
+    margin-bottom: 36px;
+    margin-top: 16px;
 }
