@@ -70,7 +70,9 @@ export default function Cart() {
             if (res.ok) {
                 setCart((prev) =>
                     prev.map((i) =>
-                        i.id === item.id ? { ...i, quantity: newQty } : i
+                        i.id === item.id
+                            ? { ...i, book: { ...i.book, quantity: newQty } }
+                            : i
                     )
                 );
             } else {
@@ -260,9 +262,11 @@ export default function Cart() {
                                                 >
                                                     <RemoveIcon fontSize="small" />
                                                 </IconButton>
+
                                                 <Typography>
                                                     {item.book.quantity}
                                                 </Typography>
+
                                                 <IconButton
                                                     size="small"
                                                     onClick={() =>
