@@ -213,6 +213,7 @@ export default function Book() {
                         gap: "2rem",
                         flexDirection: { xs: "column", md: "row" },
                         alignItems: "flex-start",
+                        backgroundColor:'#f9f4f4'
                     }}
                 >
                     <Box
@@ -373,7 +374,7 @@ export default function Book() {
                         borderRadius: 2,
                     }}
                 >
-                    <Typography color="text.primary">
+                    <Typography color="text.primary" sx={{backgroundColor:'#f9f4f4'}}>
                         {aiResponse.choices[0].message.content}
                     </Typography>
                 </Box>
