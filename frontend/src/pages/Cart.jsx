@@ -25,13 +25,18 @@ export default function Cart() {
     const [openBanner, setOpenBanner] = useState(false);
 
     useEffect(() => {
-        if (!user || !user.id) return;
+        if (!user || !user.sub) return;
 
         const fetchCart = async () => {
+            console.log("Fetching cart for user:", user.sub);
             try {
-                const res = await fetch(
-                    `http://localhost:8080/orders/${user.id}/false`
-                );
+                const res = await fetch(`http://localhost:8080/orders/false`, {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                });
+                console.log("Fetch response:", res);
+                if (!res.ok) throw new Error("Failed to fetch cart");
                 const data = await res.json();
                 setCart(data);
             } catch (err) {
@@ -51,9 +56,12 @@ export default function Cart() {
         try {
             const res = await fetch("http://localhost:8080/orders", {
                 method: "PUT",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${user.token}`,
+                },
                 body: JSON.stringify({
-                    userId: user.id,
+                    userId: user.sub,
                     bookId: item.book.id,
                     quantity: newQty,
                 }),
@@ -62,9 +70,7 @@ export default function Cart() {
             if (res.ok) {
                 setCart((prev) =>
                     prev.map((i) =>
-                        i.id === item.id
-                            ? { ...i, book: { ...i.book, quantity: newQty } }
-                            : i
+                        i.id === item.id ? { ...i, quantity: newQty } : i
                     )
                 );
             } else {
@@ -90,9 +96,13 @@ export default function Cart() {
     };
 
     const removeFromCart = async (item) => {
+        console.log("attempting to remove item", item);
         try {
             const res = await fetch(`http://localhost:8080/orders/${item.id}`, {
                 method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                },
             });
 
             if (res.ok) {
@@ -113,8 +123,11 @@ export default function Cart() {
 
     const handleCheckout = async () => {
         try {
-            const res = await fetch(`http://localhost:8080/orders/${user.id}`, {
+            const res = await fetch(`http://localhost:8080/orders/purchase`, {
                 method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                },
             });
 
             if (res.ok) {
@@ -173,7 +186,7 @@ export default function Cart() {
             ) : (
                 <Box p={4}>
                     <Typography variant="h4" gutterBottom>
-                        Your Cart, {user.name}
+                        Your Cart, {user.firstName}
                     </Typography>
 
                     <Box

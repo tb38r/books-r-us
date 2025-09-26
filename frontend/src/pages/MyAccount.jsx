@@ -7,6 +7,8 @@ import profile from "../assets/defaultprofile.webp";
 
 export default function MyAccount() {
     const { user, setUser } = useContext(UserContext);
+    console.log(user);
+
     const navigate = useNavigate();
     const [avatarLoaded, setAvatarLoaded] = useState(false);
 
@@ -50,7 +52,9 @@ export default function MyAccount() {
                             <span className="info-label">Name:</span>
                         </div>
                         <div>
-                            <span className="info-value">{user.name}</span>
+                            <span className="info-value">
+                                {user.firstName + " " + user.lastName}
+                            </span>
                         </div>
                     </div>
 

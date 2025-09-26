@@ -47,9 +47,9 @@ export default function Book() {
 
         const fetchCart = async () => {
             try {
-                const res = await fetch(
-                    `http://localhost:8080/orders/${user.id}/false`
-                );
+                const res = await fetch(`http://localhost:8080/orders/false`, {
+                    headers: { Authorization: `Bearer ${user.token}` },
+                });
                 if (res.ok) {
                     const data = await res.json();
                     setCart(data);
@@ -71,16 +71,23 @@ export default function Book() {
         }
 
         try {
-            const resCheck = await fetch(
-                `http://localhost:8080/orders/${user.id}/false`
-            );
+            const resCheck = await fetch(`http://localhost:8080/orders/false`, {
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                },
+            });
+
+            if (!resCheck.ok) {
+                setError("Failed to fetch cart");
+                return;
+            }
+
             const cartData = await resCheck.json();
 
-            const existingItem = cartData.find((i) => i.book.id === book.id);
-            const inCartQty = existingItem ? existingItem.book.quantity : 0;
+            const existingItem = cartData.find((i) => i.bookId === book.id);
+            const inCartQty = existingItem ? existingItem.quantity : 0;
 
             const availableStock = book.quantity - inCartQty;
-
             if (availableStock <= 0) {
                 setError("You already have all available copies in your cart.");
                 return;
@@ -91,9 +98,11 @@ export default function Book() {
             if (existingItem) {
                 const resUpdate = await fetch("http://localhost:8080/orders", {
                     method: "PUT",
-                    headers: { "Content-Type": "application/json" },
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${user.token}`,
+                    },
                     body: JSON.stringify({
-                        userId: user.id,
                         bookId: book.id,
                         quantity: inCartQty + qtyToAdd,
                     }),
@@ -107,9 +116,11 @@ export default function Book() {
             } else {
                 const resPost = await fetch("http://localhost:8080/orders", {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${user.token}`,
+                    },
                     body: JSON.stringify({
-                        userId: user.id,
                         bookId: book.id,
                         quantity: qtyToAdd,
                     }),
@@ -124,10 +135,13 @@ export default function Book() {
 
             setCart((prev) => {
                 if (!existingItem) {
-                    return [...prev, { book, quantity: qtyToAdd }];
+                    return [
+                        ...prev,
+                        { book, bookId: book.id, quantity: qtyToAdd },
+                    ];
                 } else {
                     return prev.map((item) =>
-                        item.book.id === book.id
+                        item.bookId === book.id
                             ? { ...item, quantity: inCartQty + qtyToAdd }
                             : item
                     );

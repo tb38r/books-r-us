@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import "./SignInSignUp.css";
+import { jwtDecode } from "jwt-decode";
 
 export default function SignInSignUp() {
     const { setUser } = useContext(UserContext);
@@ -33,13 +34,17 @@ export default function SignInSignUp() {
             });
 
             if (res.ok) {
-                const data = await res.json();
-                console.log(data);
+                const { token } = await res.json();
+                console.log("JWT:", token);
+
+                const decoded = jwtDecode(token);
+                console.log("Decoded JWT:", decoded);
+
                 const userData = {
-                    name: data.firstName + " " + data.lastName,
-                    id: data.id,
-                    email: data.email,
+                    token,
+                    ...decoded,
                 };
+
                 setUser(userData);
                 localStorage.setItem("user", JSON.stringify(userData));
 
@@ -55,39 +60,44 @@ export default function SignInSignUp() {
     };
 
     const handleSignUp = async (e) => {
+        e.preventDefault();
+
         if (signUpPassword !== signUpConfirm) {
             setSignUpMessage("❌ Passwords do not match.");
             return;
         }
-        e.preventDefault();
 
         const newUser = {
-            firstName: firstName,
-            lastName: lastName,
+            firstName,
+            lastName,
             email: signUpEmail,
             password: signUpPassword,
         };
 
         try {
-            const createRes = await fetch("http://localhost:8080/users", {
+            const res = await fetch("http://localhost:8080/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newUser),
             });
 
-            const createdUser = await createRes.json();
-            console.log("response from backend ---> ", await createRes);
-            if (createRes.ok) {
+            if (res.ok) {
+                const { token } = await res.json();
+                console.log("JWT (signup):", token);
+
+                const decoded = jwtDecode(token);
+                console.log("Decoded signup JWT:", decoded);
+
                 const userData = {
-                    name: createdUser.firstName + " " + createdUser.lastName,
-                    id: createdUser.id,
-                    email: createdUser.email,
+                    token,
+                    ...decoded,
                 };
+
                 setUser(userData);
                 localStorage.setItem("user", JSON.stringify(userData));
                 navigate("/account");
             } else {
-                const errorData = await createRes.json();
+                const errorData = await res.json();
                 setSignUpMessage(
                     `❌ ${errorData.error || "Failed to create user"}`
                 );
@@ -100,7 +110,6 @@ export default function SignInSignUp() {
 
     return (
         <div className="auth-wrapper">
-            {/* Left: Sign In */}
             <div className="auth-box left">
                 <h2>Existing Customer?</h2>
                 <form onSubmit={handleSignIn}>
@@ -125,7 +134,6 @@ export default function SignInSignUp() {
                 )}
             </div>
 
-            {/* Right: Sign Up */}
             <div className="auth-box right">
                 <h2>New Customer?</h2>
                 <form onSubmit={handleSignUp}>
