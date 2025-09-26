@@ -19,6 +19,7 @@ import AddToCartButton from "../components/Book Page/AddToCart";
 import BasicRating from "../components/Book Page/RatingFeature";
 import { UserContext } from "../context/UserContext";
 import defaultCover from "../assets/defaultcover.jpg";
+import { getGroqChatCompletion } from "../ai/geminiClient";
 
 export default function Book() {
     const { id } = useParams();
@@ -309,7 +310,6 @@ export default function Book() {
                                 ) : (
                                     <Button
                                         variant="contained"
-                                        color="success"
                                         onClick={() => {
                                             if (isInCart) {
                                                 navigate("/cart");
@@ -324,6 +324,7 @@ export default function Book() {
                                             borderRadius: "6px",
                                             width: "120px",
                                             mt: 1,
+                                            background:'#3c1a6e'
                                         }}
                                     >
                                         {isInCart ? "In Basket" : "Add to Cart"}
