@@ -2,6 +2,7 @@ package com.sparta.library.services;
 
 import com.sparta.library.dto.BookDTO;
 import com.sparta.library.dto.CreateOrderDto;
+import com.sparta.library.dto.GetOrderDto;
 import com.sparta.library.dto.OrdersDto;
 import com.sparta.library.exceptions.*;
 import com.sparta.library.mappers.BookMapper;
@@ -76,9 +77,9 @@ public class OrderService {
         return orderdto;
     }
     @Transactional
-    public List<BookDTO> getOrdersByUserId(boolean purchased) {
+    public List<GetOrderDto> getOrdersByUserId(boolean purchased) {
         var user = returnAuthUser();
-        List<BookDTO> books = new ArrayList<>();
+        List<GetOrderDto> returnedOrders = new ArrayList<>();
         /*
         var user = userRepository.findById(id).orElse(null);
         if(user == null) {
@@ -88,6 +89,7 @@ public class OrderService {
 
         var orders = ordersRepository.findByUser(user);
         for(Order order : orders) {
+            var getOrderDto = new GetOrderDto();
             if(order.getPurchased() != purchased) continue;
             var book = bookRepository.findById(order.getBook().getId()).orElse(null);
             if(book == null) {
@@ -95,9 +97,11 @@ public class OrderService {
             }
             var bookDto = bookMapper.bookDTO(book);
             bookDto.setQuantity(order.getQuantity());
-            books.add(bookDto);
+            getOrderDto.setBook(bookDto);
+            getOrderDto.setId(order.getId());
+            returnedOrders.add(getOrderDto);
         }
-        return books;
+        return returnedOrders;
     }
     public void UpdateOrder(CreateOrderDto dto) {
         var user = returnAuthUser();

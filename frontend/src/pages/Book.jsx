@@ -30,7 +30,8 @@ export default function Book() {
     const [quantity, setQuantity] = useState(1);
     const [error, setError] = useState("");
     const [successMsg, setSuccessMsg] = useState(false);
-    const isInCart = cart.some((item) => item.book.id === book.id);
+    const [aiResponse, setAiResponse] = useState(null);
+    const isInCart = book && cart.some((item) => item.book.id === book.id);
 
     useEffect(() => {
         fetch(`http://localhost:8080/books`)
@@ -63,6 +64,24 @@ export default function Book() {
 
         fetchCart();
     }, [user]);
+
+    useEffect(() => {
+        if (!book?.title) return;
+        const fetchAIResponse = async () => {
+            try {
+                const result = await getGroqChatCompletion(
+                    book?.title,
+                    book?.author
+                );
+                setAiResponse(result);
+            } catch (error) {
+                console.error("Error fetching AI response:", error);
+                setAiResponse(error);
+            }
+        };
+
+        fetchAIResponse();
+    }, [book]);
 
     const addToCartHandler = async () => {
         if (!user) {
@@ -343,6 +362,21 @@ export default function Book() {
                     </Box>
                 </Box>
             </Box>
+            {aiResponse?.choices?.[0]?.message?.content && (
+                <Box
+                    sx={{
+                        mt: 4,
+                        width: { xs: "100%", md: "50%" },
+                        p: 2,
+                        bgcolor: "#f5f5f5",
+                        borderRadius: 2,
+                    }}
+                >
+                    <Typography color="text.primary">
+                        {aiResponse.choices[0].message.content}
+                    </Typography>
+                </Box>
+            )}
         </>
     );
 }

@@ -1,8 +1,10 @@
 package com.sparta.library.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class BookDTO {
     private int id;
     private String title;
