@@ -400,14 +400,28 @@ export default function Book() {
                         mt: 4,
                         width: { xs: "100%", md: "50%" },
                         p: 2,
-                        bgcolor: "#f5f5f5",
+                        bgcolor: "#e7e7e7ff",
                         borderRadius: 2,
+                        position: "relative",
                     }}
                 >
                     <Typography
-                        color="text.primary"
-                        sx={{ backgroundColor: "#f9f4f4" }}
+                        variant="subtitle1"
+                        sx={{
+                            position: "absolute",
+                            top: -18,
+                            left: 0,
+                            px: 1.5,
+                            backgroundColor: "#e7e7e7ff",
+                            borderRadius: "6px 6px 0 0",
+                            fontWeight: "bold",
+                            fontSize: "1rem",
+                        }}
                     >
+                        Book Description
+                    </Typography>
+
+                    <Typography color="text.primary">
                         {aiResponse.choices[0].message.content}
                     </Typography>
                 </Box>

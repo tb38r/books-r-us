@@ -4,6 +4,7 @@ import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import profile from "../assets/defaultprofile.webp";
+import Book from "../components/Book";
 
 export default function MyAccount() {
     const { user, setUser } = useContext(UserContext);
@@ -11,6 +12,8 @@ export default function MyAccount() {
 
     const navigate = useNavigate();
     const [avatarLoaded, setAvatarLoaded] = useState(false);
+    const [orders, setOrders] = useState([]);
+    const [ordersLoading, setOrdersLoading] = useState(true);
 
     useEffect(() => {
         if (!user) {
@@ -20,6 +23,40 @@ export default function MyAccount() {
                 .catch(console.error);
         }
     }, [user, setUser]);
+
+    useEffect(() => {
+        if (user?.token) {
+            const fetchOrders = async () => {
+                try {
+                    const res = await fetch(
+                        "http://localhost:8080/orders/true",
+                        {
+                            headers: {
+                                Authorization: `Bearer ${user.token}`,
+                            },
+                        }
+                    );
+
+                    if (!res.ok) {
+                        const err = await res.json();
+                        console.error(
+                            "Error fetching orders:",
+                            err.error || res.statusText
+                        );
+                        setOrders([]);
+                    } else {
+                        const data = await res.json();
+                        setOrders(data);
+                    }
+                } catch (error) {
+                    console.error("Error fetching orders:", error);
+                } finally {
+                    setOrdersLoading(false);
+                }
+            };
+            fetchOrders();
+        }
+    }, []);
 
     const handleLogout = () => {
         setUser(null);
@@ -86,6 +123,27 @@ export default function MyAccount() {
                 >
                     Log Out
                 </Button>
+            </div>
+            <div className="order-history-section">
+                <h2>Recent Purchases</h2>
+
+                {ordersLoading ? (
+                    <p>Loading orders...</p>
+                ) : orders.length === 0 ? (
+                    <p>You haven't placed any orders yet.</p>
+                ) : (
+                    <div className="order-history-row">
+                        {orders.slice(-3).map((order) => (
+                            <Book
+                                key={order.id}
+                                id={order.book.id}
+                                title={order.book.title}
+                                author={order.book.author}
+                                cover={order.book.coverUrl}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );
