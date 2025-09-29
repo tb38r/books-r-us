@@ -1,5 +1,5 @@
 import { Box, Typography, Link, IconButton, Stack } from "@mui/material";
-import { Twitter, Instagram } from "@mui/icons-material";
+import { Twitter, Instagram, GitHub} from "@mui/icons-material";
 import "./Footer.css"; 
 
 export default function Footer() {
@@ -9,7 +9,7 @@ export default function Footer() {
         Books-R-Us
       </Typography>
 
-      <Stack direction="row" spacing={3} justifyContent="center" className="footer-links">
+      {/* <Stack direction="row" spacing={3} justifyContent="center" className="footer-links">
         <Link href="/" underline="hover" color="inherit">
           Home
         </Link>
@@ -19,7 +19,7 @@ export default function Footer() {
         <Link href="/contact" underline="hover" color="inherit">
           Contact
         </Link>
-      </Stack>
+      </Stack> */}
 
       <Stack direction="row" spacing={2} justifyContent="center" className="footer-socials">
        
@@ -29,10 +29,13 @@ export default function Footer() {
         <IconButton href="https://instagram.com" target="_blank" rel="noopener" color="inherit">
           <Instagram />
         </IconButton>
+        <IconButton href="https://github.com/tb38r/books-r-us" target="_blank" rel="noopener" color="inherit">
+          <GitHub />
+        </IconButton>
       </Stack>
 
       <Typography variant="body2" className="footer-copy">
-        © {new Date().getFullYear()} Books-R-Us. All rights reserved.
+        © {new Date().getFullYear()} Books-R-Us. All rights reserved. 6th Floor, 125 London Wall, Barbican, London EC2Y 5AS
       </Typography>
     </Box>
   );

@@ -183,14 +183,42 @@ export default function Book() {
         return <Typography>Loading book details...</Typography>;
     }
 
+    function formatGenre(genre) {
+        const romanNumerals = [
+            "i",
+            "ii",
+            "iii",
+            "iv",
+            "v",
+            "vi",
+            "vii",
+            "viii",
+            "ix",
+            "x",
+        ];
+        return genre
+            .split("_")
+            .map((word) => {
+                if (romanNumerals.includes(word.toLowerCase())) {
+                    return word.toUpperCase();
+                }
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            })
+            .join(" ");
+    }
+
     return (
         <>
             <Breadcrumbs separator="›" sx={{ mb: 2 }}>
                 <Link underline="hover" color="inherit" href="/">
                     Home
                 </Link>
-                <Link underline="hover" color="inherit" href="/genre/fantasy">
-                    Fantasy Books
+                <Link
+                    underline="hover"
+                    color="inherit"
+                    href={`/genre/${book.genre}`}
+                >
+                    {formatGenre(book.genre)} Books
                 </Link>
                 <Typography color="text.primary">{book.title}</Typography>
             </Breadcrumbs>
@@ -216,7 +244,6 @@ export default function Book() {
                         flexDirection: { xs: "column", md: "row" },
                         alignItems: "flex-start",
                         backgroundColor: "#f9f4f4",
-
                     }}
                 >
                     <Box
@@ -328,7 +355,7 @@ export default function Book() {
                                             borderRadius: "6px",
                                             width: "120px",
                                             mt: 1,
-                                            background:'#3c1a6e'
+                                            background: "#3c1a6e",
                                         }}
                                     >
                                         {isInCart ? "In Basket" : "Add to Cart"}
