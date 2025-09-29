@@ -125,7 +125,7 @@ export default function MyAccount() {
                 </Button>
             </div>
             <div className="order-history-section">
-                <h2>Recent Purchases</h2>
+                <h2 className="purchase-title">Recent Purchases</h2>
 
                 {ordersLoading ? (
                     <p>Loading orders...</p>
