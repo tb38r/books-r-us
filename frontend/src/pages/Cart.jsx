@@ -14,8 +14,10 @@ import AddIcon from "@mui/icons-material/Add";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import { UserContext } from "../context/UserContext";
 import Book from "../components/Book";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
+    const navigate = useNavigate();
     const { user } = useContext(UserContext);
     const [cart, setCart] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -137,6 +139,7 @@ export default function Cart() {
                 setCheckoutMessage("Order purchased successfully!");
                 setCheckoutSuccess(true);
                 setOpenBanner(true);
+                navigate("/account");
             } else {
                 const err = await res.json();
                 setCheckoutMessage(err.error || "Failed to checkout");

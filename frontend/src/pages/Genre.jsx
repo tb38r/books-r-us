@@ -47,7 +47,7 @@ export default function Genre() {
 
     return (
         <div className="genre-page-container">
-            <h2>{formatGenre(genre)}</h2>
+            <h2 className="genretitle">{formatGenre(genre)}</h2>
             <div className="genre-books-container">
                 {books
                     .filter((book) => book.genre === genre)
