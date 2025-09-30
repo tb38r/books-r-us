@@ -242,3 +242,19 @@
   margin-bottom: 12px;
   text-align: center;
 }
+
+.order-history-section {
+  margin-top: 40px;
+}
+
+.order-history-row {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.purchase-title{
+  font-size: 24px;
+  text-align: left;
+}

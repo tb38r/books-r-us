@@ -5,6 +5,7 @@
   gap: 2rem;
   background-color: #fff;
   font-family: sans-serif;
+  margin-top: 50px;
 }
 
 .auth-box {
@@ -35,7 +36,7 @@
 
 .auth-box button {
   padding: 0.6rem;
-  background-color: #ea580c;
+  background-color: #3c1a6e;
   color: white;
   border: none;
   border-radius: 4px;
@@ -44,7 +45,7 @@
 }
 
 .auth-box button:hover {
-  background-color: #d94e0a;
+  background-color: #3c1a6e;
 }
 
 .auth-message {
@@ -55,8 +56,10 @@
 
 .left {
   background-color: #f0f0f0;
+  text-align: center;
 }
 
 .right {
   background-color: #fefefe;
+  text-align: center;
 }

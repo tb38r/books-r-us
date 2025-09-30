@@ -51,6 +51,7 @@ export default function SearchResults() {
                     variant="body1"
                     color="textSecondary"
                     className="text-center"
+                    align="center"
                 >
                     {searchId
                         ? "No results found."
