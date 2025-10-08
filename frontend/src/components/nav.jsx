@@ -34,7 +34,7 @@ export default function Nav() {
 
   useEffect(() => {
     fetch("http://localhost:8080/books")
-      .then((res) => res.json())
+    .then((res) => res.json())
       .then((data) => {
         const uniqueGenres = [...new Set(data.map((book) => book.genre))];
         setGenres(uniqueGenres.slice(0, 8));

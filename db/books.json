@@ -1,0 +1,1912 @@
+[
+  {
+    "id": "1",
+    "author": "Fred Orr",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8907763M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL8907763M",
+    "price": "11.26",
+    "quantity": "8",
+    "title": "How to pass exams"
+  },
+  {
+    "id": "2",
+    "author": "Rhonda Byrne",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8788357M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL8788357M",
+    "price": "24.35",
+    "quantity": "10",
+    "title": "The Secret"
+  },
+  {
+    "id": "3",
+    "author": "Allan Pease",
+    "cover": "NULL",
+    "genre": "self_help",
+    "olid": "NULL",
+    "price": "13.98",
+    "quantity": "5",
+    "title": "The Definitive Book of Body Language"
+  },
+  {
+    "id": "4",
+    "author": "James Redfield",
+    "cover": "https://covers.openlibrary.org/b/olid/OL26642218M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL26642218M",
+    "price": "16.52",
+    "quantity": "13",
+    "title": "God and the evolving universe"
+  },
+  {
+    "id": "5",
+    "author": "Edward de Bono",
+    "cover": "https://covers.openlibrary.org/b/olid/OL2560191M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL2560191M",
+    "price": "15.97",
+    "quantity": "13",
+    "title": "The Power of Focused Thinking"
+  },
+  {
+    "id": "6",
+    "author": "Anthea Paul",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24752502M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL24752502M",
+    "price": "18.68",
+    "quantity": "7",
+    "title": "Girlosophy"
+  },
+  {
+    "id": "7",
+    "author": "James Redfield",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24599172M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL24599172M",
+    "price": "13.18",
+    "quantity": "7",
+    "title": "The Twelfth Insight"
+  },
+  {
+    "id": "8",
+    "author": "Tony Buzan",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9142788M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL9142788M",
+    "price": "17.19",
+    "quantity": "15",
+    "title": "Como Crear Mapas Mentales"
+  },
+  {
+    "id": "9",
+    "author": "Geneen Roth",
+    "cover": "https://covers.openlibrary.org/b/olid/OL1404860M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL1404860M",
+    "price": "12.83",
+    "quantity": "14",
+    "title": "Feeding the Hungry Heart"
+  },
+  {
+    "id": "10",
+    "author": "Iyanla Vanzant",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7722756M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL7722756M",
+    "price": "14.97",
+    "quantity": "9",
+    "title": "Yesterday I Cried"
+  },
+  {
+    "id": "11",
+    "author": "Kerry Gleeson",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6779271M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL6779271M",
+    "price": "25.31",
+    "quantity": "10",
+    "title": "The personal efficiency program"
+  },
+  {
+    "id": "12",
+    "author": "Meg-John Barker",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27841502M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL27841502M",
+    "price": "19.28",
+    "quantity": "6",
+    "title": "Rewriting the Rules"
+  },
+  {
+    "id": "13",
+    "author": "Cate Howell",
+    "cover": "NULL",
+    "genre": "self_help",
+    "olid": "NULL",
+    "price": "23.79",
+    "quantity": "11",
+    "title": "Intuition"
+  },
+  {
+    "id": "14",
+    "author": "Nicholas Perricone",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8137014M-M.jpg",
+    "genre": "self_help",
+    "olid": "OL8137014M",
+    "price": "11.24",
+    "quantity": "15",
+    "title": "The Perricone Promise"
+  },
+  {
+    "id": "15",
+    "author": "David Keefe",
+    "cover": "NULL",
+    "genre": "self_help",
+    "olid": "NULL",
+    "price": "25.78",
+    "quantity": "9",
+    "title": "Coolmind"
+  },
+  {
+    "id": "16",
+    "author": "John Boyne",
+    "cover": "NULL",
+    "genre": "world_war_ii",
+    "olid": "NULL",
+    "price": "16.31",
+    "quantity": "5",
+    "title": "The Boy in the Striped Pyjamas"
+  },
+  {
+    "id": "17",
+    "author": "Kurt Vonnegut",
+    "cover": "https://covers.openlibrary.org/b/olid/OL13788314M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL13788314M",
+    "price": "18.43",
+    "quantity": "13",
+    "title": "Slaughterhouse-Five"
+  },
+  {
+    "id": "18",
+    "author": "Markus Zusak",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24297182M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL24297182M",
+    "price": "11.85",
+    "quantity": "14",
+    "title": "The Book Thief"
+  },
+  {
+    "id": "19",
+    "author": "Art Spiegelman",
+    "cover": "https://covers.openlibrary.org/b/olid/OL10487209M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL10487209M",
+    "price": "11.82",
+    "quantity": "9",
+    "title": "Maus I"
+  },
+  {
+    "id": "20",
+    "author": "Charles de Gaulle",
+    "cover": "https://covers.openlibrary.org/b/olid/OL22886850M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL22886850M",
+    "price": "16.66",
+    "quantity": "10",
+    "title": "Meḿoires de guerre"
+  },
+  {
+    "id": "21",
+    "author": "Stephen King",
+    "cover": "https://covers.openlibrary.org/b/olid/OL33965435M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL33965435M",
+    "price": "18.92",
+    "quantity": "11",
+    "title": "Pet Sematary"
+  },
+  {
+    "id": "22",
+    "author": "Stephen King",
+    "cover": "https://covers.openlibrary.org/b/olid/OL49825722M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL49825722M",
+    "price": "17.9",
+    "quantity": "13",
+    "title": "Different Seasons"
+  },
+  {
+    "id": "23",
+    "author": "Antony Beevor",
+    "cover": "NULL",
+    "genre": "world_war_ii",
+    "olid": "NULL",
+    "price": "10.05",
+    "quantity": "13",
+    "title": "The Fall of Berlin, 1945"
+  },
+  {
+    "id": "24",
+    "author": "E. H. Carr",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9244450M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL9244450M",
+    "price": "15.26",
+    "quantity": "9",
+    "title": "The Twenty Years' Crisis, 1919-1939"
+  },
+  {
+    "id": "25",
+    "author": "Laura Hillenbrand",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24422943M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL24422943M",
+    "price": "23.02",
+    "quantity": "13",
+    "title": "Unbroken"
+  },
+  {
+    "id": "26",
+    "author": "Ira Levin",
+    "cover": "https://covers.openlibrary.org/b/olid/OL2608945M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL2608945M",
+    "price": "21.85",
+    "quantity": "7",
+    "title": "The Boys from Brazil"
+  },
+  {
+    "id": "27",
+    "author": "John Richard Hersey",
+    "cover": "https://covers.openlibrary.org/b/olid/OL2060639M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL2060639M",
+    "price": "14.29",
+    "quantity": "5",
+    "title": "Hiroshima"
+  },
+  {
+    "id": "28",
+    "author": "Primo Levi",
+    "cover": "https://covers.openlibrary.org/b/olid/OL35431907M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL35431907M",
+    "price": "19.58",
+    "quantity": "15",
+    "title": "I sommersi e i salvati"
+  },
+  {
+    "id": "29",
+    "author": "Stephen E. Ambrose",
+    "cover": "https://covers.openlibrary.org/b/olid/OL12463208M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL12463208M",
+    "price": "19.62",
+    "quantity": "5",
+    "title": "Band of Brothers"
+  },
+  {
+    "id": "30",
+    "author": "B. H. Liddell Hart",
+    "cover": "https://covers.openlibrary.org/b/olid/OL5691359M-M.jpg",
+    "genre": "world_war_ii",
+    "olid": "OL5691359M",
+    "price": "17.78",
+    "quantity": "7",
+    "title": "History of the Second World War"
+  },
+  {
+    "id": "31",
+    "author": "Mary Shelley",
+    "cover": "https://covers.openlibrary.org/b/olid/OL35649409M-M.jpg",
+    "genre": "horror",
+    "olid": "OL35649409M",
+    "price": "17.56",
+    "quantity": "8",
+    "title": "Frankenstein or The Modern Prometheus"
+  },
+  {
+    "id": "32",
+    "author": "Oscar Wilde",
+    "cover": "NULL",
+    "genre": "horror",
+    "olid": "NULL",
+    "price": "11.98",
+    "quantity": "6",
+    "title": "The Picture of Dorian Gray"
+  },
+  {
+    "id": "33",
+    "author": "Bram Stoker",
+    "cover": "https://covers.openlibrary.org/b/olid/OL35373336M-M.jpg",
+    "genre": "horror",
+    "olid": "OL35373336M",
+    "price": "15.7",
+    "quantity": "5",
+    "title": "Dracula"
+  },
+  {
+    "id": "34",
+    "author": "Sheridan Le Fanu",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8864633M-M.jpg",
+    "genre": "horror",
+    "olid": "OL8864633M",
+    "price": "23.79",
+    "quantity": "11",
+    "title": "Carmilla"
+  },
+  {
+    "id": "35",
+    "author": "Bram Stoker",
+    "cover": "https://covers.openlibrary.org/b/olid/OL11684364M-M.jpg",
+    "genre": "horror",
+    "olid": "OL11684364M",
+    "price": "22.64",
+    "quantity": "11",
+    "title": "The Jewel of Seven Stars"
+  },
+  {
+    "id": "36",
+    "author": "Henry James",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9492220M-M.jpg",
+    "genre": "horror",
+    "olid": "OL9492220M",
+    "price": "22.36",
+    "quantity": "5",
+    "title": "The Turn of the Screw"
+  },
+  {
+    "id": "37",
+    "author": "Charlotte Perkins Gilman",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7775518M-M.jpg",
+    "genre": "horror",
+    "olid": "OL7775518M",
+    "price": "20.4",
+    "quantity": "11",
+    "title": "Herland"
+  },
+  {
+    "id": "38",
+    "author": "Robert Louis Stevenson",
+    "cover": "https://covers.openlibrary.org/b/olid/OL3682767M-M.jpg",
+    "genre": "horror",
+    "olid": "OL3682767M",
+    "price": "21.93",
+    "quantity": "14",
+    "title": "The Strange Case of Dr. Jekyll and Mr. Hyde"
+  },
+  {
+    "id": "39",
+    "author": "Arthur Machen",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8651720M-M.jpg",
+    "genre": "horror",
+    "olid": "OL8651720M",
+    "price": "12.91",
+    "quantity": "7",
+    "title": "The Great God Pan"
+  },
+  {
+    "id": "40",
+    "author": "Arthur Machen",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9716480M-M.jpg",
+    "genre": "horror",
+    "olid": "OL9716480M",
+    "price": "12.76",
+    "quantity": "5",
+    "title": "The White People"
+  },
+  {
+    "id": "41",
+    "author": "Stephen King",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27902097M-M.jpg",
+    "genre": "horror",
+    "olid": "OL27902097M",
+    "price": "15.55",
+    "quantity": "10",
+    "title": "Carrie"
+  },
+  {
+    "id": "42",
+    "author": "Arthur Conan Doyle",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24221283M-M.jpg",
+    "genre": "horror",
+    "olid": "OL24221283M",
+    "price": "13.87",
+    "quantity": "6",
+    "title": "Tales of Terror and Mystery"
+  },
+  {
+    "id": "43",
+    "author": "Stephen King",
+    "cover": "NULL",
+    "genre": "horror",
+    "olid": "NULL",
+    "price": "23.72",
+    "quantity": "15",
+    "title": "Misery"
+  },
+  {
+    "id": "44",
+    "author": "Algernon Blackwood",
+    "cover": "https://covers.openlibrary.org/b/olid/OL11824017M-M.jpg",
+    "genre": "horror",
+    "olid": "OL11824017M",
+    "price": "15.48",
+    "quantity": "8",
+    "title": "The Damned"
+  },
+  {
+    "id": "45",
+    "author": "Lewis Carroll",
+    "cover": "https://covers.openlibrary.org/b/olid/OL31754751M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL31754751M",
+    "price": "21.86",
+    "quantity": "10",
+    "title": "Alice's Adventures in Wonderland"
+  },
+  {
+    "id": "46",
+    "author": "Sax Rohmer",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9761880M-M.jpg",
+    "genre": "horror",
+    "olid": "OL9761880M",
+    "price": "10.9",
+    "quantity": "5",
+    "title": "Brood of the Witch-Queen"
+  },
+  {
+    "id": "47",
+    "author": "L. Frank Baum",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8155451M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL8155451M",
+    "price": "25.47",
+    "quantity": "14",
+    "title": "The Wonderful Wizard of Oz"
+  },
+  {
+    "id": "48",
+    "author": "Arthur Conan Doyle",
+    "cover": "https://covers.openlibrary.org/b/olid/OL22885694M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL22885694M",
+    "price": "23.77",
+    "quantity": "5",
+    "title": "The Lost World"
+  },
+  {
+    "id": "49",
+    "author": "Jack London",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6994295M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL6994295M",
+    "price": "13.26",
+    "quantity": "7",
+    "title": "The Iron Heel"
+  },
+  {
+    "id": "50",
+    "author": "H. G. Wells",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27553880M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL27553880M",
+    "price": "11.92",
+    "quantity": "12",
+    "title": "The Time Machine"
+  },
+  {
+    "id": "51",
+    "author": "Aldous Huxley",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6504102M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL6504102M",
+    "price": "11.28",
+    "quantity": "13",
+    "title": "Brave New World"
+  },
+  {
+    "id": "52",
+    "author": "Edwin Abbott Abbott",
+    "cover": "https://covers.openlibrary.org/b/olid/OL23189553M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL23189553M",
+    "price": "10.69",
+    "quantity": "9",
+    "title": "Flatland"
+  },
+  {
+    "id": "53",
+    "author": "Gilbert Keith Chesterton",
+    "cover": "https://covers.openlibrary.org/b/olid/OL23365952M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL23365952M",
+    "price": "11.86",
+    "quantity": "5",
+    "title": "The Napoleon of Notting Hill"
+  },
+  {
+    "id": "54",
+    "author": "H. G. Wells",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9236546M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL9236546M",
+    "price": "24.34",
+    "quantity": "9",
+    "title": "The War of the Worlds"
+  },
+  {
+    "id": "55",
+    "author": "H. G. Wells",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24269941M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL24269941M",
+    "price": "10.45",
+    "quantity": "11",
+    "title": "The Invisible Man"
+  },
+  {
+    "id": "56",
+    "author": "George Orwell",
+    "cover": "https://covers.openlibrary.org/b/olid/OL21733390M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL21733390M",
+    "price": "18.13",
+    "quantity": "10",
+    "title": "Nineteen Eighty-Four"
+  },
+  {
+    "id": "57",
+    "author": "Jules Verne",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7050533M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL7050533M",
+    "price": "11.95",
+    "quantity": "12",
+    "title": "Le Tour du Monde en Quatre-Vingts Jours"
+  },
+  {
+    "id": "58",
+    "author": "George MacDonald",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7066792M-M.jpg",
+    "genre": "science_fiction",
+    "olid": "OL7066792M",
+    "price": "16.86",
+    "quantity": "12",
+    "title": "The Princess and Curdie"
+  },
+  {
+    "id": "59",
+    "author": "Jonathan Swift",
+    "cover": "https://covers.openlibrary.org/b/olid/OL26445784M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL26445784M",
+    "price": "16.17",
+    "quantity": "13",
+    "title": "Gulliver's Travels"
+  },
+  {
+    "id": "60",
+    "author": "Robert Louis Stevenson",
+    "cover": "https://covers.openlibrary.org/b/olid/OL40812029M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL40812029M",
+    "price": "13.57",
+    "quantity": "15",
+    "title": "Treasure Island"
+  },
+  {
+    "id": "61",
+    "author": "Niccolò Machiavelli",
+    "cover": "https://covers.openlibrary.org/b/olid/OL37826838M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL37826838M",
+    "price": "20.67",
+    "quantity": "10",
+    "title": "The Prince"
+  },
+  {
+    "id": "62",
+    "author": "Lewis Carroll",
+    "cover": "https://covers.openlibrary.org/b/olid/OL21298716M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL21298716M",
+    "price": "15.62",
+    "quantity": "5",
+    "title": "Through the Looking-Glass"
+  },
+  {
+    "id": "63",
+    "author": "Kenneth Grahame",
+    "cover": "https://covers.openlibrary.org/b/olid/OL40046991M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL40046991M",
+    "price": "12.61",
+    "quantity": "10",
+    "title": "Wind in the Willows"
+  },
+  {
+    "id": "64",
+    "author": "Edith Nesbit",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9232844M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL9232844M",
+    "price": "24.17",
+    "quantity": "14",
+    "title": "Five Children and It"
+  },
+  {
+    "id": "65",
+    "author": "L. Frank Baum",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7244470M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL7244470M",
+    "price": "20.41",
+    "quantity": "13",
+    "title": "The Marvelous Land of Oz"
+  },
+  {
+    "id": "66",
+    "author": "William Shakespeare",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24594641M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL24594641M",
+    "price": "10.43",
+    "quantity": "11",
+    "title": "A Midsummer Night's Dream"
+  },
+  {
+    "id": "67",
+    "author": "L. Frank Baum",
+    "cover": "https://covers.openlibrary.org/b/olid/OL23416104M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL23416104M",
+    "price": "19.79",
+    "quantity": "15",
+    "title": "Ozma of Oz"
+  },
+  {
+    "id": "68",
+    "author": "L. Frank Baum",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7207092M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL7207092M",
+    "price": "21.3",
+    "quantity": "15",
+    "title": "Dorothy and the Wizard in Oz"
+  },
+  {
+    "id": "69",
+    "author": "L. Frank Baum",
+    "cover": "https://covers.openlibrary.org/b/olid/OL3417469M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL3417469M",
+    "price": "18.24",
+    "quantity": "12",
+    "title": "The Emerald City of Oz"
+  },
+  {
+    "id": "70",
+    "author": "L. Frank Baum",
+    "cover": "https://covers.openlibrary.org/b/olid/OL3584291M-M.jpg",
+    "genre": "fantasy",
+    "olid": "OL3584291M",
+    "price": "14.98",
+    "quantity": "10",
+    "title": "The Lost Princess of Oz"
+  },
+  {
+    "id": "71",
+    "author": "Fannie Merritt Farmer",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6774762M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL6774762M",
+    "price": "22.57",
+    "quantity": "11",
+    "title": "Boston Cooking-School cook book"
+  },
+  {
+    "id": "72",
+    "author": "Kokuritsu Kokkai Toshokan (Japan)",
+    "cover": "NULL",
+    "genre": "cooking",
+    "olid": "NULL",
+    "price": "25.09",
+    "quantity": "6",
+    "title": "Kokuritsu Kokkai Toshokan shozō Meijiki kankō tosho maikuro-ban shūsei"
+  },
+  {
+    "id": "73",
+    "author": "Laura Esquivel",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24974997M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL24974997M",
+    "price": "23.93",
+    "quantity": "10",
+    "title": "Como agua para chocolate"
+  },
+  {
+    "id": "74",
+    "author": "Mary Randolph",
+    "cover": "https://covers.openlibrary.org/b/olid/OL1422523M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL1422523M",
+    "price": "12.89",
+    "quantity": "7",
+    "title": "The Virginia house-wife"
+  },
+  {
+    "id": "75",
+    "author": "Irma S. Rombauer",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7948689M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL7948689M",
+    "price": "22.24",
+    "quantity": "11",
+    "title": "Joy of Cooking"
+  },
+  {
+    "id": "76",
+    "author": "Kokuritsu Kokkai Toshokan (Japan)",
+    "cover": "NULL",
+    "genre": "cooking",
+    "olid": "NULL",
+    "price": "12.82",
+    "quantity": "8",
+    "title": "国立 国会 図書館 所蔵 明治期 刋行 図書 マイクロ版 集成"
+  },
+  {
+    "id": "77",
+    "author": "Jerry Thomas",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8582014M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL8582014M",
+    "price": "12.08",
+    "quantity": "13",
+    "title": "The Bartender's Guide"
+  },
+  {
+    "id": "78",
+    "author": "Jean Anthelme Brillat-Savarin",
+    "cover": "https://covers.openlibrary.org/b/olid/OL2605253M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL2605253M",
+    "price": "17.18",
+    "quantity": "5",
+    "title": "Physiologie du goût"
+  },
+  {
+    "id": "79",
+    "author": "Sir Henry Thompson",
+    "cover": "https://covers.openlibrary.org/b/olid/OL23663165M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL23663165M",
+    "price": "23.74",
+    "quantity": "9",
+    "title": "Food and feeding"
+  },
+  {
+    "id": "80",
+    "author": "Mrs. Beeton",
+    "cover": "https://covers.openlibrary.org/b/olid/OL21295888M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL21295888M",
+    "price": "13.51",
+    "quantity": "10",
+    "title": "The Book of Household Management"
+  },
+  {
+    "id": "81",
+    "author": "Hannah Glasse",
+    "cover": "https://covers.openlibrary.org/b/olid/OL5240094M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL5240094M",
+    "price": "19.66",
+    "quantity": "5",
+    "title": "The art of cookery, made plain and easy"
+  },
+  {
+    "id": "82",
+    "author": "Hugo Ziemann",
+    "cover": "https://covers.openlibrary.org/b/olid/OL3498148M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL3498148M",
+    "price": "22.64",
+    "quantity": "8",
+    "title": "Original White House Cookbook"
+  },
+  {
+    "id": "83",
+    "author": "Catharine Esther Beecher",
+    "cover": "https://covers.openlibrary.org/b/olid/OL23333697M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL23333697M",
+    "price": "25.58",
+    "quantity": "15",
+    "title": "Miss Beecher's domestic receipt book"
+  },
+  {
+    "id": "84",
+    "author": "Eric Schlosser",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7469003M-M.jpg",
+    "genre": "cooking",
+    "olid": "OL7469003M",
+    "price": "22.68",
+    "quantity": "15",
+    "title": "Fast Food Nation"
+  },
+  {
+    "id": "85",
+    "author": "Arthur Conan Doyle",
+    "cover": "https://covers.openlibrary.org/b/olid/OL47068254M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL47068254M",
+    "price": "10.96",
+    "quantity": "6",
+    "title": "A Study in Scarlet"
+  },
+  {
+    "id": "86",
+    "author": "Arthur Conan Doyle",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24349267M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL24349267M",
+    "price": "10.5",
+    "quantity": "8",
+    "title": "The Adventures of Sherlock Holmes [12 stories]"
+  },
+  {
+    "id": "87",
+    "author": "Frances Hodgson Burnett",
+    "cover": "https://covers.openlibrary.org/b/olid/OL37044748M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL37044748M",
+    "price": "25.39",
+    "quantity": "10",
+    "title": "The Secret Garden"
+  },
+  {
+    "id": "88",
+    "author": "Arthur Conan Doyle",
+    "cover": "NULL",
+    "genre": "mystery_and_detective_stories",
+    "olid": "NULL",
+    "price": "19.4",
+    "quantity": "5",
+    "title": "The Hound of the Baskervilles"
+  },
+  {
+    "id": "89",
+    "author": "Arthur Conan Doyle",
+    "cover": "https://covers.openlibrary.org/b/olid/OL13492734M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL13492734M",
+    "price": "14.6",
+    "quantity": "5",
+    "title": "The Sign of Four"
+  },
+  {
+    "id": "90",
+    "author": "Wilkie Collins",
+    "cover": "https://covers.openlibrary.org/b/olid/OL11424127M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL11424127M",
+    "price": "18.14",
+    "quantity": "7",
+    "title": "The Moonstone"
+  },
+  {
+    "id": "91",
+    "author": "Edith Nesbit",
+    "cover": "https://covers.openlibrary.org/b/olid/OL17139068M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL17139068M",
+    "price": "24.65",
+    "quantity": "11",
+    "title": "The Story of the Amulet"
+  },
+  {
+    "id": "92",
+    "author": "Arthur Conan Doyle",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7173235M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL7173235M",
+    "price": "14.5",
+    "quantity": "11",
+    "title": "The Return of Sherlock Holmes"
+  },
+  {
+    "id": "93",
+    "author": "Arthur Conan Doyle",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7058607M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL7058607M",
+    "price": "12.17",
+    "quantity": "8",
+    "title": "Memoirs of Sherlock Holmes [11 stories]"
+  },
+  {
+    "id": "94",
+    "author": "Wilkie Collins",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7881235M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL7881235M",
+    "price": "20.74",
+    "quantity": "7",
+    "title": "The Woman in White"
+  },
+  {
+    "id": "95",
+    "author": "Mark Twain",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27465153M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL27465153M",
+    "price": "21.06",
+    "quantity": "7",
+    "title": "Tom Sawyer, Detective"
+  },
+  {
+    "id": "96",
+    "author": "Arthur Conan Doyle",
+    "cover": "NULL",
+    "genre": "mystery_and_detective_stories",
+    "olid": "NULL",
+    "price": "19.95",
+    "quantity": "8",
+    "title": "The Case-Book of Sherlock Holmes"
+  },
+  {
+    "id": "97",
+    "author": "Joseph Conrad",
+    "cover": "https://covers.openlibrary.org/b/olid/OL2640257M-M.jpg",
+    "genre": "mystery_and_detective_stories",
+    "olid": "OL2640257M",
+    "price": "23.29",
+    "quantity": "14",
+    "title": "The Secret Agent"
+  },
+  {
+    "id": "98",
+    "author": "Emily Brontë",
+    "cover": "https://covers.openlibrary.org/b/olid/OL38586477M-M.jpg",
+    "genre": "romance",
+    "olid": "OL38586477M",
+    "price": "16.11",
+    "quantity": "15",
+    "title": "Wuthering Heights"
+  },
+  {
+    "id": "99",
+    "author": "Jane Austen",
+    "cover": "https://covers.openlibrary.org/b/olid/OL13573615M-M.jpg",
+    "genre": "romance",
+    "olid": "OL13573615M",
+    "price": "18.24",
+    "quantity": "15",
+    "title": "Emma"
+  },
+  {
+    "id": "100",
+    "author": "Louisa May Alcott",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27300715M-M.jpg",
+    "genre": "romance",
+    "olid": "OL27300715M",
+    "price": "17.64",
+    "quantity": "6",
+    "title": "Little Women"
+  },
+  {
+    "id": "101",
+    "author": "Jane Austen",
+    "cover": "https://covers.openlibrary.org/b/olid/OL14041582M-M.jpg",
+    "genre": "romance",
+    "olid": "OL14041582M",
+    "price": "24.03",
+    "quantity": "9",
+    "title": "Sense and Sensibility"
+  },
+  {
+    "id": "102",
+    "author": "Charlotte Brontë",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6969829M-M.jpg",
+    "genre": "romance",
+    "olid": "OL6969829M",
+    "price": "22.96",
+    "quantity": "11",
+    "title": "Jane Eyre"
+  },
+  {
+    "id": "103",
+    "author": "Jane Austen",
+    "cover": "https://covers.openlibrary.org/b/olid/OL36684152M-M.jpg",
+    "genre": "romance",
+    "olid": "OL36684152M",
+    "price": "25.61",
+    "quantity": "9",
+    "title": "Northanger Abbey"
+  },
+  {
+    "id": "104",
+    "author": "Leo Tolstoy",
+    "cover": "https://covers.openlibrary.org/b/olid/OL10601812M-M.jpg",
+    "genre": "romance",
+    "olid": "OL10601812M",
+    "price": "17.7",
+    "quantity": "9",
+    "title": "Anna Karenina"
+  },
+  {
+    "id": "105",
+    "author": "Edith Wharton",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7215847M-M.jpg",
+    "genre": "romance",
+    "olid": "OL7215847M",
+    "price": "18.91",
+    "quantity": "7",
+    "title": "Ethan Frome"
+  },
+  {
+    "id": "106",
+    "author": "Harriet Beecher Stowe",
+    "cover": "https://covers.openlibrary.org/b/olid/OL26244385M-M.jpg",
+    "genre": "romance",
+    "olid": "OL26244385M",
+    "price": "17.04",
+    "quantity": "9",
+    "title": "Uncle Tom's Cabin"
+  },
+  {
+    "id": "107",
+    "author": "Alexandre Dumas",
+    "cover": "https://covers.openlibrary.org/b/olid/OL46867087M-M.jpg",
+    "genre": "romance",
+    "olid": "OL46867087M",
+    "price": "22.61",
+    "quantity": "6",
+    "title": "El Conde de Montecristo"
+  },
+  {
+    "id": "108",
+    "author": "D. H. Lawrence",
+    "cover": "https://covers.openlibrary.org/b/olid/OL14048584M-M.jpg",
+    "genre": "romance",
+    "olid": "OL14048584M",
+    "price": "13.22",
+    "quantity": "5",
+    "title": "Women in Love"
+  },
+  {
+    "id": "109",
+    "author": "Arnold Hauser",
+    "cover": "https://covers.openlibrary.org/b/olid/OL4825088M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL4825088M",
+    "price": "25.84",
+    "quantity": "15",
+    "title": "Sozialgeschichte der Kunst und Literatur"
+  },
+  {
+    "id": "110",
+    "author": "F. Scott Fitzgerald",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7230180M-M.jpg",
+    "genre": "romance",
+    "olid": "OL7230180M",
+    "price": "11.47",
+    "quantity": "12",
+    "title": "This Side of Paradise"
+  },
+  {
+    "id": "111",
+    "author": "Elizabeth Cleghorn Gaskell",
+    "cover": "https://covers.openlibrary.org/b/olid/OL12286492M-M.jpg",
+    "genre": "romance",
+    "olid": "OL12286492M",
+    "price": "24.87",
+    "quantity": "9",
+    "title": "Cranford"
+  },
+  {
+    "id": "112",
+    "author": "Pliny the Elder",
+    "cover": "https://covers.openlibrary.org/b/olid/OL23321225M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL23321225M",
+    "price": "11.14",
+    "quantity": "9",
+    "title": "Naturalis historia"
+  },
+  {
+    "id": "113",
+    "author": "John Ruskin",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24197185M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL24197185M",
+    "price": "19.19",
+    "quantity": "15",
+    "title": "The Stones of Venice"
+  },
+  {
+    "id": "114",
+    "author": "Helen Gardner",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6798546M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL6798546M",
+    "price": "17.33",
+    "quantity": "15",
+    "title": "Art Through the Ages"
+  },
+  {
+    "id": "115",
+    "author": "H. W. Janson",
+    "cover": "https://covers.openlibrary.org/b/olid/OL2531764M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL2531764M",
+    "price": "12.37",
+    "quantity": "9",
+    "title": "History of art"
+  },
+  {
+    "id": "116",
+    "author": "Marilyn Stokstad",
+    "cover": "https://covers.openlibrary.org/b/olid/OL781489M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL781489M",
+    "price": "19.51",
+    "quantity": "5",
+    "title": "Art history"
+  },
+  {
+    "id": "117",
+    "author": "E. H. Gombrich",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8102525M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL8102525M",
+    "price": "11.77",
+    "quantity": "7",
+    "title": "The story of art"
+  },
+  {
+    "id": "118",
+    "author": "Fred S. Kleiner",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27262487M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL27262487M",
+    "price": "19.92",
+    "quantity": "13",
+    "title": "Gardner's Art Through the Ages"
+  },
+  {
+    "id": "119",
+    "author": "Fred S. Kleiner",
+    "cover": "https://covers.openlibrary.org/b/olid/OL35956585M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL35956585M",
+    "price": "17.14",
+    "quantity": "11",
+    "title": "Bundle : Gardner's Art Through the Ages"
+  },
+  {
+    "id": "120",
+    "author": "Frederick Litchfield",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6905848M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL6905848M",
+    "price": "20.25",
+    "quantity": "13",
+    "title": "Pottery and porcelain"
+  },
+  {
+    "id": "121",
+    "author": "Kenneth Clark",
+    "cover": "https://covers.openlibrary.org/b/olid/OL5217369M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL5217369M",
+    "price": "17.34",
+    "quantity": "13",
+    "title": "Civilisation"
+  },
+  {
+    "id": "122",
+    "author": "Desiderius Erasmus",
+    "cover": "https://covers.openlibrary.org/b/olid/OL5754426M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL5754426M",
+    "price": "23.12",
+    "quantity": "10",
+    "title": "Desiderii Erasmi Roterodami opera omnia"
+  },
+  {
+    "id": "123",
+    "author": "Roberto Sebastián Matta Echaurren",
+    "cover": "https://covers.openlibrary.org/b/olid/OL3698559M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL3698559M",
+    "price": "20.84",
+    "quantity": "5",
+    "title": "Matta"
+  },
+  {
+    "id": "124",
+    "author": "Marvin V. Zelkowitz",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9455977M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL9455977M",
+    "price": "20.12",
+    "quantity": "6",
+    "title": "Advances in Computers, Volume 49 (Advances in Computers)"
+  },
+  {
+    "id": "125",
+    "author": "Kevin Beaver",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7595409M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL7595409M",
+    "price": "16.29",
+    "quantity": "13",
+    "title": "Hacking for Dummies"
+  },
+  {
+    "id": "126",
+    "author": "Helen Gardner",
+    "cover": "https://covers.openlibrary.org/b/olid/OL22719441M-M.jpg",
+    "genre": "art_history",
+    "olid": "OL22719441M",
+    "price": "18.57",
+    "quantity": "6",
+    "title": "Renaissance and Modern Art"
+  },
+  {
+    "id": "127",
+    "author": "Sio-Iong Ao",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27946824M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL27946824M",
+    "price": "15.49",
+    "quantity": "15",
+    "title": "Transactions on Engineering Technologies"
+  },
+  {
+    "id": "128",
+    "author": "Alexander Gelbukh",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27025828M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL27025828M",
+    "price": "10.46",
+    "quantity": "6",
+    "title": "Computational Linguistics and Intelligent Text Processing"
+  },
+  {
+    "id": "129",
+    "author": "Leszek Rutkowski",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27018239M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL27018239M",
+    "price": "20.71",
+    "quantity": "14",
+    "title": "Artificial Intelligence and Soft Computing"
+  },
+  {
+    "id": "130",
+    "author": "Honghai Liu",
+    "cover": "https://covers.openlibrary.org/b/olid/OL25538986M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL25538986M",
+    "price": "21.9",
+    "quantity": "10",
+    "title": "Intelligent Robotics and Applications"
+  },
+  {
+    "id": "131",
+    "author": "Lazaros S. Iliadis",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27948483M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL27948483M",
+    "price": "20.54",
+    "quantity": "6",
+    "title": "Artificial Intelligence Applications and Innovations"
+  },
+  {
+    "id": "132",
+    "author": "Cheng-Lin Liu",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27080015M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL27080015M",
+    "price": "14.78",
+    "quantity": "11",
+    "title": "Pattern Recognition"
+  },
+  {
+    "id": "133",
+    "author": "June Jamrich Parsons",
+    "cover": "https://covers.openlibrary.org/b/olid/OL11853115M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL11853115M",
+    "price": "12.32",
+    "quantity": "10",
+    "title": "Computer Concepts"
+  },
+  {
+    "id": "134",
+    "author": "Alan Dennis",
+    "cover": "https://covers.openlibrary.org/b/olid/OL3583497M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL3583497M",
+    "price": "21.35",
+    "quantity": "12",
+    "title": "Systems Analysis and Design"
+  },
+  {
+    "id": "135",
+    "author": "Ying Tan",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27015327M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL27015327M",
+    "price": "24.23",
+    "quantity": "6",
+    "title": "Advances in Swarm Intelligence"
+  },
+  {
+    "id": "136",
+    "author": "Sharon Yull",
+    "cover": "https://covers.openlibrary.org/b/olid/OL28743475M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL28743475M",
+    "price": "16.5",
+    "quantity": "6",
+    "title": "BTEC National for IT Practitioners"
+  },
+  {
+    "id": "137",
+    "author": "George Bebis",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9056158M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL9056158M",
+    "price": "22.56",
+    "quantity": "5",
+    "title": "Advances in visual computing"
+  },
+  {
+    "id": "138",
+    "author": "Yuhua Luo",
+    "cover": "https://covers.openlibrary.org/b/olid/OL27027411M-M.jpg",
+    "genre": "computer_science",
+    "olid": "OL27027411M",
+    "price": "20.42",
+    "quantity": "8",
+    "title": "Cooperative Design, Visualization, and Engineering"
+  },
+  {
+    "id": "139",
+    "author": "Bible",
+    "cover": "NULL",
+    "genre": "biography",
+    "olid": "NULL",
+    "price": "19.14",
+    "quantity": "9",
+    "title": "Bible"
+  },
+  {
+    "id": "140",
+    "author": "Miguel de Cervantes Saavedra",
+    "cover": "NULL",
+    "genre": "biography",
+    "olid": "NULL",
+    "price": "18.03",
+    "quantity": "15",
+    "title": "Don Quijote de la Mancha"
+  },
+  {
+    "id": "141",
+    "author": "Dante Alighieri",
+    "cover": "https://covers.openlibrary.org/b/olid/OL14081259M-M.jpg",
+    "genre": "biography",
+    "olid": "OL14081259M",
+    "price": "14.45",
+    "quantity": "9",
+    "title": "Divina Commedia"
+  },
+  {
+    "id": "142",
+    "author": "Frederick Douglass",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6564860M-M.jpg",
+    "genre": "biography",
+    "olid": "OL6564860M",
+    "price": "12.35",
+    "quantity": "7",
+    "title": "Narrative of the life of Frederick Douglass"
+  },
+  {
+    "id": "143",
+    "author": "Lucy Maud Montgomery",
+    "cover": "NULL",
+    "genre": "biography",
+    "olid": "NULL",
+    "price": "23.29",
+    "quantity": "15",
+    "title": "Anne of Green Gables"
+  },
+  {
+    "id": "144",
+    "author": "Solomon Northup",
+    "cover": "https://covers.openlibrary.org/b/olid/OL22322986M-M.jpg",
+    "genre": "biography",
+    "olid": "OL22322986M",
+    "price": "18.41",
+    "quantity": "12",
+    "title": "Twelve years a slave"
+  },
+  {
+    "id": "145",
+    "author": "Rudyard Kipling",
+    "cover": "https://covers.openlibrary.org/b/olid/OL13447930M-M.jpg",
+    "genre": "biography",
+    "olid": "OL13447930M",
+    "price": "24.11",
+    "quantity": "14",
+    "title": "Captains Courageous"
+  },
+  {
+    "id": "146",
+    "author": "Walt Whitman",
+    "cover": "NULL",
+    "genre": "biography",
+    "olid": "NULL",
+    "price": "24.33",
+    "quantity": "7",
+    "title": "Leaves of Grass"
+  },
+  {
+    "id": "147",
+    "author": "Geoffrey Chaucer",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7146598M-M.jpg",
+    "genre": "biography",
+    "olid": "OL7146598M",
+    "price": "18.93",
+    "quantity": "7",
+    "title": "The Canterbury Tales"
+  },
+  {
+    "id": "148",
+    "author": "William Shakespeare",
+    "cover": "https://covers.openlibrary.org/b/olid/OL26229526M-M.jpg",
+    "genre": "biography",
+    "olid": "OL26229526M",
+    "price": "21.48",
+    "quantity": "10",
+    "title": "Julius Caesar"
+  },
+  {
+    "id": "149",
+    "author": "James Joyce",
+    "cover": "https://covers.openlibrary.org/b/olid/OL14005342M-M.jpg",
+    "genre": "biography",
+    "olid": "OL14005342M",
+    "price": "18.29",
+    "quantity": "8",
+    "title": "Dubliners"
+  },
+  {
+    "id": "150",
+    "author": "John Bunyan",
+    "cover": "NULL",
+    "genre": "biography",
+    "olid": "NULL",
+    "price": "24.87",
+    "quantity": "15",
+    "title": "The Pilgrim's Progress"
+  },
+  {
+    "id": "151",
+    "author": "Benjamin Franklin",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7134689M-M.jpg",
+    "genre": "biography",
+    "olid": "OL7134689M",
+    "price": "19.41",
+    "quantity": "9",
+    "title": "The Autobiography of Benjamin Franklin"
+  },
+  {
+    "id": "152",
+    "author": "Rudyard Kipling",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9323782M-M.jpg",
+    "genre": "biography",
+    "olid": "OL9323782M",
+    "price": "18.06",
+    "quantity": "11",
+    "title": "The Second Jungle Book"
+  },
+  {
+    "id": "153",
+    "author": "Jane Austen",
+    "cover": "https://covers.openlibrary.org/b/olid/OL47044678M-M.jpg",
+    "genre": "historical_fiction",
+    "olid": "OL47044678M",
+    "price": "21.33",
+    "quantity": "7",
+    "title": "Pride and Prejudice"
+  },
+  {
+    "id": "154",
+    "author": "Mark Twain",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7062714M-M.jpg",
+    "genre": "historical_fiction",
+    "olid": "OL7062714M",
+    "price": "10.57",
+    "quantity": "9",
+    "title": "Adventures of Huckleberry Finn"
+  },
+  {
+    "id": "155",
+    "author": "Charles Dickens",
+    "cover": "NULL",
+    "genre": "historical_fiction",
+    "olid": "NULL",
+    "price": "14.01",
+    "quantity": "15",
+    "title": "Oliver Twist"
+  },
+  {
+    "id": "156",
+    "author": "Charles Dickens",
+    "cover": "NULL",
+    "genre": "historical_fiction",
+    "olid": "NULL",
+    "price": "22.19",
+    "quantity": "12",
+    "title": "A Tale of Two Cities"
+  },
+  {
+    "id": "157",
+    "author": "Charles Dickens",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9170447M-M.jpg",
+    "genre": "historical_fiction",
+    "olid": "OL9170447M",
+    "price": "10.57",
+    "quantity": "7",
+    "title": "David Copperfield"
+  },
+  {
+    "id": "158",
+    "author": "Alexandre Dumas",
+    "cover": "https://covers.openlibrary.org/b/olid/OL33218710M-M.jpg",
+    "genre": "historical_fiction",
+    "olid": "OL33218710M",
+    "price": "10.5",
+    "quantity": "13",
+    "title": "Les Trois Mousquetaires"
+  },
+  {
+    "id": "159",
+    "author": "Mark Twain",
+    "cover": "https://covers.openlibrary.org/b/olid/OL34596309M-M.jpg",
+    "genre": "historical_fiction",
+    "olid": "OL34596309M",
+    "price": "18.95",
+    "quantity": "7",
+    "title": "The Adventures of Tom Sawyer"
+  },
+  {
+    "id": "160",
+    "author": "Mark Twain",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7025266M-M.jpg",
+    "genre": "historical_fiction",
+    "olid": "OL7025266M",
+    "price": "13.11",
+    "quantity": "6",
+    "title": "The Prince and the Pauper"
+  },
+  {
+    "id": "161",
+    "author": "James Fenimore Cooper",
+    "cover": "https://covers.openlibrary.org/b/olid/OL7165874M-M.jpg",
+    "genre": "historical_fiction",
+    "olid": "OL7165874M",
+    "price": "23.71",
+    "quantity": "15",
+    "title": "The Last of the Mohicans"
+  },
+  {
+    "id": "162",
+    "author": "Raymond Pettibon",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8715828M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL8715828M",
+    "price": "22.3",
+    "quantity": "7",
+    "title": "Raymond Pettibon"
+  },
+  {
+    "id": "163",
+    "author": "Philip B. Meggs",
+    "cover": "https://covers.openlibrary.org/b/olid/OL1531731M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL1531731M",
+    "price": "13.32",
+    "quantity": "13",
+    "title": "A history of graphic design"
+  },
+  {
+    "id": "164",
+    "author": "Gail Honeyman",
+    "cover": "https://covers.openlibrary.org/b/olid/OL26765745M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL26765745M",
+    "price": "15.7",
+    "quantity": "11",
+    "title": "Eleanor Oliphant is Completely Fine"
+  },
+  {
+    "id": "165",
+    "author": "Alan Pipes",
+    "cover": "https://covers.openlibrary.org/b/olid/OL3421876M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL3421876M",
+    "price": "11.84",
+    "quantity": "14",
+    "title": "Production for graphic designers"
+  },
+  {
+    "id": "166",
+    "author": "Mel Ramos",
+    "cover": "https://covers.openlibrary.org/b/olid/OL19752483M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL19752483M",
+    "price": "16.95",
+    "quantity": "14",
+    "title": "Mel Ramos"
+  },
+  {
+    "id": "167",
+    "author": "David McCandless",
+    "cover": "https://covers.openlibrary.org/b/olid/OL24329231M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL24329231M",
+    "price": "11.1",
+    "quantity": "13",
+    "title": "Information is Beautiful"
+  },
+  {
+    "id": "168",
+    "author": "Linda Candy",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8974253M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL8974253M",
+    "price": "17.8",
+    "quantity": "9",
+    "title": "Explorations in art and technology"
+  },
+  {
+    "id": "169",
+    "author": "Ikuyoshi Shibukawa",
+    "cover": "https://covers.openlibrary.org/b/olid/OL8003256M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL8003256M",
+    "price": "22.67",
+    "quantity": "6",
+    "title": "Designer's guide to color"
+  },
+  {
+    "id": "170",
+    "author": "Lewis Blackwell",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6789925M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL6789925M",
+    "price": "20.2",
+    "quantity": "13",
+    "title": "The end of print"
+  },
+  {
+    "id": "171",
+    "author": "George Bickham",
+    "cover": "https://covers.openlibrary.org/b/olid/OL15055395M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL15055395M",
+    "price": "22.46",
+    "quantity": "10",
+    "title": "The universal penman"
+  },
+  {
+    "id": "172",
+    "author": "Luis Seoane",
+    "cover": "NULL",
+    "genre": "graphic_design",
+    "olid": "NULL",
+    "price": "23.36",
+    "quantity": "15",
+    "title": "Luis Seoane"
+  },
+  {
+    "id": "173",
+    "author": "Richard Brath",
+    "cover": "https://covers.openlibrary.org/b/olid/OL30170565M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL30170565M",
+    "price": "19.42",
+    "quantity": "6",
+    "title": "Visualizing with Text"
+  },
+  {
+    "id": "174",
+    "author": "Matthew David Lickiss",
+    "cover": "NULL",
+    "genre": "graphic_design",
+    "olid": "NULL",
+    "price": "25.73",
+    "quantity": "12",
+    "title": "Design Perspectives on Multimodal Documents"
+  },
+  {
+    "id": "175",
+    "author": "Done, Ken.",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6885830M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL6885830M",
+    "price": "21.14",
+    "quantity": "13",
+    "title": "Ken Done"
+  },
+  {
+    "id": "176",
+    "author": "Ian Noble",
+    "cover": "https://covers.openlibrary.org/b/olid/OL9006162M-M.jpg",
+    "genre": "graphic_design",
+    "olid": "OL9006162M",
+    "price": "23.25",
+    "quantity": "7",
+    "title": "Visual research"
+  },
+  {
+    "id": "177",
+    "author": "Roald Dahl",
+    "cover": "https://covers.openlibrary.org/b/olid/OL11948467M-M.jpg",
+    "genre": "young_adult",
+    "olid": "OL11948467M",
+    "price": "24.77",
+    "quantity": "5",
+    "title": "The BFG"
+  },
+  {
+    "id": "178",
+    "author": "Suzanne Collins",
+    "cover": "NULL",
+    "genre": "young_adult",
+    "olid": "NULL",
+    "price": "21.5",
+    "quantity": "6",
+    "title": "Mockingjay"
+  },
+  {
+    "id": "179",
+    "author": "J. K. Rowling",
+    "cover": "https://covers.openlibrary.org/b/olid/OL28172760M-M.jpg",
+    "genre": "young_adult",
+    "olid": "OL28172760M",
+    "price": "25.11",
+    "quantity": "11",
+    "title": "Harry Potter and the Deathly Hallows"
+  },
+  {
+    "id": "180",
+    "author": "Veronica Roth",
+    "cover": "https://covers.openlibrary.org/b/olid/OL26223598M-M.jpg",
+    "genre": "young_adult",
+    "olid": "OL26223598M",
+    "price": "11.26",
+    "quantity": "15",
+    "title": "Divergent"
+  },
+  {
+    "id": "181",
+    "author": "Laura Lee Hope",
+    "cover": "NULL",
+    "genre": "young_adult",
+    "olid": "NULL",
+    "price": "25.62",
+    "quantity": "14",
+    "title": "The Bobbsey Twins"
+  },
+  {
+    "id": "182",
+    "author": "Gary Paulsen",
+    "cover": "https://covers.openlibrary.org/b/olid/OL32602987M-M.jpg",
+    "genre": "young_adult",
+    "olid": "OL32602987M",
+    "price": "20.35",
+    "quantity": "12",
+    "title": "Hatchet"
+  },
+  {
+    "id": "183",
+    "author": "Veronica Roth",
+    "cover": "https://covers.openlibrary.org/b/olid/OL25432922M-M.jpg",
+    "genre": "young_adult",
+    "olid": "OL25432922M",
+    "price": "10.23",
+    "quantity": "8",
+    "title": "Allegiant"
+  },
+  {
+    "id": "184",
+    "author": "Angie Thomas",
+    "cover": "https://covers.openlibrary.org/b/olid/OL26246256M-M.jpg",
+    "genre": "young_adult",
+    "olid": "OL26246256M",
+    "price": "15.94",
+    "quantity": "13",
+    "title": "The Hate U Give"
+  },
+  {
+    "id": "185",
+    "author": "Garth Nix",
+    "cover": "https://covers.openlibrary.org/b/olid/OL33932917M-M.jpg",
+    "genre": "young_adult",
+    "olid": "OL33932917M",
+    "price": "14.4",
+    "quantity": "15",
+    "title": "Sabriel"
+  },
+  {
+    "id": "186",
+    "author": "Neil Gaiman",
+    "cover": "https://covers.openlibrary.org/b/olid/OL19429647M-M.jpg",
+    "genre": "young_adult",
+    "olid": "OL19429647M",
+    "price": "14.54",
+    "quantity": "15",
+    "title": "The Graveyard Book"
+  },
+  {
+    "id": "187",
+    "author": "Sam Youd",
+    "cover": "https://covers.openlibrary.org/b/olid/OL6803322M-M.jpg",
+    "genre": "young_adult",
+    "olid": "OL6803322M",
+    "price": "15.44",
+    "quantity": "6",
+    "title": "The White Mountains (The Tripods #1)"
+  },
+  {
+    "id": "188",
+    "author": "Charles Dickens",
+    "cover": "https://covers.openlibrary.org/b/olid/OL13713582M-M.jpg",
+    "genre": "children",
+    "olid": "OL13713582M",
+    "price": "21.76",
+    "quantity": "9",
+    "title": "The Old Curiosity Shop"
+  },
+  {
+    "id": "189",
+    "author": "Edith Nesbit",
+    "cover": "https://covers.openlibrary.org/b/olid/OL43818814M-M.jpg",
+    "genre": "children",
+    "olid": "OL43818814M",
+    "price": "10.98",
+    "quantity": "10",
+    "title": "The Story of the Treasure Seekers"
+  },
+  {
+    "id": "190",
+    "author": "Louisa May Alcott",
+    "cover": "https://covers.openlibrary.org/b/olid/OL26358706M-M.jpg",
+    "genre": "children",
+    "olid": "OL26358706M",
+    "price": "19.06",
+    "quantity": "10",
+    "title": "Little men"
+  },
+  {
+    "id": "191",
+    "author": "Lewis Carroll",
+    "cover": "https://covers.openlibrary.org/b/olid/OL25129289M-M.jpg",
+    "genre": "children",
+    "olid": "OL25129289M",
+    "price": "18.35",
+    "quantity": "11",
+    "title": "Alice's Adventures in Wonderland / Through the Looking Glass"
+  }
+]

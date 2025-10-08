@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/books")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BookController {
     private final BooksService booksService;
 

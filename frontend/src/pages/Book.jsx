@@ -36,8 +36,8 @@ export default function Book() {
     const isInCart = book && cart.some((item) => item.book.id === book.id);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/books`)
-            .then((res) => res.json())
+        fetch("http://localhost:8080/books")
+        .then((res) => res.json())
             .then((data) => {
                 const foundBook = data.find((b) => b.id === parseInt(id));
                 setBook(foundBook);
