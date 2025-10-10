@@ -4,7 +4,8 @@ Install both Docker and MySQLWorkBench on your system
 
 From the root directory run 
 
-```docker-compose up --build```
+```docker-compose up```
+   ```docker-compose build```
 
 
 Navigate to <mark>http://localhost:3000/</mark> on your browser to view the application
@@ -43,8 +44,13 @@ Use the existing table (won't work if you overwrite/drop it)
 
 💡 Tip: 
 
-Validate it works by running the below queries (see screenshot)
-The books table should be populated
+Validate it works by running the below queries 
+```show databases```
+```use books```
+```select * from books```
+
+The books table should be populated (see screenshot)
+
 ![screenshot](db/sqlHelper.png)
 
 
