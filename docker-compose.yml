@@ -29,6 +29,8 @@ services:
       JWT_SECRET_SECRET: +OC3w15btKLj250GX2rL6/bFJtaL+ebw8AkC0lyxm6A=
       JWT_SECRET_ACCESS_TOKEN_EXPIRATION: 3600000
       JWT_SECRET_REFRESH_TOKEN_EXPIRATION: 86400000
+      
+
     ports:
       - "8080:8080"
     networks:
@@ -42,6 +44,8 @@ services:
       - backend
     networks:
       - app-network
+    environment:
+      - VITE_GROK_KEY=${VITE_GROK_KEY}
 
 volumes:
   db_data:
