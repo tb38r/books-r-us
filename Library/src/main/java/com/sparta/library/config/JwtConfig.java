@@ -12,6 +12,7 @@ import javax.crypto.SecretKey;
 @ConfigurationProperties(prefix = "jwt.secret")
 @Data
 public class JwtConfig {
+    @Value("${jwt.secret.secret}")
     private String secret;
     private int accessTokenExpiration;
     private int refreshTokenExpiration;

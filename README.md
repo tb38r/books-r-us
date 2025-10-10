@@ -44,6 +44,7 @@ Use the existing table (won't work if you overwrite/drop it)
 💡 Tip: 
 
 Validate it works by running the below queries (see screenshot)
+The books table should be populated
 ![screenshot](db/sqlHelper.png)
 
 
