@@ -4,8 +4,8 @@ Install both Docker and MySQLWorkBench on your system
 
 From the root directory run 
 
-```docker-compose up```
    ```docker-compose build```
+```docker-compose up```
 
 
 Navigate to <mark>http://localhost:3000/</mark> on your browser to view the application
