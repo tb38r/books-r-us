@@ -26,7 +26,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/books
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: ""
-      JWT_SECRET_SECRET: ${JWT_SECRET_SECRET}
+      JWT_SECRET_SECRET: +OC3w15btKLj250GX2rL6/bFJtaL+ebw8AkC0lyxm6A=
       JWT_SECRET_ACCESS_TOKEN_EXPIRATION: 3600000
       JWT_SECRET_REFRESH_TOKEN_EXPIRATION: 86400000
       
@@ -45,7 +45,7 @@ services:
     networks:
       - app-network
     environment:
-      - VITE_GROK_KEY=${VITE_GROK_KEY}
+      - VITE_GROK_KEY=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
 
 volumes:
   db_data:
